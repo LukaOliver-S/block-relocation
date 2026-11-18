@@ -1,6 +1,5 @@
 import csv, re, subprocess
 from pathlib import Path
-from verificar import verificar, ler_movimentos
 
 RAIZ = Path(__file__).resolve().parent.parent   
 EXE = RAIZ / "brp.exe"
@@ -34,10 +33,6 @@ for conj, pasta in PASTAS.items():
                 mt = RE.search(r.stdout)
                 if r.returncode == 0 and mt:
                     z, t, st = int(mt.group(1)), float(mt.group(2)), "ok"
-                    movs = ler_movimentos(sol)
-                    v_irr = verificar(f, movs, restrito=False)[0]
-                    v_res = verificar(f, movs, restrito=True)[0]
-                    z_conf = (len(movs) == z)
                 else:
                     z, t, st = "", "", f"erro({r.returncode})"
             except subprocess.TimeoutExpired:

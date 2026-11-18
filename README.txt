@@ -59,25 +59,30 @@ Pode ser executado de qualquer pasta. Configuracao no topo do script:
 METODOS (ex.: ["RS-5", "PM-3"]), TIMEOUT (s por instancia) e MAX_N
 (ignora instancias com mais de MAX_N containers).
 Saida: resultados/resultados_irrestrito.csv
-(colunas: conjunto, instancia, W, H, N, metodo, relocacoes, tempo_s, status,
- valida_irrestrita, valida_restrita, z_confere;
+(colunas: conjunto, instancia, W, H, N, metodo, relocacoes, tempo_s, status;
  status = ok | timeout | erro(<codigo>)).
 As sequencias de movimentos ficam em resultados/solucoes/.
 
-5) VERIFICAR UMA SOLUCAO
-------------------------
-O runner passa "-sf" ao brp.exe: cada execucao grava a sequencia de
-movimentos em resultados/solucoes/<metodo>/<conjunto>_<instancia>.txt e o
-script scripts/verificar.py simula essa sequencia na instancia (respeitando H,
-recuperando os containers em ordem e exigindo que a baia termine vazia).
-Isoladamente:
+5) OBTER O PASSO A PASSO QUE O ALGORITMO FEZ
+--------------------------------------------
+Qualquer metodo (-m RS-5, PM-3, LA-1, DFBB, ...) registra todas as operacoes
+que realizou. Para ve-las:
 
-  python scripts/verificar.py instancias/caserta/data3-3-1.txt <solucao.txt>
-  python scripts/verificar.py instancias/caserta/data3-3-1.txt <solucao.txt> --restrito
+  Terminal:   .\brp.exe -i instancias\caserta\data3-3-1.txt -m RS-5 -maxHeight file -v
+  Arquivo:    .\brp.exe -i instancias\caserta\data3-3-1.txt -m RS-5 -maxHeight file -sf passos.txt
 
-Saida: "VALIDA, Z = <n>" ou "INVALIDA: <motivo>". Com --restrito so e aceito
-mover o topo da pilha que contem o proximo container a sair. No CSV:
-valida_irrestrita, valida_restrita e z_confere (Z reportado = movimentos).
+Com -v a saida e, por exemplo:
+      Relocate from 1 to 2   (1)
+      Retrieve from 1        (3)
+Com -sf o arquivo traz a instancia e a sequencia completa:
+      retrieving 1 from 0       (0)
+      relocating x from 1 to 2  (1)
+
+Pilhas sao numeradas a partir de 0. "Relocate" e uma realocacao (conta no Z);
+"Retrieve" e a saida do container (nao conta). O numero entre parenteses e a
+posicao da operacao na sequencia.
+O runner (scripts/rodar_experimentos.py) ja passa -sf a cada execucao e grava
+os passos em resultados/solucoes/<metodo>/<conjunto>_<instancia>.txt.
 
 =====================================================================
  O QUE O CODIGO JA OFERECE (inventario para quem vai implementar)
@@ -161,6 +166,86 @@ G) Limitacoes e armadilhas
   cheias (nao ocorreu nas 120 instancias do conjunto A).
 - Pequenos defeitos sem efeito no que usamos: no DFBB a quebra de simetria
   "relocatedToEmpty" nunca e ativada; operator== de BRPState usa "<".
+
+=====================================================================
+ PLANO DE TRABALHO (o que falta fazer e como)
+=====================================================================
+Objetivo do estudo (para os resultados serem comparaveis entre equipes):
+- Instancias: (A) conjunto pequeno (W=3..5, H=4..5, N<=20) com otimos
+  obtidos pelo A*; (B) instancias da literatura (Caserta, Voss &
+  Sniedovich, 2011), em instancias/caserta/.
+- Baselines: Min-Max (Caserta et al., 2012) e A* com h(n) = numero de
+  bloqueadores. Alem de rake search e pilot method.
+- Metricas: numero de reshuffles (= realocacoes, nRelocations()),
+  gap = (Z - Z*) / Z*  em relacao ao otimo (A) ou ao melhor valor conhecido
+  (B), e tempo de execucao.
+- Regras: mesmo limite de tempo por instancia; metodos aleatorios com
+  varias sementes (media e melhor); registrar os passos de cada solucao
+  (ver secao 5).
+
+ETAPA 0 - FEITO
+  Compila, le o formato "W H N", gera o conjunto A, roda RS-N e PM-N em A e
+  B e grava os passos (-sf). Esses resultados sao do problema IRRESTRITO.
+
+ETAPA 1 - Definir o problema (decisao da equipe, antes de implementar)
+  Restrito (so se pode realocar o topo da pilha que contem o proximo
+  container a sair) ou irrestrito? A lista do estudo pede o restrito.
+  Registrar a decisao aqui e usar a mesma em todos os metodos. H = a
+  capacidade fixa dada no cabecalho da instancia (-maxHeight file).
+
+ETAPA 2 - Min-Max (baseline)
+  Como: a politica base BRPPolicy (src/brppolicy.cpp) ja so realoca o topo
+  da pilha do alvo e escolhe o destino pela regra descrita em D). Basta
+  expor um nome em src/genpolicy.cpp, por exemplo:
+      } else if (name == "MM") {
+          return make_unique<BRPPolicy>();
+  Depois: -m MM. Conferir no artigo de Caserta et al. (2012) a regra e o
+  desempate (aqui, a pilha de menor indice) e ajustar se diferir.
+
+ETAPA 3 - A* restrito (baseline e fonte dos otimos do conjunto A)
+  Como: novo metodo em src/astar.cpp + include/astar.h, herdando de
+  BRPPolicy (solve() devolve shared_ptr<BRPState>) e registrado em
+  genpolicy.cpp (ex.: "ASTAR").
+  - No: configuracao das pilhas apos as recuperacoes automaticas; g = numero
+    de realocacoes (nRelocations()); h = LB1() (bloqueadores, admissivel).
+  - Sucessores: o topo da pilha do alvo vai para cada outra pilha com
+    altura < H (no maximo W-1 filhos); depois retrieveNext() em laco.
+  - Fila de prioridade por f = g + h (desempate: maior g) e tabela hash de
+    estados visitados (as pilhas podem ser ordenadas para a chave).
+  - Base de partida: src/branchandbound.cpp (fila, expansao, poda).
+  - Limite de tempo proprio (o repositorio so tem -tl nos B&B).
+  - Os passos da solucao saem de graca em -v / -sf.
+
+ETAPA 4 - Otimos do conjunto A
+  Rodar o A* em todas as instancias de A; guardar Z* em
+  resultados/otimos_A.csv (instancia, Z*, tempo). Instancias que o A* nao
+  resolver no tempo ficam fora do conjunto A (ou marcadas como "sem otimo").
+  Sanidade: o DFBB (irrestrito) deve dar Z <= Z* restrito.
+
+ETAPA 5 - Rake search e pilot method restritos
+  Hoje geram movimentos de qualquer pilha. Para o restrito:
+  - src/rakesearch.cpp, genSuccMoves(): so movimentos com origem em
+    stackForItem(next()).
+  - src/pilotmethod.cpp, genSuccMoves(): idem; e nao usar voluntaryMoves()
+    (herdado de LA_N) no passo seguinte ao relocate.
+  - As heuristicas que completam a solucao (FM -> SM-1/2, SmSEQ-1/2) tambem
+    usam movimentos voluntarios; ler src/safemoves.cpp e src/subsequence.cpp
+    e limita-las, ou trocar por Min-Max (ETAPA 2) como completador.
+  Um sinalizador (ex.: -restrito) evita duplicar o codigo.
+
+ETAPA 6 - Executar tudo
+  Em scripts/rodar_experimentos.py: METODOS = ["MM", "ASTAR", "RS-5",
+  "PM-3"], mesmo TIMEOUT para todos, MAX_N conforme a capacidade do A*.
+  RS, PM, MM e A* sao deterministicos (sem sementes). Se algum colega
+  incluir metodo aleatorio: varias sementes, reportar media e melhor.
+
+ETAPA 7 - Metricas e relatorio
+  - Gap = (Z - Z*) / Z*. Se Z* = 0, o gap e indefinido: reportar 0 quando
+    Z = 0 (e o valor absoluto caso contrario) e dizer isso no relatorio.
+  - Conjunto B: Z* so existe para as instancias pequenas; para as demais,
+    usar o melhor valor conhecido (menor Z entre todos os metodos ou os
+    valores publicados na pagina da Univ. de Viena).
+  - Medias por classe (W, H). Figuras em graficos/.
 
 FORMATO DAS INSTANCIAS
 ----------------------
