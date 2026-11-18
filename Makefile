@@ -1,12 +1,10 @@
 # build options
 CXX=g++
-LD=g++
-DEBUG 	= -O0 -g -pg
 OPTIM	= -O3
+DEBUG 	= -O0 -g
 
 # flags common to all builds
-CFLAGS = -std=c++14 -Wall -Werror -pedantic -Wno-sign-compare -Wno-unused
-LINKFLAGS=
+CFLAGS = -std=c++14 -Wall -pedantic -Wno-sign-compare -Wno-unused -Iinclude
 
 ifeq ($(BUILD), debug)
 BUILDFLAGS = $(CFLAGS) $(DEBUG)
@@ -14,33 +12,18 @@ else
 BUILDFLAGS = $(CFLAGS) $(OPTIM)
 endif
 
-BRP_EXE  = brp
+BRP_EXE = brp
+SRC     = $(wildcard src/*.cpp)
+OBJ     = $(SRC:src/%.cpp=build/%.o)
 
 all: $(BRP_EXE)
 
-BRP_SRC = \
-brpstate.cpp \
-branchandbound.cpp \
-brppolicy.cpp \
-dfbb.cpp \
-fastmeta.cpp \
-genpolicy.cpp \
-glah.cpp \
-la_n.cpp \
-main.cpp \
-petering.cpp \
-pilotmethod.cpp \
-rakesearch.cpp \
-safemoves.cpp \
-subsequence.cpp \
+$(BRP_EXE): $(OBJ)
+	$(CXX) $(OBJ) -o $(BRP_EXE)
 
-BRP_OBJ = $(BRP_SRC:%.cpp=%.o) 
-
-$(BRP_EXE):  $(BRP_OBJ)
-	$(LD) $(LINKFLAGS) $(BRP_OBJ) -o $(BRP_EXE)
-
-%.o:%.cpp *.h
-	$(CXX) -c $(BUILDFLAGS) $< -o $(<:%.cpp=%.o)
+build/%.o: src/%.cpp $(wildcard include/*.h)
+	@mkdir -p build
+	$(CXX) -c $(BUILDFLAGS) $< -o $@
 
 clean:
-	rm -f *.o $(BRP_EXE) && chmod -x *.h *.cpp Makefile
+	rm -rf build $(BRP_EXE) $(BRP_EXE).exe

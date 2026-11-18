@@ -1,0 +1,7 @@
+build/
+*.o
+brp
+brp.exe
+__pycache__/
+resultados/solucoes/
+instancias/_obsoleto/
