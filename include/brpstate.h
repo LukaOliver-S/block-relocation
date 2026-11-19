@@ -141,6 +141,8 @@ protected:
     vector<int> low_;
     vector<int> height_;
     vector<bool> mustBeMoved_;
+    // height of each stack before any operation
+    vector<int> initialHeights_;
     int LB_;
     // (from, to) pairs for relocations. (from, from) if it's a retrieval
     vector<pair<int, int>> operations_;

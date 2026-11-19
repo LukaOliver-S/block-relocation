@@ -27,7 +27,8 @@ BRPState::BRPState(string fName, string maxHeightType) {
     lastRelocatedTo_ = -1;
     // W_, stacks_ and n_ are all initialised when reading the file
     readFromFile(fName);
-        unsigned int h = *max_element(height_.begin(), height_.end());
+    initialHeights_ = height_;
+    unsigned int h = *max_element(height_.begin(), height_.end());
     if (maxHeightType == "unlimited") {
         H_ = n_;
     } else if (maxHeightType == "file") {                 
@@ -744,7 +745,8 @@ void BRPState::condenseTricoireSub() {
     int firstReloc = 0;
     // compute height of each stack at each op
     vector<vector<int> > heightBeforeOp(operations_.size() + 1,
-                                        vector<int>(W_, n_ / W_) );
+                                        vector<int>(W_, 0) );
+    heightBeforeOp[0] = initialHeights_;
     for (int op = 0; op < operations_.size(); op++) {
         int from = operations_[op].first;
         int to = operations_[op].second;

@@ -6,10 +6,14 @@ ESTRUTURA
 ---------
 include/        headers (.h)
 src/            fontes (.cpp)
-scripts/        gerar_instancias.py, rodar_experimentos.py
+scripts/        gerar_instancias.py, rodar_experimentos.py, json2dat.py
 instancias/
   A/            conjunto pequeno (W=3..5, H=4..5, N<=20), gerado por script
   caserta/      instancias da literatura (Caserta, Voss & Sniedovich, 2011)
+  brp_instances/instances/   instancias da disciplina (17 arquivos .json,
+                10 instancias cada, ver LEIAME.md)
+  brp_txt/      as mesmas instancias em .txt (170 arquivos), geradas por
+                scripts/json2dat.py
   _obsoleto/    arquivos antigos, pode ser apagado
 resultados/     CSVs gerados pelo runner
 graficos/       figuras
@@ -36,6 +40,25 @@ Ou, se o make estiver instalado:  make   (gera ./brp)
   python scripts/gerar_instancias.py
 
 Cria instancias/A/*.txt (e instancias/A_pequenas.json).
+
+2.1) CONVERTER AS INSTANCIAS DA DISCIPLINA (JSON -> TXT)
+--------------------------------------------------------
+O programa le .txt, nao .json. Para usar as instancias de
+instancias/brp_instances/instances/ (brp_W{W}_H{H}_N{N}.json):
+
+  python scripts/json2dat.py instancias/brp_instances/instances instancias/brp_txt
+
+Gera 1 arquivo por instancia: instancias/brp_txt/brp_W3_H4_N8_id1.txt
+(o sufixo _idK e o id da instancia dentro do JSON, de 1 a 10). O
+cabecalho "W H N" vem do metadata do JSON, entao rode sempre com
+-maxHeight file:
+
+  .\brp.exe -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file
+
+Atencao: essas instancias sao do BRP RESTRITO (so se relocam os
+containers acima do alvo). Hoje so o LA-1 respeita essa regra; os demais
+metodos (DFBB, RS, PM, SM, SmSEQ, GLAH) ainda podem fazer movimentos
+voluntarios e nao sao comparaveis com as referencias.
 
 3) RODAR UMA INSTANCIA
 ----------------------
