@@ -25,7 +25,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from rodar_comparacao import PASTA, RES, RE_NOME, conjunto_de, rodar, calcular_gap
+from rodar_comparacao import PASTA, RES, RE_NOME, conjunto_de, rodar, calcular_gap, fmt3
 
 GRAF = RES.parent / "graficos"
 TXT, TXT2, GRID, FUNDO = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
@@ -148,7 +148,7 @@ def main():
         tab[f"{fam}-w gap médio (%)"] = r.gap.values
         tab[f"{fam}-w gap máx (%)"] = r.gap_max.values
         tab[f"{fam}-w = ótimo"] = r.otimos.values
-        tab[f"{fam}-w tempo médio (s)"] = r.tempo.values
+        tab[f"{fam}-w tempo médio (ms)"] = r.tempo.values * 1000
     tab.to_csv(RES / f"tabela_largura{suf}.csv", index=False)
 
     fmt = tab.copy()
@@ -157,8 +157,8 @@ def main():
             fmt[c] = fmt[c].map(lambda v: f"{v:.2f}")
         elif "(%)" in c:
             fmt[c] = fmt[c].map(lambda v: f"{v:.2f}")
-        elif "(s)" in c:
-            fmt[c] = fmt[c].map(lambda v: f"{v:.4f}")
+        elif "(ms)" in c:
+            fmt[c] = fmt[c].map(fmt3)
     with open(RES / f"tabela_largura{suf}.md", "w", encoding="utf-8") as fh:
         fh.write("| " + " | ".join(fmt.columns) + " |\n")
         fh.write("|" + "|".join([":---:"] + ["---:"] * (len(fmt.columns) - 1)) + "|\n")

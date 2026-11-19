@@ -25,7 +25,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from rodar_comparacao import PASTA, RES, RE_NOME, rodar
+from rodar_comparacao import PASTA, RES, RE_NOME, rodar, fmt3
 
 GRAF = RES.parent / "graficos"
 PESADAS = ["brp_W7_H6_N37", "brp_W7_H7_N43", "brp_W7_H8_N49"]
@@ -118,8 +118,8 @@ def main():
                 z = f"{int(x.Z)}"
             else:
                 z = x.status
-            tt = f"≥{TL}" if x.tl else f"{x.t:.3f}"
-            lin[f"{NOMES[m]} reshuffles"], lin[f"{NOMES[m]} tempo (s)"] = z, tt
+            tt = f"≥{TL} s" if x.tl else fmt3(x.t * 1000)
+            lin[f"{NOMES[m]} reshuffles"], lin[f"{NOMES[m]} tempo (ms)"] = z, tt
             raw[f"{m}_reshuffles"] = "" if pd.isna(x.Z) else int(x.Z)
             raw[f"{m}_tempo_s"] = TL if x.tl else x.t
             raw[f"{m}_status"] = x.status
@@ -133,7 +133,7 @@ def main():
 
     legenda = (f"TL = A* estourou o limite de {TL} s sem solução. "
                f"* = B&B estourou {TL} s; valor = melhor solução achada (sem prova de ótimo). "
-               f"≥{TL} = tempo esgotado. Células destacadas = timeout. "
+               f"≥{TL} s = tempo esgotado. Tempos em milissegundos. Células destacadas = timeout. "
                "A* e Min-Max: BRP restrito; B&B, RS-5 e PM-3: irrestrito.")
     salvar_md(ti, RES / "tabela_pesadas_instancias.md", legenda)
     tabela_png(ti, dest_i, "Instâncias mais pesadas: reshuffles e tempo por instância",
@@ -151,7 +151,7 @@ def main():
             n_tl = int(gm.tl.sum())
             lin[f"{NOMES[m]} timeouts"] = f"{n_tl}/{len(gm)}"
             lin[f"{NOMES[m]} reshuffles"] = f"{ok.Z.mean():.2f}" if len(ok) else "—"
-            lin[f"{NOMES[m]} tempo (s)"] = f"{ok.t.mean():.3f}" if len(ok) else "—"
+            lin[f"{NOMES[m]} tempo (ms)"] = fmt3(ok.t.mean() * 1000) if len(ok) else "—"
             if n_tl:
                 dest_c.add((len(linhas_c), list(lin).index(f"{NOMES[m]} timeouts")))
         linhas_c.append(lin)

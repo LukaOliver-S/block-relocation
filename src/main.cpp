@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <iomanip>
+#include <chrono>
 
 #include "brpstate.h"
 #include "branchandbound.h"
@@ -198,7 +199,8 @@ int main(int argc, char **argv) {
   //
   // main solver we use
   auto solver = genPolicy(method, s, timeLimit, bbStrategy);
-  clock_t ticksBefore = clock();
+  // steady_clock: resolucao bem menor que 1 ms (clock() no Windows tem 1 ms)
+  auto ticksBefore = chrono::steady_clock::now();
   shared_ptr<BRPState> result;
   try {
       result = solver->solve(s);
@@ -210,10 +212,16 @@ int main(int argc, char **argv) {
       cerr << method << ": no feasible solution" << endl;
       return 2;
   }
-  clock_t ticksAfter = clock();
-  cout << method << "\t used " << result->nRelocations() << " relocations in "
-       << ( (double) (ticksAfter - ticksBefore) / CLOCKS_PER_SEC)
-       << " s" << endl;
+  auto ticksAfter = chrono::steady_clock::now();
+  double segundos = chrono::duration<double>(ticksAfter - ticksBefore).count();
+  {
+    ios::fmtflags f = cout.flags();
+    streamsize p = cout.precision();
+    cout << method << "\t used " << result->nRelocations() << " relocations in "
+         << fixed << setprecision(9) << segundos << " s" << endl;
+    cout.flags(f);
+    cout.precision(p);
+  }
   
   if ( scriptFile != "" ) { 
       result->appendSolutionToFile(scriptFile);

@@ -1,5 +1,5 @@
-Classe,A* timeouts,A* reshuffles,A* tempo (s),B&B timeouts,B&B reshuffles,B&B tempo (s),Min-Max timeouts,Min-Max reshuffles,Min-Max tempo (s),RS-5 timeouts,RS-5 reshuffles,RS-5 tempo (s),PM-3 timeouts,PM-3 reshuffles,PM-3 tempo (s)
-W7 H6 N37,1/10,28.44,2.612,5/10,24.60,11.745,0/10,31.40,0.000,0/10,28.90,0.001,0/10,28.30,0.017
-W7 H7 N43,8/10,35.50,1.200,10/10,—,—,0/10,41.00,0.000,0/10,36.50,0.002,0/10,35.80,0.052
-W7 H8 N49,8/10,51.00,46.964,10/10,—,—,0/10,54.00,0.000,0/10,46.40,0.003,0/10,44.40,0.119
-Total,17/30,33.00,9.218,25/30,24.60,11.745,0/30,42.13,0.000,0/30,37.27,0.002,0/30,36.17,0.062
+Classe,A* timeouts,A* reshuffles,A* tempo (ms),B&B timeouts,B&B reshuffles,B&B tempo (ms),Min-Max timeouts,Min-Max reshuffles,Min-Max tempo (ms),RS-5 timeouts,RS-5 reshuffles,RS-5 tempo (ms),PM-3 timeouts,PM-3 reshuffles,PM-3 tempo (ms)
+W7 H6 N37,1/10,28.44,4283,6/10,24.25,8558,0/10,31.40,0.0152,0/10,28.90,1.44,0/10,28.30,28.6
+W7 H7 N43,8/10,35.50,1317,10/10,—,—,0/10,41.00,0.0139,0/10,36.50,2.23,0/10,35.80,51.1
+W7 H8 N49,8/10,49.50,28075,10/10,—,—,0/10,54.00,0.0124,0/10,46.40,9.59,0/10,44.40,80.5
+Total,17/30,32.77,7487,26/30,24.25,8558,0/30,42.13,0.0138,0/30,37.27,4.42,0/30,36.17,53.4

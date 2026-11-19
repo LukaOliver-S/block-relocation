@@ -1,0 +1,1622 @@
+
+=== scripts\rodar_comparacao.py
+50 instancias x 5 metodos = 250 execucoes
+brp_W3_H4_N8_id1.txt         RS-5   Z=   7 t=0.0002395 ok
+brp_W3_H4_N8_id1.txt         ASTAR  Z=   7 t=2.83e-05 ok
+brp_W3_H4_N8_id1.txt         DFBB   Z=   7 t=7.53e-05 ok
+brp_W3_H4_N8_id1.txt         MM     Z=   7 t= 6.7e-06 ok
+brp_W3_H4_N8_id1.txt         PM-3   Z=   7 t=0.0001306 ok
+brp_W3_H4_N8_id10.txt        DFBB   Z=   7 t=9.37e-05 ok
+brp_W3_H4_N8_id10.txt        MM     Z=   7 t= 6.7e-06 ok
+brp_W3_H4_N8_id10.txt        ASTAR  Z=   7 t=7.09e-05 ok
+brp_W3_H4_N8_id2.txt         ASTAR  Z=   0 t= 1.5e-05 ok
+brp_W3_H4_N8_id2.txt         DFBB   Z=   0 t=6.91e-05 ok
+brp_W3_H4_N8_id10.txt        PM-3   Z=   7 t=0.0002627 ok
+brp_W3_H4_N8_id10.txt        RS-5   Z=   7 t=0.0003264 ok
+brp_W3_H4_N8_id2.txt         RS-5   Z=   0 t= 4.6e-06 ok
+brp_W3_H4_N8_id2.txt         MM     Z=   0 t= 2.6e-06 ok
+brp_W3_H4_N8_id2.txt         PM-3   Z=   0 t=1.93e-05 ok
+brp_W3_H4_N8_id3.txt         ASTAR  Z=   3 t=4.29e-05 ok
+brp_W3_H4_N8_id3.txt         DFBB   Z=   3 t=5.98e-05 ok
+brp_W3_H4_N8_id3.txt         MM     Z=   3 t= 4.1e-06 ok
+brp_W3_H4_N8_id3.txt         RS-5   Z=   3 t=0.0001466 ok
+brp_W3_H4_N8_id3.txt         PM-3   Z=   3 t= 9.7e-05 ok
+brp_W3_H4_N8_id4.txt         ASTAR  Z=   4 t=2.84e-05 ok
+brp_W3_H4_N8_id4.txt         MM     Z=   4 t= 3.7e-06 ok
+brp_W3_H4_N8_id4.txt         DFBB   Z=   4 t=7.94e-05 ok
+brp_W3_H4_N8_id4.txt         RS-5   Z=   4 t=0.0001208 ok
+brp_W3_H4_N8_id4.txt         PM-3   Z=   4 t= 0.00026 ok
+brp_W3_H4_N8_id5.txt         ASTAR  Z=   4 t=1.18e-05 ok
+brp_W3_H4_N8_id5.txt         DFBB   Z=   4 t=7.98e-05 ok
+brp_W3_H4_N8_id5.txt         MM     Z=   4 t= 5.2e-06 ok
+brp_W3_H4_N8_id5.txt         PM-3   Z=   4 t=2.34e-05 ok
+brp_W3_H4_N8_id5.txt         RS-5   Z=   4 t=0.0002162 ok
+brp_W3_H4_N8_id6.txt         ASTAR  Z=   6 t=3.21e-05 ok
+brp_W3_H4_N8_id6.txt         DFBB   Z=   6 t=6.28e-05 ok
+brp_W3_H4_N8_id6.txt         MM     Z=   6 t= 4.7e-06 ok
+brp_W3_H4_N8_id6.txt         RS-5   Z=   6 t=0.0002307 ok
+brp_W3_H4_N8_id6.txt         PM-3   Z=   6 t=0.0003978 ok
+brp_W3_H4_N8_id7.txt         ASTAR  Z=   3 t=1.26e-05 ok
+brp_W3_H4_N8_id7.txt         DFBB   Z=   3 t=8.24e-05 ok
+brp_W3_H4_N8_id7.txt         RS-5   Z=   3 t=0.0002338 ok
+brp_W3_H4_N8_id7.txt         MM     Z=   3 t= 4.1e-06 ok
+brp_W3_H4_N8_id7.txt         PM-3   Z=   3 t=5.32e-05 ok
+brp_W3_H4_N8_id8.txt         MM     Z=   6 t= 4.4e-06 ok
+brp_W3_H4_N8_id8.txt         RS-5   Z=   4 t=0.0001946 ok
+brp_W3_H4_N8_id8.txt         DFBB   Z=   4 t=0.0001032 ok
+brp_W3_H4_N8_id8.txt         ASTAR  Z=   5 t=3.71e-05 ok
+brp_W3_H4_N8_id9.txt         DFBB   Z=   2 t=0.0001067 ok
+brp_W3_H4_N8_id8.txt         PM-3   Z=   4 t=5.55e-05 ok
+brp_W3_H4_N8_id9.txt         ASTAR  Z=   2 t= 1.9e-05 ok
+brp_W3_H4_N8_id9.txt         MM     Z=   2 t= 8.5e-06 ok
+brp_W3_H4_N8_id9.txt         RS-5   Z=   2 t= 7.9e-05 ok
+brp_W3_H4_N8_id9.txt         PM-3   Z=   2 t= 3.5e-05 ok
+brp_W4_H4_N10_id1.txt        ASTAR  Z=   8 t=3.44e-05 ok
+brp_W4_H4_N10_id1.txt        DFBB   Z=   7 t= 9.9e-05 ok
+brp_W4_H4_N10_id1.txt        MM     Z=   8 t= 5.9e-06 ok
+brp_W4_H4_N10_id1.txt        RS-5   Z=   7 t=0.0002355 ok
+brp_W4_H4_N10_id1.txt        PM-3   Z=   7 t=0.0002381 ok
+brp_W4_H4_N10_id10.txt       ASTAR  Z=   3 t=4.31e-05 ok
+brp_W4_H4_N10_id10.txt       DFBB   Z=   3 t=6.55e-05 ok
+brp_W4_H4_N10_id10.txt       RS-5   Z=   3 t=9.28e-05 ok
+brp_W4_H4_N10_id10.txt       MM     Z=   3 t= 4.8e-06 ok
+brp_W4_H4_N10_id10.txt       PM-3   Z=   3 t=0.0001827 ok
+brp_W4_H4_N10_id2.txt        ASTAR  Z=   5 t=1.26e-05 ok
+brp_W4_H4_N10_id2.txt        MM     Z=   5 t=   6e-06 ok
+brp_W4_H4_N10_id2.txt        RS-5   Z=   5 t=0.0001753 ok
+brp_W4_H4_N10_id2.txt        DFBB   Z=   5 t=6.38e-05 ok
+brp_W4_H4_N10_id2.txt        PM-3   Z=   5 t=0.0001347 ok
+brp_W4_H4_N10_id3.txt        DFBB   Z=   1 t=6.46e-05 ok
+brp_W4_H4_N10_id3.txt        ASTAR  Z=   1 t= 1.4e-05 ok
+brp_W4_H4_N10_id3.txt        MM     Z=   1 t= 4.7e-06 ok
+brp_W4_H4_N10_id3.txt        RS-5   Z=   1 t=9.81e-05 ok
+brp_W4_H4_N10_id3.txt        PM-3   Z=   1 t=3.16e-05 ok
+brp_W4_H4_N10_id4.txt        ASTAR  Z=   7 t=3.95e-05 ok
+brp_W4_H4_N10_id4.txt        DFBB   Z=   6 t=8.11e-05 ok
+brp_W4_H4_N10_id4.txt        MM     Z=   7 t=   4e-06 ok
+brp_W4_H4_N10_id4.txt        RS-5   Z=   6 t=0.0001258 ok
+brp_W4_H4_N10_id4.txt        PM-3   Z=   6 t=0.0001584 ok
+brp_W4_H4_N10_id5.txt        ASTAR  Z=   2 t=1.35e-05 ok
+brp_W4_H4_N10_id5.txt        RS-5   Z=   2 t=0.0001019 ok
+brp_W4_H4_N10_id5.txt        DFBB   Z=   2 t=9.85e-05 ok
+brp_W4_H4_N10_id5.txt        MM     Z=   2 t= 5.3e-06 ok
+brp_W4_H4_N10_id5.txt        PM-3   Z=   2 t=3.36e-05 ok
+brp_W4_H4_N10_id6.txt        DFBB   Z=   4 t=7.56e-05 ok
+brp_W4_H4_N10_id6.txt        ASTAR  Z=   4 t=1.28e-05 ok
+brp_W4_H4_N10_id6.txt        MM     Z=   4 t= 5.7e-06 ok
+brp_W4_H4_N10_id6.txt        PM-3   Z=   4 t=3.64e-05 ok
+brp_W4_H4_N10_id6.txt        RS-5   Z=   4 t=9.05e-05 ok
+brp_W4_H4_N10_id7.txt        ASTAR  Z=   6 t=4.79e-05 ok
+brp_W4_H4_N10_id7.txt        DFBB   Z=   6 t=0.0001829 ok
+brp_W4_H4_N10_id7.txt        MM     Z=   6 t= 6.3e-06 ok
+brp_W4_H4_N10_id7.txt        RS-5   Z=   6 t=6.85e-05 ok
+brp_W4_H4_N10_id7.txt        PM-3   Z=   6 t=0.0002687 ok
+brp_W4_H4_N10_id8.txt        ASTAR  Z=   5 t=   6e-05 ok
+brp_W4_H4_N10_id8.txt        MM     Z=   5 t= 3.6e-06 ok
+brp_W4_H4_N10_id8.txt        DFBB   Z=   4 t=0.0001127 ok
+brp_W4_H4_N10_id8.txt        RS-5   Z=   4 t=0.0001163 ok
+brp_W4_H4_N10_id8.txt        PM-3   Z=   4 t=8.26e-05 ok
+brp_W4_H4_N10_id9.txt        ASTAR  Z=   3 t=1.41e-05 ok
+brp_W4_H4_N10_id9.txt        DFBB   Z=   3 t=8.14e-05 ok
+brp_W4_H4_N10_id9.txt        MM     Z=   3 t= 4.3e-06 ok
+brp_W4_H4_N10_id9.txt        RS-5   Z=   3 t=8.95e-05 ok
+brp_W4_H4_N10_id9.txt        PM-3   Z=   3 t=2.58e-05 ok
+brp_W4_H5_N12_id1.txt        ASTAR  Z=   6 t=1.83e-05 ok
+brp_W4_H5_N12_id1.txt        DFBB   Z=   6 t=7.32e-05 ok
+brp_W4_H5_N12_id1.txt        MM     Z=   6 t= 4.9e-06 ok
+brp_W4_H5_N12_id1.txt        RS-5   Z=   6 t=0.0002084 ok
+brp_W4_H5_N12_id1.txt        PM-3   Z=   6 t=4.39e-05 ok
+brp_W4_H5_N12_id10.txt       ASTAR  Z=  10 t=6.83e-05 ok
+brp_W4_H5_N12_id10.txt       DFBB   Z=  10 t= 7.7e-05 ok
+brp_W4_H5_N12_id10.txt       MM     Z=  10 t= 6.7e-06 ok
+brp_W4_H5_N12_id10.txt       RS-5   Z=  10 t=0.0002523 ok
+brp_W4_H5_N12_id10.txt       PM-3   Z=  10 t=0.0006684 ok
+brp_W4_H5_N12_id2.txt        DFBB   Z=   4 t=9.66e-05 ok
+brp_W4_H5_N12_id2.txt        MM     Z=   4 t=   4e-06 ok
+brp_W4_H5_N12_id2.txt        RS-5   Z=   4 t=0.0001191 ok
+brp_W4_H5_N12_id2.txt        ASTAR  Z=   4 t= 8.3e-06 ok
+brp_W4_H5_N12_id2.txt        PM-3   Z=   4 t=2.54e-05 ok
+brp_W4_H5_N12_id3.txt        MM     Z=   8 t=1.05e-05 ok
+brp_W4_H5_N12_id3.txt        DFBB   Z=   8 t=8.22e-05 ok
+brp_W4_H5_N12_id3.txt        ASTAR  Z=   8 t=1.04e-05 ok
+brp_W4_H5_N12_id3.txt        RS-5   Z=   8 t=0.0001402 ok
+brp_W4_H5_N12_id3.txt        PM-3   Z=   8 t=4.48e-05 ok
+brp_W4_H5_N12_id4.txt        ASTAR  Z=   6 t=4.48e-05 ok
+brp_W4_H5_N12_id4.txt        DFBB   Z=   6 t=0.000104 ok
+brp_W4_H5_N12_id4.txt        MM     Z=   6 t= 6.1e-06 ok
+brp_W4_H5_N12_id4.txt        RS-5   Z=   6 t=0.000199 ok
+brp_W4_H5_N12_id4.txt        PM-3   Z=   6 t=0.0003285 ok
+brp_W4_H5_N12_id5.txt        ASTAR  Z=   6 t=2.05e-05 ok
+brp_W4_H5_N12_id5.txt        DFBB   Z=   6 t=8.71e-05 ok
+brp_W4_H5_N12_id5.txt        MM     Z=   6 t= 5.5e-06 ok
+brp_W4_H5_N12_id5.txt        RS-5   Z=   6 t=0.0001568 ok
+brp_W4_H5_N12_id5.txt        PM-3   Z=   6 t=0.0003731 ok
+brp_W4_H5_N12_id6.txt        ASTAR  Z=   6 t=4.79e-05 ok
+brp_W4_H5_N12_id6.txt        DFBB   Z=   6 t=8.23e-05 ok
+brp_W4_H5_N12_id6.txt        PM-3   Z=   6 t=0.0002826 ok
+brp_W4_H5_N12_id6.txt        MM     Z=   6 t= 5.9e-06 ok
+brp_W4_H5_N12_id6.txt        RS-5   Z=   6 t=0.0002423 ok
+brp_W4_H5_N12_id7.txt        RS-5   Z=   8 t=0.0003242 ok
+brp_W4_H5_N12_id7.txt        DFBB   Z=   8 t=0.0002723 ok
+brp_W4_H5_N12_id7.txt        ASTAR  Z=   8 t=0.0002646 ok
+brp_W4_H5_N12_id7.txt        MM     Z=  10 t= 7.2e-06 ok
+brp_W4_H5_N12_id8.txt        MM     Z=   7 t= 6.7e-06 ok
+brp_W4_H5_N12_id8.txt        ASTAR  Z=   7 t=5.12e-05 ok
+brp_W4_H5_N12_id8.txt        DFBB   Z=   7 t= 8.6e-05 ok
+brp_W4_H5_N12_id7.txt        PM-3   Z=   8 t=0.0012407 ok
+brp_W4_H5_N12_id8.txt        RS-5   Z=   7 t=0.0001454 ok
+brp_W4_H5_N12_id8.txt        PM-3   Z=   7 t=0.0004801 ok
+brp_W4_H5_N12_id9.txt        ASTAR  Z=  10 t=0.0006593 ok
+brp_W4_H5_N12_id9.txt        DFBB   Z=   8 t=0.0013624 ok
+brp_W4_H5_N12_id9.txt        RS-5   Z=   8 t=0.0001302 ok
+brp_W4_H5_N12_id9.txt        MM     Z=  11 t= 5.6e-06 ok
+brp_W4_H5_N12_id9.txt        PM-3   Z=   8 t=0.0003416 ok
+brp_W5_H4_N15_id1.txt        ASTAR  Z=  11 t=0.0008744 ok
+brp_W5_H4_N15_id1.txt        RS-5   Z=  10 t=0.0002626 ok
+brp_W5_H4_N15_id1.txt        MM     Z=  13 t=   5e-06 ok
+brp_W5_H4_N15_id1.txt        DFBB   Z=  10 t=0.0001771 ok
+brp_W5_H4_N15_id1.txt        PM-3   Z=  10 t=0.0008067 ok
+brp_W5_H4_N15_id10.txt       MM     Z=   6 t= 7.6e-06 ok
+brp_W5_H4_N15_id10.txt       ASTAR  Z=   6 t=1.89e-05 ok
+brp_W5_H4_N15_id10.txt       RS-5   Z=   6 t=0.0004637 ok
+brp_W5_H4_N15_id10.txt       DFBB   Z=   6 t=8.67e-05 ok
+brp_W5_H4_N15_id10.txt       PM-3   Z=   6 t=3.15e-05 ok
+brp_W5_H4_N15_id2.txt        ASTAR  Z=   9 t=0.0002664 ok
+brp_W5_H4_N15_id2.txt        MM     Z=  10 t= 7.8e-06 ok
+brp_W5_H4_N15_id2.txt        DFBB   Z=   8 t=0.0001653 ok
+brp_W5_H4_N15_id2.txt        RS-5   Z=   8 t=0.0002333 ok
+brp_W5_H4_N15_id2.txt        PM-3   Z=   8 t=0.0002763 ok
+brp_W5_H4_N15_id3.txt        ASTAR  Z=   7 t=3.05e-05 ok
+brp_W5_H4_N15_id3.txt        DFBB   Z=   7 t= 9.2e-05 ok
+brp_W5_H4_N15_id3.txt        MM     Z=   7 t= 4.8e-06 ok
+brp_W5_H4_N15_id3.txt        RS-5   Z=   7 t=0.0001133 ok
+brp_W5_H4_N15_id3.txt        PM-3   Z=   7 t=0.0001902 ok
+brp_W5_H4_N15_id4.txt        DFBB   Z=   5 t=9.74e-05 ok
+brp_W5_H4_N15_id4.txt        MM     Z=   6 t= 6.6e-06 ok
+brp_W5_H4_N15_id4.txt        ASTAR  Z=   6 t=0.000119 ok
+brp_W5_H4_N15_id4.txt        RS-5   Z=   5 t=0.0003392 ok
+brp_W5_H4_N15_id4.txt        PM-3   Z=   5 t=0.0014549 ok
+brp_W5_H4_N15_id5.txt        DFBB   Z=   7 t=8.64e-05 ok
+brp_W5_H4_N15_id5.txt        ASTAR  Z=   7 t= 8.5e-05 ok
+brp_W5_H4_N15_id5.txt        MM     Z=   8 t= 7.5e-06 ok
+brp_W5_H4_N15_id5.txt        PM-3   Z=   7 t=0.0003625 ok
+brp_W5_H4_N15_id5.txt        RS-5   Z=   7 t=0.0003698 ok
+brp_W5_H4_N15_id6.txt        ASTAR  Z=   7 t=2.75e-05 ok
+brp_W5_H4_N15_id6.txt        DFBB   Z=   7 t=9.28e-05 ok
+brp_W5_H4_N15_id6.txt        RS-5   Z=   7 t=0.0002171 ok
+brp_W5_H4_N15_id6.txt        MM     Z=   7 t= 9.4e-06 ok
+brp_W5_H4_N15_id6.txt        PM-3   Z=   7 t=0.0003897 ok
+brp_W5_H4_N15_id7.txt        ASTAR  Z=   7 t= 1.7e-05 ok
+brp_W5_H4_N15_id7.txt        MM     Z=   7 t= 5.8e-06 ok
+brp_W5_H4_N15_id7.txt        DFBB   Z=   7 t=7.83e-05 ok
+brp_W5_H4_N15_id7.txt        PM-3   Z=   7 t=0.000249 ok
+brp_W5_H4_N15_id7.txt        RS-5   Z=   7 t=0.0001645 ok
+brp_W5_H4_N15_id8.txt        ASTAR  Z=   7 t=1.58e-05 ok
+brp_W5_H4_N15_id8.txt        MM     Z=   7 t= 5.2e-06 ok
+brp_W5_H4_N15_id8.txt        RS-5   Z=   7 t=0.0002346 ok
+brp_W5_H4_N15_id8.txt        DFBB   Z=   7 t=8.73e-05 ok
+brp_W5_H4_N15_id8.txt        PM-3   Z=   7 t=0.0002511 ok
+brp_W5_H4_N15_id9.txt        DFBB   Z=   4 t=6.89e-05 ok
+brp_W5_H4_N15_id9.txt        MM     Z=   4 t= 4.5e-06 ok
+brp_W5_H4_N15_id9.txt        ASTAR  Z=   4 t= 9.8e-06 ok
+brp_W5_H4_N15_id9.txt        RS-5   Z=   4 t=0.0001467 ok
+brp_W5_H4_N15_id9.txt        PM-3   Z=   4 t=0.0002316 ok
+brp_W5_H5_N18_id1.txt        ASTAR  Z=  10 t=0.0001078 ok
+brp_W5_H5_N18_id1.txt        DFBB   Z=   9 t=0.0001185 ok
+brp_W5_H5_N18_id1.txt        MM     Z=  12 t= 6.7e-06 ok
+brp_W5_H5_N18_id1.txt        RS-5   Z=   9 t=0.0001979 ok
+brp_W5_H5_N18_id1.txt        PM-3   Z=   9 t=0.0002508 ok
+brp_W5_H5_N18_id10.txt       ASTAR  Z=   5 t=6.72e-05 ok
+brp_W5_H5_N18_id10.txt       DFBB   Z=   4 t=7.11e-05 ok
+brp_W5_H5_N18_id10.txt       MM     Z=   6 t= 4.2e-06 ok
+brp_W5_H5_N18_id10.txt       PM-3   Z=   4 t=4.07e-05 ok
+brp_W5_H5_N18_id10.txt       RS-5   Z=   4 t=0.0003009 ok
+brp_W5_H5_N18_id2.txt        DFBB   Z=  12 t=0.0002452 ok
+brp_W5_H5_N18_id2.txt        MM     Z=  14 t= 5.9e-06 ok
+brp_W5_H5_N18_id2.txt        ASTAR  Z=  13 t=0.0007396 ok
+brp_W5_H5_N18_id2.txt        RS-5   Z=  12 t=0.0004597 ok
+brp_W5_H5_N18_id3.txt        DFBB   Z=   8 t=0.0002415 ok
+brp_W5_H5_N18_id2.txt        PM-3   Z=  12 t=0.0009368 ok
+brp_W5_H5_N18_id3.txt        ASTAR  Z=  10 t=0.0005125 ok
+brp_W5_H5_N18_id3.txt        MM     Z=  10 t= 6.9e-06 ok
+brp_W5_H5_N18_id3.txt        RS-5   Z=   8 t=0.0002062 ok
+brp_W5_H5_N18_id3.txt        PM-3   Z=   8 t=0.0006744 ok
+brp_W5_H5_N18_id4.txt        ASTAR  Z=  14 t=0.0078305 ok
+brp_W5_H5_N18_id4.txt        MM     Z=  15 t= 5.1e-06 ok
+brp_W5_H5_N18_id4.txt        RS-5   Z=  13 t=0.000307 ok
+brp_W5_H5_N18_id4.txt        DFBB   Z=  13 t=0.0131437 ok
+brp_W5_H5_N18_id5.txt        ASTAR  Z=  11 t=0.0003008 ok
+brp_W5_H5_N18_id5.txt        DFBB   Z=   9 t=0.0001033 ok
+brp_W5_H5_N18_id4.txt        PM-3   Z=  13 t=0.0015829 ok
+brp_W5_H5_N18_id5.txt        MM     Z=  11 t= 7.6e-06 ok
+brp_W5_H5_N18_id5.txt        PM-3   Z=   9 t=3.91e-05 ok
+brp_W5_H5_N18_id5.txt        RS-5   Z=   9 t=0.0003759 ok
+brp_W5_H5_N18_id6.txt        ASTAR  Z=   7 t=9.08e-05 ok
+brp_W5_H5_N18_id6.txt        DFBB   Z=   7 t=0.0001169 ok
+brp_W5_H5_N18_id6.txt        MM     Z=   8 t= 6.5e-06 ok
+brp_W5_H5_N18_id6.txt        RS-5   Z=   7 t=0.0004428 ok
+brp_W5_H5_N18_id6.txt        PM-3   Z=   7 t=0.0005266 ok
+brp_W5_H5_N18_id7.txt        ASTAR  Z=   8 t= 3.3e-05 ok
+brp_W5_H5_N18_id7.txt        DFBB   Z=   8 t=9.78e-05 ok
+brp_W5_H5_N18_id7.txt        RS-5   Z=   8 t=0.0003216 ok
+brp_W5_H5_N18_id7.txt        MM     Z=   8 t= 5.4e-06 ok
+brp_W5_H5_N18_id7.txt        PM-3   Z=   8 t=0.0004294 ok
+brp_W5_H5_N18_id8.txt        MM     Z=  11 t= 6.2e-06 ok
+brp_W5_H5_N18_id8.txt        ASTAR  Z=  11 t=0.0004927 ok
+brp_W5_H5_N18_id8.txt        RS-5   Z=  10 t=0.0002511 ok
+brp_W5_H5_N18_id8.txt        DFBB   Z=  10 t=0.0013955 ok
+brp_W5_H5_N18_id9.txt        ASTAR  Z=   9 t=3.55e-05 ok
+brp_W5_H5_N18_id8.txt        PM-3   Z=  10 t=0.0016468 ok
+brp_W5_H5_N18_id9.txt        DFBB   Z=   9 t=0.0001302 ok
+brp_W5_H5_N18_id9.txt        MM     Z=   9 t= 5.1e-06 ok
+brp_W5_H5_N18_id9.txt        RS-5   Z=   9 t=0.0002533 ok
+brp_W5_H5_N18_id9.txt        PM-3   Z=   9 t=0.000832 ok
+metricas: C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\metricas_comparacao.csv
+resumo:   C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\resumo_por_classe.csv
+=== fim scripts\rodar_comparacao.py exit 0
+=== scripts\gerar_graficos.py
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\reshuffles_por_classe.png
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_reshuffles_tempo.png
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_reshuffles_tempo.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_gap.png
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_gap.md
+          gap_medio                        reshuffles_medio                      tempo_medio_s                             
+metodo        ASTAR DFBB      MM PM-3 RS-5            ASTAR DFBB    MM PM-3 RS-5         ASTAR    DFBB   MM    PM-3    RS-5
+classe                                                                                                                     
+W3 H4 N8        0.0  0.0  0.0200  0.0  0.0              4.1  4.0   4.2  4.0  4.0        0.0000  0.0001  0.0  0.0001  0.0002
+W4 H4 N10       0.0  0.0  0.0000  0.0  0.0              4.4  4.1   4.4  4.1  4.1        0.0000  0.0001  0.0  0.0001  0.0001
+W4 H5 N12       0.0  0.0  0.0350  0.0  0.0              7.1  6.9   7.4  6.9  6.9        0.0001  0.0002  0.0  0.0004  0.0002
+W5 H4 N15       0.0  0.0  0.0436  0.0  0.0              7.1  6.8   7.5  6.8  6.8        0.0001  0.0001  0.0  0.0004  0.0003
+W5 H5 N18       0.0  0.0  0.0691  0.0  0.0              9.8  8.9  10.4  8.9  8.9        0.0010  0.0016  0.0  0.0007  0.0003
+=== fim scripts\gerar_graficos.py exit 0
+=== scripts\gerar_visualizador.py
+50 instancias x 5 metodos
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\visualizador_solucoes.html
+=== fim scripts\gerar_visualizador.py exit 0
+=== scripts\variar_largura.py
+50 instancias x 14 configuracoes + B&B em 0
+brp_W3_H4_N8_id1.txt         RS-2   Z=   7 t=0.0001492 ok
+brp_W3_H4_N8_id1.txt         RS-1   Z=   7 t=   4e-05 ok
+brp_W3_H4_N8_id1.txt         RS-4   Z=   7 t=9.29e-05 ok
+brp_W3_H4_N8_id1.txt         RS-3   Z=   7 t=0.0001049 ok
+brp_W3_H4_N8_id1.txt         RS-7   Z=   7 t=0.0003914 ok
+brp_W3_H4_N8_id1.txt         RS-5   Z=   7 t=0.0002705 ok
+brp_W3_H4_N8_id1.txt         RS-10  Z=   7 t=0.0002361 ok
+brp_W3_H4_N8_id1.txt         PM-1   Z=   7 t=0.0001409 ok
+brp_W3_H4_N8_id1.txt         PM-2   Z=   7 t=0.0001245 ok
+brp_W3_H4_N8_id1.txt         PM-3   Z=   7 t=0.0001017 ok
+brp_W3_H4_N8_id1.txt         PM-4   Z=   7 t= 7.7e-05 ok
+brp_W3_H4_N8_id1.txt         PM-5   Z=   7 t=7.64e-05 ok
+brp_W3_H4_N8_id10.txt        RS-1   Z=   7 t= 2.6e-05 ok
+brp_W3_H4_N8_id1.txt         PM-10  Z=   7 t=0.0001179 ok
+brp_W3_H4_N8_id1.txt         PM-7   Z=   7 t=9.83e-05 ok
+brp_W3_H4_N8_id10.txt        RS-2   Z=   7 t=0.0001087 ok
+brp_W3_H4_N8_id10.txt        RS-3   Z=   7 t=6.01e-05 ok
+brp_W3_H4_N8_id10.txt        RS-4   Z=   7 t=6.11e-05 ok
+brp_W3_H4_N8_id10.txt        RS-5   Z=   7 t=0.0002431 ok
+brp_W3_H4_N8_id10.txt        RS-7   Z=   7 t=0.0001715 ok
+brp_W3_H4_N8_id10.txt        RS-10  Z=   7 t=0.0002834 ok
+brp_W3_H4_N8_id10.txt        PM-2   Z=   7 t=0.0001455 ok
+brp_W3_H4_N8_id10.txt        PM-1   Z=   7 t=9.02e-05 ok
+brp_W3_H4_N8_id10.txt        PM-3   Z=   7 t=0.0001609 ok
+brp_W3_H4_N8_id10.txt        PM-4   Z=   7 t=0.0003482 ok
+brp_W3_H4_N8_id10.txt        PM-7   Z=   7 t=0.0002592 ok
+brp_W3_H4_N8_id10.txt        PM-5   Z=   7 t=0.0003991 ok
+brp_W3_H4_N8_id10.txt        PM-10  Z=   7 t=0.0002251 ok
+brp_W3_H4_N8_id2.txt         RS-1   Z=   0 t=1.22e-05 ok
+brp_W3_H4_N8_id2.txt         RS-3   Z=   0 t= 4.8e-06 ok
+brp_W3_H4_N8_id2.txt         RS-2   Z=   0 t= 5.8e-06 ok
+brp_W3_H4_N8_id2.txt         RS-4   Z=   0 t= 6.3e-06 ok
+brp_W3_H4_N8_id2.txt         RS-5   Z=   0 t= 5.8e-06 ok
+brp_W3_H4_N8_id2.txt         RS-7   Z=   0 t= 4.6e-06 ok
+brp_W3_H4_N8_id2.txt         RS-10  Z=   0 t= 6.3e-06 ok
+brp_W3_H4_N8_id2.txt         PM-1   Z=   0 t=2.09e-05 ok
+brp_W3_H4_N8_id2.txt         PM-2   Z=   0 t=2.04e-05 ok
+brp_W3_H4_N8_id2.txt         PM-3   Z=   0 t=1.66e-05 ok
+brp_W3_H4_N8_id2.txt         PM-4   Z=   0 t= 2.1e-05 ok
+brp_W3_H4_N8_id2.txt         PM-5   Z=   0 t=2.63e-05 ok
+brp_W3_H4_N8_id2.txt         PM-7   Z=   0 t=2.02e-05 ok
+brp_W3_H4_N8_id2.txt         PM-10  Z=   0 t=1.53e-05 ok
+brp_W3_H4_N8_id3.txt         RS-1   Z=   3 t=2.81e-05 ok
+brp_W3_H4_N8_id3.txt         RS-2   Z=   3 t=4.86e-05 ok
+brp_W3_H4_N8_id3.txt         RS-4   Z=   3 t=4.47e-05 ok
+brp_W3_H4_N8_id3.txt         RS-3   Z=   3 t= 6.6e-05 ok
+brp_W3_H4_N8_id3.txt         RS-5   Z=   3 t=0.0001466 ok
+brp_W3_H4_N8_id3.txt         RS-7   Z=   3 t=0.0001449 ok
+brp_W3_H4_N8_id3.txt         PM-1   Z=   3 t=5.59e-05 ok
+brp_W3_H4_N8_id3.txt         RS-10  Z=   3 t=0.0001448 ok
+brp_W3_H4_N8_id3.txt         PM-2   Z=   3 t=   8e-05 ok
+brp_W3_H4_N8_id3.txt         PM-5   Z=   3 t=7.81e-05 ok
+brp_W3_H4_N8_id3.txt         PM-4   Z=   3 t=8.82e-05 ok
+brp_W3_H4_N8_id3.txt         PM-3   Z=   3 t=6.33e-05 ok
+brp_W3_H4_N8_id4.txt         RS-1   Z=   4 t=1.92e-05 ok
+brp_W3_H4_N8_id3.txt         PM-7   Z=   3 t=5.54e-05 ok
+brp_W3_H4_N8_id3.txt         PM-10  Z=   3 t=0.0002474 ok
+brp_W3_H4_N8_id4.txt         RS-2   Z=   4 t=0.0001011 ok
+brp_W3_H4_N8_id4.txt         RS-7   Z=   4 t=0.000405 ok
+brp_W3_H4_N8_id4.txt         RS-4   Z=   4 t=0.0001075 ok
+brp_W3_H4_N8_id4.txt         RS-3   Z=   4 t=0.000161 ok
+brp_W3_H4_N8_id4.txt         RS-5   Z=   4 t=8.11e-05 ok
+brp_W3_H4_N8_id4.txt         RS-10  Z=   4 t=0.0002794 ok
+brp_W3_H4_N8_id4.txt         PM-2   Z=   4 t=0.0001723 ok
+brp_W3_H4_N8_id4.txt         PM-1   Z=   4 t=0.0002184 ok
+brp_W3_H4_N8_id4.txt         PM-3   Z=   4 t=0.000211 ok
+brp_W3_H4_N8_id4.txt         PM-4   Z=   4 t=0.0002689 ok
+brp_W3_H4_N8_id4.txt         PM-5   Z=   4 t=0.0002656 ok
+brp_W3_H4_N8_id4.txt         PM-10  Z=   4 t=0.000268 ok
+brp_W3_H4_N8_id4.txt         PM-7   Z=   4 t=0.0004948 ok
+brp_W3_H4_N8_id5.txt         RS-1   Z=   4 t=3.82e-05 ok
+brp_W3_H4_N8_id5.txt         RS-3   Z=   4 t=5.82e-05 ok
+brp_W3_H4_N8_id5.txt         RS-4   Z=   4 t=7.43e-05 ok
+brp_W3_H4_N8_id5.txt         RS-2   Z=   4 t=9.24e-05 ok
+brp_W3_H4_N8_id5.txt         RS-7   Z=   4 t=0.0001728 ok
+brp_W3_H4_N8_id5.txt         RS-10  Z=   4 t= 0.00017 ok
+brp_W3_H4_N8_id5.txt         RS-5   Z=   4 t=0.0001446 ok
+brp_W3_H4_N8_id5.txt         PM-1   Z=   4 t=5.48e-05 ok
+brp_W3_H4_N8_id5.txt         PM-3   Z=   4 t=2.96e-05 ok
+brp_W3_H4_N8_id5.txt         PM-4   Z=   4 t=3.29e-05 ok
+brp_W3_H4_N8_id5.txt         PM-2   Z=   4 t=3.84e-05 ok
+brp_W3_H4_N8_id5.txt         PM-5   Z=   4 t=4.22e-05 ok
+brp_W3_H4_N8_id6.txt         RS-1   Z=   6 t=3.43e-05 ok
+brp_W3_H4_N8_id5.txt         PM-7   Z=   4 t=3.56e-05 ok
+brp_W3_H4_N8_id5.txt         PM-10  Z=   4 t=2.89e-05 ok
+brp_W3_H4_N8_id6.txt         RS-2   Z=   6 t= 5.4e-05 ok
+brp_W3_H4_N8_id6.txt         RS-3   Z=   6 t=7.38e-05 ok
+brp_W3_H4_N8_id6.txt         RS-4   Z=   6 t=0.0002634 ok
+brp_W3_H4_N8_id6.txt         RS-5   Z=   6 t=0.0002805 ok
+brp_W3_H4_N8_id6.txt         RS-7   Z=   6 t=0.0001809 ok
+brp_W3_H4_N8_id6.txt         PM-2   Z=   6 t=0.0002647 ok
+brp_W3_H4_N8_id6.txt         RS-10  Z=   6 t=0.0002734 ok
+brp_W3_H4_N8_id6.txt         PM-1   Z=   6 t=0.0001032 ok
+brp_W3_H4_N8_id6.txt         PM-3   Z=   6 t=0.0002645 ok
+brp_W3_H4_N8_id6.txt         PM-4   Z=   6 t=0.0004319 ok
+brp_W3_H4_N8_id6.txt         PM-5   Z=   6 t=0.0004896 ok
+brp_W3_H4_N8_id6.txt         PM-10  Z=   6 t=0.0003232 ok
+brp_W3_H4_N8_id6.txt         PM-7   Z=   6 t=0.0003669 ok
+brp_W3_H4_N8_id7.txt         RS-2   Z=   3 t=5.38e-05 ok
+brp_W3_H4_N8_id7.txt         RS-1   Z=   3 t=2.47e-05 ok
+brp_W3_H4_N8_id7.txt         RS-3   Z=   3 t=7.92e-05 ok
+brp_W3_H4_N8_id7.txt         RS-4   Z=   3 t=5.34e-05 ok
+brp_W3_H4_N8_id7.txt         RS-7   Z=   3 t=0.0001629 ok
+brp_W3_H4_N8_id7.txt         RS-5   Z=   3 t=0.0001562 ok
+brp_W3_H4_N8_id7.txt         RS-10  Z=   3 t=0.0001959 ok
+brp_W3_H4_N8_id7.txt         PM-3   Z=   3 t=7.02e-05 ok
+brp_W3_H4_N8_id7.txt         PM-1   Z=   3 t=7.31e-05 ok
+brp_W3_H4_N8_id7.txt         PM-2   Z=   3 t=5.41e-05 ok
+brp_W3_H4_N8_id7.txt         PM-7   Z=   3 t=7.83e-05 ok
+brp_W3_H4_N8_id7.txt         PM-10  Z=   3 t=7.54e-05 ok
+brp_W3_H4_N8_id7.txt         PM-4   Z=   3 t=   8e-05 ok
+brp_W3_H4_N8_id7.txt         PM-5   Z=   3 t=4.85e-05 ok
+brp_W3_H4_N8_id8.txt         RS-2   Z=   4 t=3.65e-05 ok
+brp_W3_H4_N8_id8.txt         RS-1   Z=   4 t=1.73e-05 ok
+brp_W3_H4_N8_id8.txt         RS-3   Z=   4 t=3.49e-05 ok
+brp_W3_H4_N8_id8.txt         RS-4   Z=   4 t=0.0001335 ok
+brp_W3_H4_N8_id8.txt         RS-10  Z=   4 t=0.0001504 ok
+brp_W3_H4_N8_id8.txt         PM-1   Z=   4 t=2.46e-05 ok
+brp_W3_H4_N8_id8.txt         RS-5   Z=   4 t=0.0001723 ok
+brp_W3_H4_N8_id8.txt         RS-7   Z=   4 t=0.0001646 ok
+brp_W3_H4_N8_id8.txt         PM-5   Z=   4 t=4.89e-05 ok
+brp_W3_H4_N8_id8.txt         PM-2   Z=   4 t=4.67e-05 ok
+brp_W3_H4_N8_id8.txt         PM-3   Z=   4 t=4.52e-05 ok
+brp_W3_H4_N8_id8.txt         PM-4   Z=   4 t=6.56e-05 ok
+brp_W3_H4_N8_id8.txt         PM-7   Z=   4 t=3.21e-05 ok
+brp_W3_H4_N8_id9.txt         RS-1   Z=   2 t=2.74e-05 ok
+brp_W3_H4_N8_id8.txt         PM-10  Z=   4 t=2.74e-05 ok
+brp_W3_H4_N8_id9.txt         RS-2   Z=   2 t=0.0001001 ok
+brp_W3_H4_N8_id9.txt         RS-3   Z=   2 t=9.94e-05 ok
+brp_W3_H4_N8_id9.txt         RS-4   Z=   2 t=7.14e-05 ok
+brp_W3_H4_N8_id9.txt         RS-5   Z=   2 t=6.71e-05 ok
+brp_W3_H4_N8_id9.txt         RS-7   Z=   2 t=0.0002795 ok
+brp_W3_H4_N8_id9.txt         RS-10  Z=   2 t=0.0002937 ok
+brp_W3_H4_N8_id9.txt         PM-1   Z=   2 t= 2.1e-05 ok
+brp_W3_H4_N8_id9.txt         PM-3   Z=   2 t=3.98e-05 ok
+brp_W3_H4_N8_id9.txt         PM-2   Z=   2 t=3.02e-05 ok
+brp_W3_H4_N8_id9.txt         PM-4   Z=   2 t= 2.9e-05 ok
+brp_W3_H4_N8_id9.txt         PM-5   Z=   2 t=3.01e-05 ok
+brp_W3_H4_N8_id9.txt         PM-7   Z=   2 t=2.68e-05 ok
+brp_W3_H4_N8_id9.txt         PM-10  Z=   2 t=2.57e-05 ok
+brp_W4_H4_N10_id1.txt        RS-1   Z=   7 t=3.43e-05 ok
+brp_W4_H4_N10_id1.txt        RS-2   Z=   7 t=0.0001591 ok
+brp_W4_H4_N10_id1.txt        RS-4   Z=   7 t=0.0001561 ok
+brp_W4_H4_N10_id1.txt        RS-3   Z=   7 t=0.0001592 ok
+brp_W4_H4_N10_id1.txt        RS-5   Z=   7 t=0.0001875 ok
+brp_W4_H4_N10_id1.txt        RS-7   Z=   7 t=0.000213 ok
+brp_W4_H4_N10_id1.txt        RS-10  Z=   7 t=0.001613 ok
+brp_W4_H4_N10_id1.txt        PM-1   Z=   7 t=0.0001906 ok
+brp_W4_H4_N10_id1.txt        PM-2   Z=   7 t=0.0002444 ok
+brp_W4_H4_N10_id1.txt        PM-3   Z=   7 t=0.0002103 ok
+brp_W4_H4_N10_id1.txt        PM-4   Z=   7 t=0.0002024 ok
+brp_W4_H4_N10_id1.txt        PM-5   Z=   7 t=0.0002033 ok
+brp_W4_H4_N10_id10.txt       RS-2   Z=   3 t=0.0001026 ok
+brp_W4_H4_N10_id10.txt       RS-1   Z=   3 t=   3e-05 ok
+brp_W4_H4_N10_id1.txt        PM-10  Z=   7 t=0.000151 ok
+brp_W4_H4_N10_id1.txt        PM-7   Z=   7 t=0.0001458 ok
+brp_W4_H4_N10_id10.txt       RS-3   Z=   3 t=0.0001295 ok
+brp_W4_H4_N10_id10.txt       RS-4   Z=   3 t=7.83e-05 ok
+brp_W4_H4_N10_id10.txt       RS-5   Z=   3 t=7.68e-05 ok
+brp_W4_H4_N10_id10.txt       RS-7   Z=   3 t=8.19e-05 ok
+brp_W4_H4_N10_id10.txt       PM-1   Z=   3 t=0.0001178 ok
+brp_W4_H4_N10_id10.txt       RS-10  Z=   3 t=0.0004764 ok
+brp_W4_H4_N10_id10.txt       PM-3   Z=   3 t=0.0001339 ok
+brp_W4_H4_N10_id10.txt       PM-2   Z=   3 t=0.0001059 ok
+brp_W4_H4_N10_id10.txt       PM-4   Z=   3 t=0.0001208 ok
+brp_W4_H4_N10_id10.txt       PM-5   Z=   3 t=0.0001622 ok
+brp_W4_H4_N10_id10.txt       PM-7   Z=   3 t=0.0001309 ok
+brp_W4_H4_N10_id10.txt       PM-10  Z=   3 t=0.0001375 ok
+brp_W4_H4_N10_id2.txt        RS-2   Z=   5 t=0.0001059 ok
+brp_W4_H4_N10_id2.txt        RS-1   Z=   6 t=2.24e-05 ok
+brp_W4_H4_N10_id2.txt        RS-4   Z=   5 t=0.0001024 ok
+brp_W4_H4_N10_id2.txt        RS-3   Z=   5 t=0.0001057 ok
+brp_W4_H4_N10_id2.txt        RS-7   Z=   5 t=0.0001701 ok
+brp_W4_H4_N10_id2.txt        RS-5   Z=   5 t=0.0001516 ok
+brp_W4_H4_N10_id2.txt        PM-1   Z=   5 t=0.0001484 ok
+brp_W4_H4_N10_id2.txt        RS-10  Z=   5 t=0.0006355 ok
+brp_W4_H4_N10_id2.txt        PM-5   Z=   5 t=0.0001354 ok
+brp_W4_H4_N10_id2.txt        PM-2   Z=   5 t=0.0001326 ok
+brp_W4_H4_N10_id2.txt        PM-4   Z=   5 t=0.0002412 ok
+brp_W4_H4_N10_id2.txt        PM-3   Z=   5 t=0.0001617 ok
+brp_W4_H4_N10_id3.txt        RS-1   Z=   1 t=2.25e-05 ok
+brp_W4_H4_N10_id2.txt        PM-7   Z=   5 t=0.0001981 ok
+brp_W4_H4_N10_id3.txt        RS-2   Z=   1 t=4.79e-05 ok
+brp_W4_H4_N10_id2.txt        PM-10  Z=   5 t=0.0001985 ok
+brp_W4_H4_N10_id3.txt        RS-4   Z=   1 t= 4.9e-05 ok
+brp_W4_H4_N10_id3.txt        RS-5   Z=   1 t= 7.4e-05 ok
+brp_W4_H4_N10_id3.txt        RS-3   Z=   1 t=4.91e-05 ok
+brp_W4_H4_N10_id3.txt        RS-7   Z=   1 t=1.69e-05 ok
+brp_W4_H4_N10_id3.txt        PM-3   Z=   1 t= 2.7e-05 ok
+brp_W4_H4_N10_id3.txt        PM-2   Z=   1 t=   3e-05 ok
+brp_W4_H4_N10_id3.txt        PM-1   Z=   1 t=3.38e-05 ok
+brp_W4_H4_N10_id3.txt        RS-10  Z=   1 t= 2.5e-05 ok
+brp_W4_H4_N10_id3.txt        PM-4   Z=   1 t=3.76e-05 ok
+brp_W4_H4_N10_id3.txt        PM-10  Z=   1 t=3.24e-05 ok
+brp_W4_H4_N10_id3.txt        PM-5   Z=   1 t=3.32e-05 ok
+brp_W4_H4_N10_id3.txt        PM-7   Z=   1 t= 3.5e-05 ok
+brp_W4_H4_N10_id4.txt        RS-3   Z=   6 t=0.0001909 ok
+brp_W4_H4_N10_id4.txt        RS-2   Z=   6 t=0.0002051 ok
+brp_W4_H4_N10_id4.txt        RS-1   Z=   6 t=3.99e-05 ok
+brp_W4_H4_N10_id4.txt        RS-4   Z=   6 t=0.000127 ok
+brp_W4_H4_N10_id4.txt        PM-1   Z=   6 t=0.0001623 ok
+brp_W4_H4_N10_id4.txt        RS-5   Z=   6 t=0.0001651 ok
+brp_W4_H4_N10_id4.txt        RS-10  Z=   6 t=0.001237 ok
+brp_W4_H4_N10_id4.txt        RS-7   Z=   6 t=0.0001763 ok
+brp_W4_H4_N10_id4.txt        PM-2   Z=   6 t=0.0001998 ok
+brp_W4_H4_N10_id4.txt        PM-3   Z=   6 t=0.0002771 ok
+brp_W4_H4_N10_id4.txt        PM-4   Z=   6 t=0.0002464 ok
+brp_W4_H4_N10_id4.txt        PM-5   Z=   6 t=0.0001659 ok
+brp_W4_H4_N10_id5.txt        RS-1   Z=   2 t= 2.9e-05 ok
+brp_W4_H4_N10_id4.txt        PM-7   Z=   6 t=0.000236 ok
+brp_W4_H4_N10_id5.txt        RS-2   Z=   2 t=9.36e-05 ok
+brp_W4_H4_N10_id4.txt        PM-10  Z=   6 t=0.0002465 ok
+brp_W4_H4_N10_id5.txt        RS-3   Z=   2 t=0.0001531 ok
+brp_W4_H4_N10_id5.txt        RS-5   Z=   2 t=7.86e-05 ok
+brp_W4_H4_N10_id5.txt        RS-4   Z=   2 t=7.63e-05 ok
+brp_W4_H4_N10_id5.txt        RS-7   Z=   2 t=0.000122 ok
+brp_W4_H4_N10_id5.txt        RS-10  Z=   2 t=0.0005093 ok
+brp_W4_H4_N10_id5.txt        PM-1   Z=   2 t=2.51e-05 ok
+brp_W4_H4_N10_id5.txt        PM-2   Z=   2 t= 2.4e-05 ok
+brp_W4_H4_N10_id5.txt        PM-3   Z=   2 t=3.07e-05 ok
+brp_W4_H4_N10_id5.txt        PM-4   Z=   2 t=4.73e-05 ok
+brp_W4_H4_N10_id5.txt        PM-5   Z=   2 t=2.82e-05 ok
+brp_W4_H4_N10_id5.txt        PM-7   Z=   2 t=3.46e-05 ok
+brp_W4_H4_N10_id5.txt        PM-10  Z=   2 t=2.27e-05 ok
+brp_W4_H4_N10_id6.txt        RS-2   Z=   4 t=0.000107 ok
+brp_W4_H4_N10_id6.txt        RS-1   Z=   4 t=3.22e-05 ok
+brp_W4_H4_N10_id6.txt        RS-3   Z=   4 t=7.77e-05 ok
+brp_W4_H4_N10_id6.txt        RS-4   Z=   4 t=7.74e-05 ok
+brp_W4_H4_N10_id6.txt        RS-5   Z=   4 t=7.77e-05 ok
+brp_W4_H4_N10_id6.txt        RS-7   Z=   4 t=0.0007092 ok
+brp_W4_H4_N10_id6.txt        PM-1   Z=   4 t=2.43e-05 ok
+brp_W4_H4_N10_id6.txt        RS-10  Z=   4 t=0.0004413 ok
+brp_W4_H4_N10_id6.txt        PM-2   Z=   4 t=3.09e-05 ok
+brp_W4_H4_N10_id6.txt        PM-3   Z=   4 t=3.43e-05 ok
+brp_W4_H4_N10_id6.txt        PM-5   Z=   4 t= 3.8e-05 ok
+brp_W4_H4_N10_id6.txt        PM-4   Z=   4 t=3.09e-05 ok
+brp_W4_H4_N10_id6.txt        PM-7   Z=   4 t=3.89e-05 ok
+brp_W4_H4_N10_id6.txt        PM-10  Z=   4 t=4.25e-05 ok
+brp_W4_H4_N10_id7.txt        RS-2   Z=   6 t=7.93e-05 ok
+brp_W4_H4_N10_id7.txt        RS-1   Z=   6 t=2.27e-05 ok
+brp_W4_H4_N10_id7.txt        RS-3   Z=   6 t=0.0001126 ok
+brp_W4_H4_N10_id7.txt        RS-5   Z=   6 t=0.0001195 ok
+brp_W4_H4_N10_id7.txt        RS-4   Z=   6 t=8.47e-05 ok
+brp_W4_H4_N10_id7.txt        RS-7   Z=   6 t=0.0005554 ok
+brp_W4_H4_N10_id7.txt        PM-2   Z=   6 t=0.0002985 ok
+brp_W4_H4_N10_id7.txt        RS-10  Z=   6 t=0.0007326 ok
+brp_W4_H4_N10_id7.txt        PM-1   Z=   6 t=0.0001072 ok
+brp_W4_H4_N10_id7.txt        PM-3   Z=   6 t=0.0004525 ok
+brp_W4_H4_N10_id7.txt        PM-4   Z=   6 t=0.0002974 ok
+brp_W4_H4_N10_id7.txt        PM-5   Z=   6 t=0.0003591 ok
+brp_W4_H4_N10_id7.txt        PM-7   Z=   6 t=0.0004238 ok
+brp_W4_H4_N10_id7.txt        PM-10  Z=   6 t=0.0006881 ok
+brp_W4_H4_N10_id8.txt        RS-2   Z=   4 t=7.92e-05 ok
+brp_W4_H4_N10_id8.txt        RS-1   Z=   4 t=2.34e-05 ok
+brp_W4_H4_N10_id8.txt        RS-3   Z=   4 t=0.0001102 ok
+brp_W4_H4_N10_id8.txt        RS-4   Z=   4 t=0.0001087 ok
+brp_W4_H4_N10_id8.txt        RS-5   Z=   4 t=7.68e-05 ok
+brp_W4_H4_N10_id8.txt        RS-7   Z=   4 t=0.000429 ok
+brp_W4_H4_N10_id8.txt        RS-10  Z=   4 t=0.0005815 ok
+brp_W4_H4_N10_id8.txt        PM-2   Z=   4 t=7.95e-05 ok
+brp_W4_H4_N10_id8.txt        PM-1   Z=   4 t=9.91e-05 ok
+brp_W4_H4_N10_id8.txt        PM-3   Z=   4 t=8.41e-05 ok
+brp_W4_H4_N10_id8.txt        PM-4   Z=   4 t=0.0001268 ok
+brp_W4_H4_N10_id8.txt        PM-5   Z=   4 t=8.24e-05 ok
+brp_W4_H4_N10_id8.txt        PM-7   Z=   4 t=8.04e-05 ok
+brp_W4_H4_N10_id8.txt        PM-10  Z=   4 t=9.65e-05 ok
+brp_W4_H4_N10_id9.txt        RS-1   Z=   3 t=1.87e-05 ok
+brp_W4_H4_N10_id9.txt        RS-2   Z=   3 t=5.61e-05 ok
+brp_W4_H4_N10_id9.txt        RS-3   Z=   3 t=8.85e-05 ok
+brp_W4_H4_N10_id9.txt        RS-4   Z=   3 t=5.76e-05 ok
+brp_W4_H4_N10_id9.txt        RS-5   Z=   3 t=8.53e-05 ok
+brp_W4_H4_N10_id9.txt        RS-10  Z=   3 t=0.0002769 ok
+brp_W4_H4_N10_id9.txt        RS-7   Z=   3 t=0.0002588 ok
+brp_W4_H4_N10_id9.txt        PM-1   Z=   3 t=2.74e-05 ok
+brp_W4_H4_N10_id9.txt        PM-2   Z=   3 t=3.69e-05 ok
+brp_W4_H4_N10_id9.txt        PM-4   Z=   3 t=3.82e-05 ok
+brp_W4_H4_N10_id9.txt        PM-3   Z=   3 t=4.25e-05 ok
+brp_W4_H4_N10_id9.txt        PM-5   Z=   3 t=2.82e-05 ok
+brp_W4_H4_N10_id9.txt        PM-7   Z=   3 t=3.19e-05 ok
+brp_W4_H5_N12_id1.txt        RS-1   Z=   6 t=5.02e-05 ok
+brp_W4_H4_N10_id9.txt        PM-10  Z=   3 t= 3.2e-05 ok
+brp_W4_H5_N12_id1.txt        RS-2   Z=   6 t=0.000136 ok
+brp_W4_H5_N12_id1.txt        RS-4   Z=   6 t=0.0001436 ok
+brp_W4_H5_N12_id1.txt        RS-3   Z=   6 t=0.0001722 ok
+brp_W4_H5_N12_id1.txt        RS-5   Z=   6 t=0.000182 ok
+brp_W4_H5_N12_id1.txt        RS-7   Z=   6 t=0.0001388 ok
+brp_W4_H5_N12_id1.txt        RS-10  Z=   6 t=0.0010791 ok
+brp_W4_H5_N12_id1.txt        PM-1   Z=   6 t=4.42e-05 ok
+brp_W4_H5_N12_id1.txt        PM-3   Z=   6 t=3.93e-05 ok
+brp_W4_H5_N12_id1.txt        PM-2   Z=   6 t=2.74e-05 ok
+brp_W4_H5_N12_id1.txt        PM-4   Z=   6 t=3.06e-05 ok
+brp_W4_H5_N12_id1.txt        PM-5   Z=   6 t=3.49e-05 ok
+brp_W4_H5_N12_id1.txt        PM-10  Z=   6 t=3.24e-05 ok
+brp_W4_H5_N12_id1.txt        PM-7   Z=   6 t=3.32e-05 ok
+brp_W4_H5_N12_id10.txt       RS-4   Z=  10 t=0.0001874 ok
+brp_W4_H5_N12_id10.txt       RS-3   Z=  10 t=0.000241 ok
+brp_W4_H5_N12_id10.txt       RS-2   Z=  10 t=0.0001956 ok
+brp_W4_H5_N12_id10.txt       RS-1   Z=  10 t=4.28e-05 ok
+brp_W4_H5_N12_id10.txt       RS-7   Z=  10 t=0.0001644 ok
+brp_W4_H5_N12_id10.txt       RS-5   Z=  10 t=0.0001628 ok
+brp_W4_H5_N12_id10.txt       RS-10  Z=  10 t=0.0008352 ok
+brp_W4_H5_N12_id10.txt       PM-1   Z=  10 t=0.000629 ok
+brp_W4_H5_N12_id10.txt       PM-2   Z=  10 t=0.0006639 ok
+brp_W4_H5_N12_id10.txt       PM-4   Z=  10 t=0.0006271 ok
+brp_W4_H5_N12_id10.txt       PM-3   Z=  10 t=0.0004874 ok
+brp_W4_H5_N12_id10.txt       PM-5   Z=  10 t=0.0007987 ok
+brp_W4_H5_N12_id10.txt       PM-7   Z=  10 t=0.0011273 ok
+brp_W4_H5_N12_id2.txt        RS-1   Z=   4 t=2.89e-05 ok
+brp_W4_H5_N12_id2.txt        RS-2   Z=   4 t=0.0001153 ok
+brp_W4_H5_N12_id10.txt       PM-10  Z=  10 t=0.001034 ok
+brp_W4_H5_N12_id2.txt        RS-4   Z=   4 t=0.0001501 ok
+brp_W4_H5_N12_id2.txt        RS-3   Z=   4 t=0.0001724 ok
+brp_W4_H5_N12_id2.txt        RS-5   Z=   4 t=0.0001367 ok
+brp_W4_H5_N12_id2.txt        RS-7   Z=   4 t=0.0001754 ok
+brp_W4_H5_N12_id2.txt        PM-1   Z=   4 t=4.26e-05 ok
+brp_W4_H5_N12_id2.txt        PM-2   Z=   4 t= 3.5e-05 ok
+brp_W4_H5_N12_id2.txt        PM-3   Z=   4 t=5.26e-05 ok
+brp_W4_H5_N12_id2.txt        RS-10  Z=   4 t=0.0009622 ok
+brp_W4_H5_N12_id2.txt        PM-4   Z=   4 t=3.64e-05 ok
+brp_W4_H5_N12_id2.txt        PM-7   Z=   4 t=2.86e-05 ok
+brp_W4_H5_N12_id2.txt        PM-5   Z=   4 t=2.36e-05 ok
+brp_W4_H5_N12_id2.txt        PM-10  Z=   4 t=3.81e-05 ok
+brp_W4_H5_N12_id3.txt        RS-2   Z=   8 t=0.0001278 ok
+brp_W4_H5_N12_id3.txt        RS-1   Z=   8 t=3.28e-05 ok
+brp_W4_H5_N12_id3.txt        RS-3   Z=   8 t=8.46e-05 ok
+brp_W4_H5_N12_id3.txt        RS-4   Z=   8 t=8.82e-05 ok
+brp_W4_H5_N12_id3.txt        RS-5   Z=   8 t= 8.7e-05 ok
+brp_W4_H5_N12_id3.txt        PM-1   Z=   8 t=4.04e-05 ok
+brp_W4_H5_N12_id3.txt        RS-10  Z=   8 t=0.0003953 ok
+brp_W4_H5_N12_id3.txt        RS-7   Z=   8 t=0.0004329 ok
+brp_W4_H5_N12_id3.txt        PM-2   Z=   8 t=4.24e-05 ok
+brp_W4_H5_N12_id3.txt        PM-5   Z=   8 t=2.96e-05 ok
+brp_W4_H5_N12_id3.txt        PM-4   Z=   8 t=4.11e-05 ok
+brp_W4_H5_N12_id3.txt        PM-3   Z=   8 t= 2.9e-05 ok
+brp_W4_H5_N12_id3.txt        PM-7   Z=   8 t=3.55e-05 ok
+brp_W4_H5_N12_id4.txt        RS-1   Z=   6 t=2.83e-05 ok
+brp_W4_H5_N12_id4.txt        RS-2   Z=   6 t=0.0001377 ok
+brp_W4_H5_N12_id3.txt        PM-10  Z=   8 t=2.89e-05 ok
+brp_W4_H5_N12_id4.txt        RS-4   Z=   6 t=0.0002264 ok
+brp_W4_H5_N12_id4.txt        RS-5   Z=   6 t=0.0001283 ok
+brp_W4_H5_N12_id4.txt        RS-7   Z=   6 t=0.0001459 ok
+brp_W4_H5_N12_id4.txt        RS-3   Z=   6 t=0.0001444 ok
+brp_W4_H5_N12_id4.txt        PM-3   Z=   6 t=0.0003485 ok
+brp_W4_H5_N12_id4.txt        PM-1   Z=   6 t=0.0003208 ok
+brp_W4_H5_N12_id4.txt        RS-10  Z=   6 t=0.0008371 ok
+brp_W4_H5_N12_id4.txt        PM-2   Z=   6 t=0.000233 ok
+brp_W4_H5_N12_id4.txt        PM-7   Z=   6 t=0.0008371 ok
+brp_W4_H5_N12_id4.txt        PM-10  Z=   6 t=0.0008984 ok
+brp_W4_H5_N12_id4.txt        PM-5   Z=   6 t=0.0004259 ok
+brp_W4_H5_N12_id4.txt        PM-4   Z=   6 t=0.0002635 ok
+brp_W4_H5_N12_id5.txt        RS-3   Z=   6 t=0.0001691 ok
+brp_W4_H5_N12_id5.txt        RS-1   Z=   6 t=3.23e-05 ok
+brp_W4_H5_N12_id5.txt        RS-4   Z=   6 t=0.0001059 ok
+brp_W4_H5_N12_id5.txt        RS-2   Z=   6 t=0.0001016 ok
+brp_W4_H5_N12_id5.txt        PM-1   Z=   6 t=0.0001966 ok
+brp_W4_H5_N12_id5.txt        RS-5   Z=   6 t=0.0001643 ok
+brp_W4_H5_N12_id5.txt        RS-10  Z=   6 t=0.0008911 ok
+brp_W4_H5_N12_id5.txt        RS-7   Z=   6 t=0.0008677 ok
+brp_W4_H5_N12_id5.txt        PM-4   Z=   6 t=0.0002533 ok
+brp_W4_H5_N12_id5.txt        PM-2   Z=   6 t=0.0002902 ok
+brp_W4_H5_N12_id5.txt        PM-5   Z=   6 t=0.000242 ok
+brp_W4_H5_N12_id5.txt        PM-3   Z=   6 t=0.0002573 ok
+brp_W4_H5_N12_id5.txt        PM-7   Z=   6 t=0.0003291 ok
+brp_W4_H5_N12_id6.txt        RS-1   Z=   6 t=3.95e-05 ok
+brp_W4_H5_N12_id6.txt        RS-2   Z=   6 t=0.0002598 ok
+brp_W4_H5_N12_id5.txt        PM-10  Z=   6 t=0.0002227 ok
+brp_W4_H5_N12_id6.txt        RS-4   Z=   6 t=0.0001524 ok
+brp_W4_H5_N12_id6.txt        RS-3   Z=   6 t=0.0001535 ok
+brp_W4_H5_N12_id6.txt        RS-7   Z=   6 t=0.0001554 ok
+brp_W4_H5_N12_id6.txt        RS-5   Z=   6 t=0.000158 ok
+brp_W4_H5_N12_id6.txt        RS-10  Z=   6 t=0.0013459 ok
+brp_W4_H5_N12_id6.txt        PM-2   Z=   6 t=0.0002417 ok
+brp_W4_H5_N12_id6.txt        PM-1   Z=   6 t=0.0002231 ok
+brp_W4_H5_N12_id6.txt        PM-3   Z=   6 t=0.000208 ok
+brp_W4_H5_N12_id6.txt        PM-5   Z=   6 t=0.0002787 ok
+brp_W4_H5_N12_id6.txt        PM-4   Z=   6 t=0.0001758 ok
+brp_W4_H5_N12_id6.txt        PM-10  Z=   6 t=0.0003978 ok
+brp_W4_H5_N12_id6.txt        PM-7   Z=   6 t=0.0002219 ok
+brp_W4_H5_N12_id7.txt        RS-3   Z=   8 t=0.000185 ok
+brp_W4_H5_N12_id7.txt        RS-1   Z=   8 t= 2.4e-05 ok
+brp_W4_H5_N12_id7.txt        RS-2   Z=   8 t=0.0001705 ok
+brp_W4_H5_N12_id7.txt        RS-4   Z=   8 t=0.0001591 ok
+brp_W4_H5_N12_id7.txt        RS-5   Z=   8 t=0.0001712 ok
+brp_W4_H5_N12_id7.txt        RS-10  Z=   8 t=0.0006204 ok
+brp_W4_H5_N12_id7.txt        RS-7   Z=   8 t=0.0002463 ok
+brp_W4_H5_N12_id7.txt        PM-1   Z=   8 t=0.0003969 ok
+brp_W4_H5_N12_id7.txt        PM-2   Z=   8 t=0.0004645 ok
+brp_W4_H5_N12_id7.txt        PM-3   Z=   8 t=0.0007327 ok
+brp_W4_H5_N12_id7.txt        PM-5   Z=   8 t=0.0017587 ok
+brp_W4_H5_N12_id7.txt        PM-4   Z=   8 t=0.0012797 ok
+brp_W4_H5_N12_id7.txt        PM-7   Z=   8 t=0.0021013 ok
+brp_W4_H5_N12_id8.txt        RS-2   Z=   7 t=0.0001327 ok
+brp_W4_H5_N12_id7.txt        PM-10  Z=   8 t=0.0020992 ok
+brp_W4_H5_N12_id8.txt        RS-1   Z=   7 t=2.26e-05 ok
+brp_W4_H5_N12_id8.txt        RS-3   Z=   7 t=0.0001298 ok
+brp_W4_H5_N12_id8.txt        RS-4   Z=   7 t=0.0001359 ok
+brp_W4_H5_N12_id8.txt        RS-5   Z=   7 t=0.0001314 ok
+brp_W4_H5_N12_id8.txt        RS-7   Z=   7 t=0.0001327 ok
+brp_W4_H5_N12_id8.txt        RS-10  Z=   7 t=0.0005529 ok
+brp_W4_H5_N12_id8.txt        PM-2   Z=   7 t=0.0003764 ok
+brp_W4_H5_N12_id8.txt        PM-1   Z=   7 t=0.0002461 ok
+brp_W4_H5_N12_id8.txt        PM-7   Z=   7 t=0.0004556 ok
+brp_W4_H5_N12_id8.txt        PM-3   Z=   7 t=0.0009338 ok
+brp_W4_H5_N12_id8.txt        PM-5   Z=   7 t=0.0007315 ok
+brp_W4_H5_N12_id8.txt        PM-4   Z=   7 t=0.0004772 ok
+brp_W4_H5_N12_id9.txt        RS-1   Z=   8 t=4.77e-05 ok
+brp_W4_H5_N12_id9.txt        RS-3   Z=   8 t=0.0001576 ok
+brp_W4_H5_N12_id8.txt        PM-10  Z=   7 t=0.0007494 ok
+brp_W4_H5_N12_id9.txt        RS-2   Z=   8 t=0.0001243 ok
+brp_W4_H5_N12_id9.txt        RS-5   Z=   8 t=0.0001257 ok
+brp_W4_H5_N12_id9.txt        RS-7   Z=   8 t=0.0004131 ok
+brp_W4_H5_N12_id9.txt        RS-10  Z=   8 t=0.0006646 ok
+brp_W4_H5_N12_id9.txt        RS-4   Z=   8 t=0.0001722 ok
+brp_W4_H5_N12_id9.txt        PM-2   Z=   8 t=0.0002814 ok
+brp_W4_H5_N12_id9.txt        PM-1   Z=   8 t=0.0004074 ok
+brp_W4_H5_N12_id9.txt        PM-4   Z=   8 t=0.0002857 ok
+brp_W4_H5_N12_id9.txt        PM-3   Z=   8 t=0.0004418 ok
+brp_W4_H5_N12_id9.txt        PM-5   Z=   8 t=0.000299 ok
+brp_W4_H5_N12_id9.txt        PM-7   Z=   8 t=0.000275 ok
+brp_W5_H4_N15_id1.txt        RS-2   Z=  10 t=0.0002584 ok
+brp_W5_H4_N15_id1.txt        RS-1   Z=  10 t=4.85e-05 ok
+brp_W5_H4_N15_id1.txt        RS-3   Z=  10 t=0.0004003 ok
+brp_W4_H5_N12_id9.txt        PM-10  Z=   8 t=0.0004782 ok
+brp_W5_H4_N15_id1.txt        RS-4   Z=  10 t=0.0003686 ok
+brp_W5_H4_N15_id1.txt        RS-10  Z=  10 t=0.0003871 ok
+brp_W5_H4_N15_id1.txt        RS-7   Z=  10 t=0.0002797 ok
+brp_W5_H4_N15_id1.txt        RS-5   Z=  10 t=0.0002772 ok
+brp_W5_H4_N15_id1.txt        PM-1   Z=  10 t=0.000713 ok
+brp_W5_H4_N15_id1.txt        PM-2   Z=  10 t=0.0010991 ok
+brp_W5_H4_N15_id1.txt        PM-4   Z=  10 t=0.0011569 ok
+brp_W5_H4_N15_id1.txt        PM-3   Z=  10 t=0.0009606 ok
+brp_W5_H4_N15_id1.txt        PM-5   Z=  10 t=0.0012579 ok
+brp_W5_H4_N15_id10.txt       RS-1   Z=   6 t=3.24e-05 ok
+brp_W5_H4_N15_id1.txt        PM-7   Z=  10 t=0.0015774 ok
+brp_W5_H4_N15_id1.txt        PM-10  Z=  10 t=0.0013726 ok
+brp_W5_H4_N15_id10.txt       RS-2   Z=   6 t=0.0002806 ok
+brp_W5_H4_N15_id10.txt       RS-3   Z=   6 t=0.0003408 ok
+brp_W5_H4_N15_id10.txt       RS-4   Z=   6 t=0.0002867 ok
+brp_W5_H4_N15_id10.txt       RS-5   Z=   6 t=0.000262 ok
+brp_W5_H4_N15_id10.txt       RS-7   Z=   6 t=0.0002533 ok
+brp_W5_H4_N15_id10.txt       RS-10  Z=   6 t=0.000347 ok
+brp_W5_H4_N15_id10.txt       PM-1   Z=   6 t=3.36e-05 ok
+brp_W5_H4_N15_id10.txt       PM-2   Z=   6 t=3.28e-05 ok
+brp_W5_H4_N15_id10.txt       PM-4   Z=   6 t=4.35e-05 ok
+brp_W5_H4_N15_id10.txt       PM-3   Z=   6 t=4.19e-05 ok
+brp_W5_H4_N15_id10.txt       PM-5   Z=   6 t=5.48e-05 ok
+brp_W5_H4_N15_id10.txt       PM-7   Z=   6 t=3.11e-05 ok
+brp_W5_H4_N15_id10.txt       PM-10  Z=   6 t=3.17e-05 ok
+brp_W5_H4_N15_id2.txt        RS-2   Z=   8 t=0.0002298 ok
+brp_W5_H4_N15_id2.txt        RS-1   Z=   8 t=3.32e-05 ok
+brp_W5_H4_N15_id2.txt        RS-3   Z=   8 t=0.0002218 ok
+brp_W5_H4_N15_id2.txt        RS-4   Z=   8 t=0.0002304 ok
+brp_W5_H4_N15_id2.txt        RS-5   Z=   8 t=0.0002665 ok
+brp_W5_H4_N15_id2.txt        RS-10  Z=   8 t=0.0003631 ok
+brp_W5_H4_N15_id2.txt        RS-7   Z=   8 t=0.000218 ok
+brp_W5_H4_N15_id2.txt        PM-2   Z=   8 t=0.0003082 ok
+brp_W5_H4_N15_id2.txt        PM-1   Z=   8 t=0.000278 ok
+brp_W5_H4_N15_id2.txt        PM-4   Z=   8 t=0.0002713 ok
+brp_W5_H4_N15_id2.txt        PM-3   Z=   8 t=0.0002679 ok
+brp_W5_H4_N15_id2.txt        PM-5   Z=   8 t=0.0004776 ok
+brp_W5_H4_N15_id2.txt        PM-7   Z=   8 t= 0.00106 ok
+brp_W5_H4_N15_id3.txt        RS-1   Z=   7 t=2.76e-05 ok
+brp_W5_H4_N15_id2.txt        PM-10  Z=   8 t=0.0011584 ok
+brp_W5_H4_N15_id3.txt        RS-2   Z=   7 t=0.0001151 ok
+brp_W5_H4_N15_id3.txt        RS-3   Z=   7 t=0.0001159 ok
+brp_W5_H4_N15_id3.txt        RS-4   Z=   7 t=0.0001111 ok
+brp_W5_H4_N15_id3.txt        RS-5   Z=   7 t=0.0001151 ok
+brp_W5_H4_N15_id3.txt        RS-10  Z=   7 t=0.0004964 ok
+brp_W5_H4_N15_id3.txt        RS-7   Z=   7 t=0.0005393 ok
+brp_W5_H4_N15_id3.txt        PM-2   Z=   7 t=0.000178 ok
+brp_W5_H4_N15_id3.txt        PM-1   Z=   7 t=0.0001862 ok
+brp_W5_H4_N15_id3.txt        PM-3   Z=   7 t=0.0001693 ok
+brp_W5_H4_N15_id3.txt        PM-4   Z=   7 t=0.000167 ok
+brp_W5_H4_N15_id3.txt        PM-5   Z=   7 t=0.000173 ok
+brp_W5_H4_N15_id3.txt        PM-7   Z=   7 t=0.0001713 ok
+brp_W5_H4_N15_id3.txt        PM-10  Z=   7 t=0.0001781 ok
+brp_W5_H4_N15_id4.txt        RS-1   Z=   5 t=3.72e-05 ok
+brp_W5_H4_N15_id4.txt        RS-3   Z=   5 t=0.0001683 ok
+brp_W5_H4_N15_id4.txt        RS-2   Z=   5 t=0.0002596 ok
+brp_W5_H4_N15_id4.txt        RS-4   Z=   5 t=0.0002141 ok
+brp_W5_H4_N15_id4.txt        RS-5   Z=   5 t=0.0002542 ok
+brp_W5_H4_N15_id4.txt        RS-10  Z=   5 t=0.0002511 ok
+brp_W5_H4_N15_id4.txt        RS-7   Z=   5 t=0.0002805 ok
+brp_W5_H4_N15_id4.txt        PM-1   Z=   5 t=0.0008514 ok
+brp_W5_H4_N15_id4.txt        PM-2   Z=   5 t=0.0011279 ok
+brp_W5_H4_N15_id4.txt        PM-7   Z=   5 t=0.0015658 ok
+brp_W5_H4_N15_id4.txt        PM-3   Z=   5 t=0.0013958 ok
+brp_W5_H4_N15_id4.txt        PM-5   Z=   5 t=0.0021665 ok
+brp_W5_H4_N15_id4.txt        PM-4   Z=   5 t=0.0023079 ok
+brp_W5_H4_N15_id5.txt        RS-1   Z=   7 t=4.06e-05 ok
+brp_W5_H4_N15_id5.txt        RS-3   Z=   7 t=0.0004139 ok
+brp_W5_H4_N15_id5.txt        RS-2   Z=   7 t=0.0004806 ok
+brp_W5_H4_N15_id4.txt        PM-10  Z=   5 t=0.0019061 ok
+brp_W5_H4_N15_id5.txt        RS-7   Z=   7 t=0.0002981 ok
+brp_W5_H4_N15_id5.txt        RS-5   Z=   7 t=0.0004205 ok
+brp_W5_H4_N15_id5.txt        RS-10  Z=   7 t=0.0004667 ok
+brp_W5_H4_N15_id5.txt        RS-4   Z=   7 t=0.0004314 ok
+brp_W5_H4_N15_id5.txt        PM-2   Z=   7 t=0.0005626 ok
+brp_W5_H4_N15_id5.txt        PM-1   Z=   7 t=0.000516 ok
+brp_W5_H4_N15_id5.txt        PM-4   Z=   7 t=0.0003755 ok
+brp_W5_H4_N15_id5.txt        PM-3   Z=   7 t=0.0004606 ok
+brp_W5_H4_N15_id5.txt        PM-5   Z=   7 t=0.0004821 ok
+brp_W5_H4_N15_id5.txt        PM-7   Z=   7 t=0.000338 ok
+brp_W5_H4_N15_id5.txt        PM-10  Z=   7 t=0.0003901 ok
+brp_W5_H4_N15_id6.txt        RS-1   Z=   7 t=4.45e-05 ok
+brp_W5_H4_N15_id6.txt        RS-2   Z=   7 t=0.0001655 ok
+brp_W5_H4_N15_id6.txt        RS-3   Z=   7 t=0.0002412 ok
+brp_W5_H4_N15_id6.txt        RS-4   Z=   7 t=0.0001818 ok
+brp_W5_H4_N15_id6.txt        RS-5   Z=   7 t=0.0002182 ok
+brp_W5_H4_N15_id6.txt        RS-7   Z=   7 t=0.0002615 ok
+brp_W5_H4_N15_id6.txt        RS-10  Z=   7 t=0.0012333 ok
+brp_W5_H4_N15_id6.txt        PM-1   Z=   7 t=0.0003303 ok
+brp_W5_H4_N15_id6.txt        PM-2   Z=   7 t=0.0003863 ok
+brp_W5_H4_N15_id6.txt        PM-3   Z=   7 t=0.0002669 ok
+brp_W5_H4_N15_id6.txt        PM-5   Z=   7 t=0.000421 ok
+brp_W5_H4_N15_id6.txt        PM-4   Z=   7 t=0.0003769 ok
+brp_W5_H4_N15_id6.txt        PM-7   Z=   7 t=0.000429 ok
+brp_W5_H4_N15_id6.txt        PM-10  Z=   7 t=0.0004035 ok
+brp_W5_H4_N15_id7.txt        RS-1   Z=   7 t=4.02e-05 ok
+brp_W5_H4_N15_id7.txt        RS-3   Z=   7 t=0.0002579 ok
+brp_W5_H4_N15_id7.txt        RS-2   Z=   7 t=0.0002541 ok
+brp_W5_H4_N15_id7.txt        RS-4   Z=   7 t=0.0002576 ok
+brp_W5_H4_N15_id7.txt        RS-7   Z=   7 t=0.0002323 ok
+brp_W5_H4_N15_id7.txt        RS-5   Z=   7 t=0.0002716 ok
+brp_W5_H4_N15_id7.txt        RS-10  Z=   7 t=0.0012104 ok
+brp_W5_H4_N15_id7.txt        PM-1   Z=   7 t=0.0002612 ok
+brp_W5_H4_N15_id7.txt        PM-2   Z=   7 t=0.0003455 ok
+brp_W5_H4_N15_id7.txt        PM-5   Z=   7 t=0.0004047 ok
+brp_W5_H4_N15_id7.txt        PM-3   Z=   7 t=0.0003248 ok
+brp_W5_H4_N15_id7.txt        PM-4   Z=   7 t=0.0004403 ok
+brp_W5_H4_N15_id8.txt        RS-1   Z=   7 t=3.25e-05 ok
+brp_W5_H4_N15_id7.txt        PM-10  Z=   7 t=0.000415 ok
+brp_W5_H4_N15_id8.txt        RS-2   Z=   7 t=0.0002347 ok
+brp_W5_H4_N15_id7.txt        PM-7   Z=   7 t=0.0004148 ok
+brp_W5_H4_N15_id8.txt        RS-3   Z=   7 t=0.0002492 ok
+brp_W5_H4_N15_id8.txt        RS-7   Z=   7 t=0.0002129 ok
+brp_W5_H4_N15_id8.txt        RS-5   Z=   7 t=0.0001667 ok
+brp_W5_H4_N15_id8.txt        RS-4   Z=   7 t=0.0001703 ok
+brp_W5_H4_N15_id8.txt        PM-1   Z=   7 t=0.0002678 ok
+brp_W5_H4_N15_id8.txt        RS-10  Z=   7 t=0.0013621 ok
+brp_W5_H4_N15_id8.txt        PM-2   Z=   7 t=0.0002282 ok
+brp_W5_H4_N15_id8.txt        PM-3   Z=   7 t=0.0003075 ok
+brp_W5_H4_N15_id8.txt        PM-4   Z=   7 t=0.0003682 ok
+brp_W5_H4_N15_id8.txt        PM-5   Z=   7 t=0.0003195 ok
+brp_W5_H4_N15_id8.txt        PM-7   Z=   7 t=0.0002288 ok
+brp_W5_H4_N15_id8.txt        PM-10  Z=   7 t=0.0002516 ok
+brp_W5_H4_N15_id9.txt        RS-1   Z=   5 t= 3.1e-05 ok
+brp_W5_H4_N15_id9.txt        RS-3   Z=   4 t=0.0002387 ok
+brp_W5_H4_N15_id9.txt        RS-2   Z=   4 t=0.000175 ok
+brp_W5_H4_N15_id9.txt        RS-4   Z=   4 t= 0.00015 ok
+brp_W5_H4_N15_id9.txt        RS-5   Z=   4 t=0.0002115 ok
+brp_W5_H4_N15_id9.txt        RS-7   Z=   4 t=0.0002474 ok
+brp_W5_H4_N15_id9.txt        PM-1   Z=   4 t=0.0002698 ok
+brp_W5_H4_N15_id9.txt        RS-10  Z=   4 t=0.000248 ok
+brp_W5_H4_N15_id9.txt        PM-2   Z=   4 t=0.000409 ok
+brp_W5_H4_N15_id9.txt        PM-3   Z=   4 t=0.0002565 ok
+brp_W5_H4_N15_id9.txt        PM-5   Z=   4 t=0.0002469 ok
+brp_W5_H4_N15_id9.txt        PM-4   Z=   4 t=0.0002289 ok
+brp_W5_H4_N15_id9.txt        PM-7   Z=   4 t=0.0003847 ok
+brp_W5_H4_N15_id9.txt        PM-10  Z=   4 t=0.0003121 ok
+brp_W5_H5_N18_id1.txt        RS-1   Z=   9 t=2.81e-05 ok
+brp_W5_H5_N18_id1.txt        RS-2   Z=   9 t=0.0002701 ok
+brp_W5_H5_N18_id1.txt        RS-5   Z=   9 t=0.0003173 ok
+brp_W5_H5_N18_id1.txt        RS-3   Z=   9 t=0.0003205 ok
+brp_W5_H5_N18_id1.txt        RS-7   Z=   9 t=0.0003734 ok
+brp_W5_H5_N18_id1.txt        RS-4   Z=   9 t=0.000241 ok
+brp_W5_H5_N18_id1.txt        PM-3   Z=   9 t= 0.00027 ok
+brp_W5_H5_N18_id1.txt        RS-10  Z=   9 t=0.0003267 ok
+brp_W5_H5_N18_id1.txt        PM-2   Z=   9 t=0.0002612 ok
+brp_W5_H5_N18_id1.txt        PM-1   Z=   9 t=0.0004215 ok
+brp_W5_H5_N18_id1.txt        PM-4   Z=   9 t=0.0002972 ok
+brp_W5_H5_N18_id1.txt        PM-7   Z=   9 t=0.0002632 ok
+brp_W5_H5_N18_id1.txt        PM-10  Z=   9 t=0.0002561 ok
+brp_W5_H5_N18_id1.txt        PM-5   Z=   9 t=0.0002522 ok
+brp_W5_H5_N18_id10.txt       RS-1   Z=   4 t=3.48e-05 ok
+brp_W5_H5_N18_id10.txt       RS-2   Z=   4 t=0.0003252 ok
+brp_W5_H5_N18_id10.txt       RS-4   Z=   4 t=0.0002799 ok
+brp_W5_H5_N18_id10.txt       RS-3   Z=   4 t=0.0003212 ok
+brp_W5_H5_N18_id10.txt       RS-5   Z=   4 t=0.0002839 ok
+brp_W5_H5_N18_id10.txt       RS-7   Z=   4 t=0.0002179 ok
+brp_W5_H5_N18_id10.txt       PM-1   Z=   4 t=4.08e-05 ok
+brp_W5_H5_N18_id10.txt       RS-10  Z=   4 t=0.0003124 ok
+brp_W5_H5_N18_id10.txt       PM-5   Z=   4 t=4.16e-05 ok
+brp_W5_H5_N18_id10.txt       PM-2   Z=   4 t=3.53e-05 ok
+brp_W5_H5_N18_id10.txt       PM-3   Z=   4 t=3.58e-05 ok
+brp_W5_H5_N18_id10.txt       PM-4   Z=   4 t=3.91e-05 ok
+brp_W5_H5_N18_id10.txt       PM-10  Z=   4 t=5.29e-05 ok
+brp_W5_H5_N18_id2.txt        RS-2   Z=  12 t=0.0002496 ok
+brp_W5_H5_N18_id2.txt        RS-1   Z=  12 t=7.74e-05 ok
+brp_W5_H5_N18_id10.txt       PM-7   Z=   4 t=5.75e-05 ok
+brp_W5_H5_N18_id2.txt        RS-3   Z=  12 t=0.0004037 ok
+brp_W5_H5_N18_id2.txt        RS-4   Z=  12 t=0.0002642 ok
+brp_W5_H5_N18_id2.txt        RS-5   Z=  12 t=0.000355 ok
+brp_W5_H5_N18_id2.txt        RS-7   Z=  12 t=0.0003618 ok
+brp_W5_H5_N18_id2.txt        PM-1   Z=  12 t=0.0008535 ok
+brp_W5_H5_N18_id2.txt        PM-2   Z=  12 t=0.0013486 ok
+brp_W5_H5_N18_id2.txt        RS-10  Z=  12 t=0.0002645 ok
+brp_W5_H5_N18_id2.txt        PM-4   Z=  12 t=0.0009035 ok
+brp_W5_H5_N18_id2.txt        PM-5   Z=  12 t=0.001544 ok
+brp_W5_H5_N18_id2.txt        PM-3   Z=  12 t=0.0015347 ok
+brp_W5_H5_N18_id2.txt        PM-7   Z=  12 t=0.0012605 ok
+brp_W5_H5_N18_id3.txt        RS-1   Z=   8 t= 3.1e-05 ok
+brp_W5_H5_N18_id3.txt        RS-2   Z=   8 t=0.0003107 ok
+brp_W5_H5_N18_id3.txt        RS-3   Z=   8 t=0.0002782 ok
+brp_W5_H5_N18_id2.txt        PM-10  Z=  12 t=0.0009828 ok
+brp_W5_H5_N18_id3.txt        RS-10  Z=   8 t=0.0002367 ok
+brp_W5_H5_N18_id3.txt        RS-7   Z=   8 t=0.0003206 ok
+brp_W5_H5_N18_id3.txt        RS-4   Z=   8 t=0.0002896 ok
+brp_W5_H5_N18_id3.txt        RS-5   Z=   8 t=0.0003033 ok
+brp_W5_H5_N18_id3.txt        PM-2   Z=   8 t=0.0009079 ok
+brp_W5_H5_N18_id3.txt        PM-1   Z=   8 t=0.0006816 ok
+brp_W5_H5_N18_id3.txt        PM-4   Z=   8 t=0.0008675 ok
+brp_W5_H5_N18_id3.txt        PM-3   Z=   8 t=0.0009714 ok
+brp_W5_H5_N18_id3.txt        PM-5   Z=   8 t=0.0013751 ok
+brp_W5_H5_N18_id3.txt        PM-7   Z=   8 t=0.0010465 ok
+brp_W5_H5_N18_id4.txt        RS-1   Z=  14 t=4.17e-05 ok
+brp_W5_H5_N18_id3.txt        PM-10  Z=   8 t=0.0008676 ok
+brp_W5_H5_N18_id4.txt        RS-4   Z=  13 t=0.0002307 ok
+brp_W5_H5_N18_id4.txt        RS-2   Z=  13 t=0.0002407 ok
+brp_W5_H5_N18_id4.txt        RS-3   Z=  13 t=0.0003456 ok
+brp_W5_H5_N18_id4.txt        RS-5   Z=  13 t=0.0002417 ok
+brp_W5_H5_N18_id4.txt        RS-7   Z=  13 t=0.0002406 ok
+brp_W5_H5_N18_id4.txt        PM-2   Z=  13 t=0.0022754 ok
+brp_W5_H5_N18_id4.txt        RS-10  Z=  13 t=0.0027944 ok
+brp_W5_H5_N18_id4.txt        PM-1   Z=  13 t=0.001013 ok
+brp_W5_H5_N18_id4.txt        PM-3   Z=  13 t=0.0015571 ok
+brp_W5_H5_N18_id4.txt        PM-4   Z=  13 t=0.001993 ok
+brp_W5_H5_N18_id4.txt        PM-5   Z=  13 t=0.0022424 ok
+brp_W5_H5_N18_id4.txt        PM-7   Z=  13 t=0.002528 ok
+brp_W5_H5_N18_id5.txt        RS-2   Z=   9 t=0.0002091 ok
+brp_W5_H5_N18_id5.txt        RS-1   Z=   9 t=5.15e-05 ok
+brp_W5_H5_N18_id5.txt        RS-3   Z=   9 t=0.0003438 ok
+brp_W5_H5_N18_id4.txt        PM-10  Z=  13 t=0.0044251 ok
+brp_W5_H5_N18_id5.txt        RS-4   Z=   9 t=0.0002132 ok
+brp_W5_H5_N18_id5.txt        RS-7   Z=   9 t=0.0003526 ok
+brp_W5_H5_N18_id5.txt        RS-5   Z=   9 t=0.0002324 ok
+brp_W5_H5_N18_id5.txt        RS-10  Z=   9 t=0.000252 ok
+brp_W5_H5_N18_id5.txt        PM-2   Z=   9 t=5.51e-05 ok
+brp_W5_H5_N18_id5.txt        PM-3   Z=   9 t=6.01e-05 ok
+brp_W5_H5_N18_id5.txt        PM-1   Z=   9 t=3.86e-05 ok
+brp_W5_H5_N18_id5.txt        PM-4   Z=   9 t=3.79e-05 ok
+brp_W5_H5_N18_id5.txt        PM-10  Z=   9 t=5.69e-05 ok
+brp_W5_H5_N18_id5.txt        PM-5   Z=   9 t=3.62e-05 ok
+brp_W5_H5_N18_id5.txt        PM-7   Z=   9 t=3.95e-05 ok
+brp_W5_H5_N18_id6.txt        RS-1   Z=   7 t=2.89e-05 ok
+brp_W5_H5_N18_id6.txt        RS-2   Z=   7 t=0.000298 ok
+brp_W5_H5_N18_id6.txt        RS-3   Z=   7 t=0.0002559 ok
+brp_W5_H5_N18_id6.txt        RS-4   Z=   7 t=0.0002547 ok
+brp_W5_H5_N18_id6.txt        RS-5   Z=   7 t=0.0002535 ok
+brp_W5_H5_N18_id6.txt        RS-10  Z=   7 t=0.0004159 ok
+brp_W5_H5_N18_id6.txt        RS-7   Z=   7 t=0.0003823 ok
+brp_W5_H5_N18_id6.txt        PM-1   Z=   7 t=0.0004909 ok
+brp_W5_H5_N18_id6.txt        PM-2   Z=   7 t=0.0005489 ok
+brp_W5_H5_N18_id6.txt        PM-5   Z=   7 t=0.000361 ok
+brp_W5_H5_N18_id6.txt        PM-7   Z=   7 t=0.0004414 ok
+brp_W5_H5_N18_id6.txt        PM-3   Z=   7 t=0.0003845 ok
+brp_W5_H5_N18_id6.txt        PM-4   Z=   7 t=0.0003453 ok
+brp_W5_H5_N18_id7.txt        RS-1   Z=   8 t=3.23e-05 ok
+brp_W5_H5_N18_id7.txt        RS-3   Z=   8 t=0.0005336 ok
+brp_W5_H5_N18_id6.txt        PM-10  Z=   7 t=0.0003768 ok
+brp_W5_H5_N18_id7.txt        RS-2   Z=   8 t=0.0004852 ok
+brp_W5_H5_N18_id7.txt        RS-4   Z=   8 t=0.0004437 ok
+brp_W5_H5_N18_id7.txt        RS-7   Z=   8 t=0.0003132 ok
+brp_W5_H5_N18_id7.txt        RS-5   Z=   8 t=0.0004726 ok
+brp_W5_H5_N18_id7.txt        RS-10  Z=   8 t=0.0003694 ok
+brp_W5_H5_N18_id7.txt        PM-1   Z=   8 t=0.0003775 ok
+brp_W5_H5_N18_id7.txt        PM-2   Z=   8 t=0.0005629 ok
+brp_W5_H5_N18_id7.txt        PM-3   Z=   8 t=0.0003616 ok
+brp_W5_H5_N18_id7.txt        PM-4   Z=   8 t=0.0003389 ok
+brp_W5_H5_N18_id7.txt        PM-5   Z=   8 t=0.0005169 ok
+brp_W5_H5_N18_id7.txt        PM-7   Z=   8 t=0.0003856 ok
+brp_W5_H5_N18_id7.txt        PM-10  Z=   8 t=0.000364 ok
+brp_W5_H5_N18_id8.txt        RS-1   Z=  11 t=3.39e-05 ok
+brp_W5_H5_N18_id8.txt        RS-2   Z=  10 t=0.0003189 ok
+brp_W5_H5_N18_id8.txt        RS-4   Z=  10 t=0.0002738 ok
+brp_W5_H5_N18_id8.txt        RS-3   Z=  10 t=0.0001925 ok
+brp_W5_H5_N18_id8.txt        RS-5   Z=  10 t=0.0003009 ok
+brp_W5_H5_N18_id8.txt        RS-7   Z=  10 t=0.0002099 ok
+brp_W5_H5_N18_id8.txt        RS-10  Z=  10 t=0.0018793 ok
+brp_W5_H5_N18_id8.txt        PM-1   Z=  10 t=0.0009901 ok
+brp_W5_H5_N18_id8.txt        PM-2   Z=  10 t=0.0014293 ok
+brp_W5_H5_N18_id8.txt        PM-4   Z=  10 t=0.0016004 ok
+brp_W5_H5_N18_id8.txt        PM-5   Z=  10 t=0.0017757 ok
+brp_W5_H5_N18_id8.txt        PM-3   Z=  10 t=0.0018737 ok
+brp_W5_H5_N18_id9.txt        RS-1   Z=   9 t=2.68e-05 ok
+brp_W5_H5_N18_id8.txt        PM-7   Z=  10 t=0.0019646 ok
+brp_W5_H5_N18_id9.txt        RS-2   Z=   9 t=0.0002754 ok
+brp_W5_H5_N18_id8.txt        PM-10  Z=  10 t=0.0015459 ok
+brp_W5_H5_N18_id9.txt        RS-4   Z=   9 t=0.0002774 ok
+brp_W5_H5_N18_id9.txt        RS-5   Z=   9 t=0.0004226 ok
+brp_W5_H5_N18_id9.txt        RS-3   Z=   9 t=0.0002713 ok
+brp_W5_H5_N18_id9.txt        RS-7   Z=   9 t=0.0004222 ok
+brp_W5_H5_N18_id9.txt        RS-10  Z=   9 t=0.0003829 ok
+brp_W5_H5_N18_id9.txt        PM-3   Z=   9 t=0.0011351 ok
+brp_W5_H5_N18_id9.txt        PM-2   Z=   9 t=0.0009795 ok
+brp_W5_H5_N18_id9.txt        PM-1   Z=   9 t=0.0009075 ok
+brp_W5_H5_N18_id9.txt        PM-4   Z=   9 t=0.0014675 ok
+brp_W5_H5_N18_id9.txt        PM-5   Z=   9 t=0.0012417 ok
+brp_W5_H5_N18_id9.txt        PM-7   Z=   9 t=0.0014119 ok
+brp_W5_H5_N18_id9.txt        PM-10  Z=   9 t=0.0015559 ok
+ w RS-w reshuffles médio RS-w gap médio (%) RS-w gap máx (%) RS-w = ótimo RS-w tempo médio (ms) PM-w reshuffles médio PM-w gap médio (%) PM-w gap máx (%) PM-w = ótimo PM-w tempo médio (ms)
+ 1                  6.22               1.25            25.00        46/50                0.0329                  6.14               0.00             0.00        50/50                 0.276
+ 2                  6.14               0.00             0.00        50/50                 0.174                  6.14               0.00             0.00        50/50                 0.358
+ 3                  6.14               0.00             0.00        50/50                 0.189                  6.14               0.00             0.00        50/50                 0.372
+ 4                  6.14               0.00             0.00        50/50                 0.170                  6.14               0.00             0.00        50/50                 0.399
+ 5                  6.14               0.00             0.00        50/50                 0.195                  6.14               0.00             0.00        50/50                 0.455
+ 7                  6.14               0.00             0.00        50/50                 0.274                  6.14               0.00             0.00        50/50                 0.477
+10                  6.14               0.00             0.00        50/50                 0.607                  6.14               0.00             0.00        50/50                 0.518
+referencia: otimo em 50/50
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura_classe.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\largura_bruto.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_largura.png
+=== fim scripts\variar_largura.py exit 0
+=== scripts\variar_largura.py --pesadas
+30 instancias x 14 configuracoes + B&B em 30
+brp_W7_H6_N37_id1.txt        RS-1   Z=  31 t=0.0001439 ok
+brp_W7_H6_N37_id1.txt        RS-2   Z=  30 t=0.0011711 ok
+brp_W7_H6_N37_id1.txt        RS-4   Z=  30 t=0.0009043 ok
+brp_W7_H6_N37_id1.txt        RS-3   Z=  30 t=0.0008351 ok
+brp_W7_H6_N37_id1.txt        RS-7   Z=  30 t=0.0012023 ok
+brp_W7_H6_N37_id1.txt        RS-5   Z=  30 t=0.0011937 ok
+brp_W7_H6_N37_id1.txt        RS-10  Z=  30 t=0.0011845 ok
+brp_W7_H6_N37_id1.txt        PM-1   Z=  29 t=0.0111046 ok
+brp_W7_H6_N37_id1.txt        PM-2   Z=  29 t=0.0157381 ok
+brp_W7_H6_N37_id1.txt        PM-3   Z=  29 t=0.018918 ok
+brp_W7_H6_N37_id1.txt        PM-4   Z=  29 t=0.0186355 ok
+brp_W7_H6_N37_id10.txt       RS-1   Z=  25 t= 9.2e-05 ok
+brp_W7_H6_N37_id1.txt        PM-5   Z=  29 t=0.0209445 ok
+brp_W7_H6_N37_id10.txt       RS-3   Z=  25 t=0.0005614 ok
+brp_W7_H6_N37_id10.txt       RS-2   Z=  25 t=0.0005886 ok
+brp_W7_H6_N37_id1.txt        PM-7   Z=  29 t=0.0304222 ok
+brp_W7_H6_N37_id10.txt       RS-4   Z=  25 t=0.0004334 ok
+brp_W7_H6_N37_id10.txt       RS-5   Z=  25 t=0.0005185 ok
+brp_W7_H6_N37_id1.txt        PM-10  Z=  29 t=0.033256 ok
+brp_W7_H6_N37_id10.txt       RS-7   Z=  25 t=0.0007133 ok
+brp_W7_H6_N37_id10.txt       PM-1   Z=  25 t=0.0046767 ok
+brp_W7_H6_N37_id10.txt       RS-10  Z=  25 t=0.004546 ok
+brp_W7_H6_N37_id10.txt       PM-2   Z=  25 t=0.0061717 ok
+brp_W7_H6_N37_id10.txt       PM-3   Z=  25 t=0.0111712 ok
+brp_W7_H6_N37_id10.txt       PM-4   Z=  25 t=0.0133304 ok
+brp_W7_H6_N37_id10.txt       PM-5   Z=  25 t=0.0201129 ok
+brp_W7_H6_N37_id2.txt        RS-1   Z=  43 t=0.0001258 ok
+brp_W7_H6_N37_id10.txt       PM-7   Z=  25 t=0.0222609 ok
+brp_W7_H6_N37_id2.txt        RS-2   Z=  40 t=0.0015088 ok
+brp_W7_H6_N37_id2.txt        RS-3   Z=  40 t=0.0016627 ok
+brp_W7_H6_N37_id2.txt        RS-4   Z=  40 t=0.0016439 ok
+brp_W7_H6_N37_id2.txt        RS-5   Z=  40 t=0.0018442 ok
+brp_W7_H6_N37_id2.txt        RS-10  Z=  40 t=0.0017971 ok
+brp_W7_H6_N37_id2.txt        RS-7   Z=  40 t=0.0017971 ok
+brp_W7_H6_N37_id10.txt       PM-10  Z=  25 t=0.0361908 ok
+brp_W7_H6_N37_id2.txt        PM-1   Z=  38 t=0.0225449 ok
+brp_W7_H6_N37_id2.txt        PM-2   Z=  38 t=0.0301822 ok
+brp_W7_H6_N37_id2.txt        PM-3   Z=  38 t=0.0318548 ok
+brp_W7_H6_N37_id2.txt        PM-4   Z=  38 t=0.0360185 ok
+brp_W7_H6_N37_id3.txt        RS-1   Z=  29 t=0.0001189 ok
+brp_W7_H6_N37_id3.txt        RS-2   Z=  27 t=0.0008368 ok
+brp_W7_H6_N37_id3.txt        RS-3   Z=  27 t=0.0013512 ok
+brp_W7_H6_N37_id2.txt        PM-5   Z=  38 t=0.0475355 ok
+brp_W7_H6_N37_id2.txt        PM-7   Z=  38 t=0.0525031 ok
+brp_W7_H6_N37_id3.txt        RS-4   Z=  27 t=0.0011452 ok
+brp_W7_H6_N37_id3.txt        RS-5   Z=  27 t=0.0013111 ok
+brp_W7_H6_N37_id2.txt        PM-10  Z=  38 t=0.0555622 ok
+brp_W7_H6_N37_id3.txt        RS-10  Z=  27 t=0.0012615 ok
+brp_W7_H6_N37_id3.txt        RS-7   Z=  27 t=0.0012659 ok
+brp_W7_H6_N37_id3.txt        PM-1   Z=  27 t=0.0076638 ok
+brp_W7_H6_N37_id3.txt        PM-2   Z=  27 t=0.0126648 ok
+brp_W7_H6_N37_id3.txt        PM-3   Z=  27 t=0.0193276 ok
+brp_W7_H6_N37_id3.txt        PM-4   Z=  27 t=0.0243617 ok
+brp_W7_H6_N37_id3.txt        PM-5   Z=  27 t=0.0225515 ok
+brp_W7_H6_N37_id4.txt        RS-1   Z=  30 t=8.04e-05 ok
+brp_W7_H6_N37_id3.txt        PM-7   Z=  27 t=0.0293299 ok
+brp_W7_H6_N37_id4.txt        RS-2   Z=  30 t=0.0006084 ok
+brp_W7_H6_N37_id4.txt        RS-3   Z=  30 t=0.0009119 ok
+brp_W7_H6_N37_id4.txt        RS-4   Z=  30 t=0.0009257 ok
+brp_W7_H6_N37_id4.txt        RS-7   Z=  30 t=0.000744 ok
+brp_W7_H6_N37_id4.txt        RS-5   Z=  30 t=0.0008762 ok
+brp_W7_H6_N37_id4.txt        RS-10  Z=  30 t=0.0051065 ok
+brp_W7_H6_N37_id3.txt        PM-10  Z=  27 t=0.0474749 ok
+brp_W7_H6_N37_id4.txt        PM-1   Z=  29 t=0.0108063 ok
+brp_W7_H6_N37_id4.txt        PM-2   Z=  29 t=0.0126736 ok
+brp_W7_H6_N37_id4.txt        PM-3   Z=  29 t=0.0224699 ok
+brp_W7_H6_N37_id4.txt        PM-4   Z=  29 t=0.0255175 ok
+brp_W7_H6_N37_id5.txt        RS-1   Z=  33 t=8.27e-05 ok
+brp_W7_H6_N37_id4.txt        PM-5   Z=  29 t=0.034571 ok
+brp_W7_H6_N37_id5.txt        RS-2   Z=  32 t=0.0012076 ok
+brp_W7_H6_N37_id5.txt        RS-3   Z=  32 t=0.0019037 ok
+brp_W7_H6_N37_id4.txt        PM-7   Z=  29 t=0.0437314 ok
+brp_W7_H6_N37_id5.txt        RS-4   Z=  32 t=0.0014572 ok
+brp_W7_H6_N37_id5.txt        RS-5   Z=  32 t=0.0017748 ok
+brp_W7_H6_N37_id4.txt        PM-10  Z=  29 t=0.0337357 ok
+brp_W7_H6_N37_id5.txt        RS-7   Z=  32 t=0.0017532 ok
+brp_W7_H6_N37_id5.txt        RS-10  Z=  32 t=0.0013126 ok
+brp_W7_H6_N37_id5.txt        PM-1   Z=  32 t=0.0108162 ok
+brp_W7_H6_N37_id5.txt        PM-2   Z=  32 t=0.0239548 ok
+brp_W7_H6_N37_id5.txt        PM-3   Z=  32 t=0.0296863 ok
+brp_W7_H6_N37_id5.txt        PM-4   Z=  32 t=0.0352219 ok
+brp_W7_H6_N37_id5.txt        PM-5   Z=  31 t=0.0358717 ok
+brp_W7_H6_N37_id6.txt        RS-1   Z=  28 t=8.54e-05 ok
+brp_W7_H6_N37_id6.txt        RS-2   Z=  27 t=0.0004493 ok
+brp_W7_H6_N37_id6.txt        RS-3   Z=  27 t=0.0007393 ok
+brp_W7_H6_N37_id6.txt        RS-4   Z=  27 t=0.0006843 ok
+brp_W7_H6_N37_id6.txt        RS-5   Z=  27 t=0.0004866 ok
+brp_W7_H6_N37_id5.txt        PM-7   Z=  31 t=0.0508627 ok
+brp_W7_H6_N37_id6.txt        RS-7   Z=  27 t=0.0006557 ok
+brp_W7_H6_N37_id6.txt        RS-10  Z=  27 t=0.0046603 ok
+brp_W7_H6_N37_id6.txt        PM-1   Z=  26 t=0.0073598 ok
+brp_W7_H6_N37_id5.txt        PM-10  Z=  31 t=0.0713066 ok
+brp_W7_H6_N37_id6.txt        PM-2   Z=  26 t=0.0144704 ok
+brp_W7_H6_N37_id6.txt        PM-3   Z=  26 t=0.0226663 ok
+brp_W7_H6_N37_id6.txt        PM-4   Z=  26 t=0.0225499 ok
+brp_W7_H6_N37_id7.txt        RS-1   Z=  20 t=5.99e-05 ok
+brp_W7_H6_N37_id6.txt        PM-5   Z=  26 t=0.0238619 ok
+brp_W7_H6_N37_id6.txt        PM-7   Z=  26 t=0.0314653 ok
+brp_W7_H6_N37_id7.txt        RS-2   Z=  19 t=0.0006471 ok
+brp_W7_H6_N37_id7.txt        RS-3   Z=  19 t=0.0007293 ok
+brp_W7_H6_N37_id7.txt        RS-4   Z=  19 t=0.0006041 ok
+brp_W7_H6_N37_id7.txt        RS-5   Z=  19 t=0.0005022 ok
+brp_W7_H6_N37_id7.txt        RS-7   Z=  19 t=0.0004322 ok
+brp_W7_H6_N37_id6.txt        PM-10  Z=  26 t=0.0427887 ok
+brp_W7_H6_N37_id7.txt        PM-1   Z=  19 t=0.0020248 ok
+brp_W7_H6_N37_id7.txt        PM-2   Z=  19 t=0.0029289 ok
+brp_W7_H6_N37_id7.txt        RS-10  Z=  19 t=0.0041191 ok
+brp_W7_H6_N37_id7.txt        PM-3   Z=  19 t=0.0028048 ok
+brp_W7_H6_N37_id7.txt        PM-4   Z=  19 t=0.0025578 ok
+brp_W7_H6_N37_id7.txt        PM-5   Z=  19 t=0.0027398 ok
+brp_W7_H6_N37_id7.txt        PM-7   Z=  19 t=0.0036022 ok
+brp_W7_H6_N37_id8.txt        RS-2   Z=  29 t=0.0006185 ok
+brp_W7_H6_N37_id7.txt        PM-10  Z=  19 t=0.0030027 ok
+brp_W7_H6_N37_id8.txt        RS-3   Z=  29 t=0.0004328 ok
+brp_W7_H6_N37_id8.txt        RS-1   Z=  29 t=0.0001009 ok
+brp_W7_H6_N37_id8.txt        RS-4   Z=  29 t=0.0006913 ok
+brp_W7_H6_N37_id8.txt        RS-7   Z=  29 t=0.000481 ok
+brp_W7_H6_N37_id8.txt        RS-5   Z=  29 t=0.0004654 ok
+brp_W7_H6_N37_id8.txt        RS-10  Z=  29 t=0.0042813 ok
+brp_W7_H6_N37_id8.txt        PM-1   Z=  29 t=0.0051896 ok
+brp_W7_H6_N37_id8.txt        PM-2   Z=  29 t=0.0082388 ok
+brp_W7_H6_N37_id8.txt        PM-3   Z=  29 t=0.0122385 ok
+brp_W7_H6_N37_id8.txt        PM-4   Z=  29 t=0.0153917 ok
+brp_W7_H6_N37_id9.txt        RS-1   Z=  32 t=9.68e-05 ok
+brp_W7_H6_N37_id8.txt        PM-5   Z=  29 t=0.0203535 ok
+brp_W7_H6_N37_id9.txt        RS-2   Z=  30 t=0.0006382 ok
+brp_W7_H6_N37_id9.txt        RS-3   Z=  30 t=0.0006426 ok
+brp_W7_H6_N37_id9.txt        RS-4   Z=  30 t=0.0006531 ok
+brp_W7_H6_N37_id9.txt        RS-5   Z=  30 t=0.0009121 ok
+brp_W7_H6_N37_id8.txt        PM-7   Z=  29 t=0.0347534 ok
+brp_W7_H6_N37_id8.txt        PM-10  Z=  29 t=0.0415836 ok
+brp_W7_H6_N37_id9.txt        RS-7   Z=  30 t=0.0009216 ok
+brp_W7_H6_N37_id9.txt        RS-10  Z=  30 t=0.0010356 ok
+brp_W7_H6_N37_id9.txt        PM-1   Z=  29 t=0.0088224 ok
+brp_W7_H6_N37_id9.txt        PM-2   Z=  29 t=0.0207277 ok
+brp_W7_H6_N37_id9.txt        PM-3   Z=  29 t=0.0271248 ok
+brp_W7_H6_N37_id9.txt        PM-4   Z=  29 t=0.0283553 ok
+brp_W7_H6_N37_id9.txt        PM-5   Z=  29 t=0.0283495 ok
+brp_W7_H7_N43_id1.txt        RS-1   Z=  35 t=8.52e-05 ok
+brp_W7_H7_N43_id1.txt        RS-2   Z=  34 t=0.0017958 ok
+brp_W7_H7_N43_id1.txt        RS-3   Z=  34 t=0.0019423 ok
+brp_W7_H7_N43_id1.txt        RS-4   Z=  34 t=0.0014967 ok
+brp_W7_H6_N37_id9.txt        PM-7   Z=  29 t=0.035008 ok
+brp_W7_H7_N43_id1.txt        RS-5   Z=  34 t=0.0017554 ok
+brp_W7_H7_N43_id1.txt        RS-10  Z=  34 t=0.0011799 ok
+brp_W7_H7_N43_id1.txt        RS-7   Z=  34 t=0.0011386 ok
+brp_W7_H6_N37_id9.txt        PM-10  Z=  29 t=0.0408495 ok
+brp_W7_H7_N43_id1.txt        PM-1   Z=  32 t=0.0135468 ok
+brp_W7_H7_N43_id1.txt        PM-2   Z=  32 t= 0.02214 ok
+brp_W7_H7_N43_id1.txt        PM-3   Z=  32 t=0.0302754 ok
+brp_W7_H7_N43_id1.txt        PM-4   Z=  32 t=0.0364074 ok
+brp_W7_H7_N43_id10.txt       RS-1   Z=  42 t=0.0001546 ok
+brp_W7_H7_N43_id1.txt        PM-5   Z=  32 t=0.0391276 ok
+brp_W7_H7_N43_id10.txt       RS-2   Z=  39 t=0.0014339 ok
+brp_W7_H7_N43_id10.txt       RS-3   Z=  39 t=0.0011346 ok
+brp_W7_H7_N43_id10.txt       RS-4   Z=  39 t=0.0016861 ok
+brp_W7_H7_N43_id1.txt        PM-7   Z=  32 t=0.0496932 ok
+brp_W7_H7_N43_id10.txt       RS-5   Z=  39 t=0.0014934 ok
+brp_W7_H7_N43_id1.txt        PM-10  Z=  32 t=0.0502294 ok
+brp_W7_H7_N43_id10.txt       RS-7   Z=  39 t=0.0012854 ok
+brp_W7_H7_N43_id10.txt       RS-10  Z=  39 t=0.0016465 ok
+brp_W7_H7_N43_id10.txt       PM-1   Z=  39 t=0.0140711 ok
+brp_W7_H7_N43_id10.txt       PM-2   Z=  39 t=0.0270172 ok
+brp_W7_H7_N43_id10.txt       PM-3   Z=  39 t=0.0410719 ok
+brp_W7_H7_N43_id10.txt       PM-4   Z=  39 t=0.0531482 ok
+brp_W7_H7_N43_id2.txt        RS-1   Z=  35 t=0.0001704 ok
+brp_W7_H7_N43_id2.txt        RS-2   Z=  34 t=0.001496 ok
+brp_W7_H7_N43_id2.txt        RS-3   Z=  34 t=0.0010021 ok
+brp_W7_H7_N43_id10.txt       PM-5   Z=  39 t=0.072385 ok
+brp_W7_H7_N43_id2.txt        RS-4   Z=  34 t=0.0016223 ok
+brp_W7_H7_N43_id2.txt        RS-5   Z=  34 t=0.0013428 ok
+brp_W7_H7_N43_id2.txt        RS-7   Z=  34 t=0.0016328 ok
+brp_W7_H7_N43_id10.txt       PM-7   Z=  39 t=0.092266 ok
+brp_W7_H7_N43_id2.txt        RS-10  Z=  34 t=0.0014152 ok
+brp_W7_H7_N43_id2.txt        PM-1   Z=  34 t=0.0120503 ok
+brp_W7_H7_N43_id2.txt        PM-2   Z=  34 t=0.0193532 ok
+brp_W7_H7_N43_id2.txt        PM-3   Z=  34 t=0.0269289 ok
+brp_W7_H7_N43_id10.txt       PM-10  Z=  39 t=0.1312007 ok
+brp_W7_H7_N43_id2.txt        PM-4   Z=  34 t=0.0284932 ok
+brp_W7_H7_N43_id3.txt        RS-1   Z=  38 t=0.0001084 ok
+brp_W7_H7_N43_id3.txt        RS-2   Z=  35 t=0.0008387 ok
+brp_W7_H7_N43_id2.txt        PM-5   Z=  34 t=0.0452611 ok
+brp_W7_H7_N43_id3.txt        RS-3   Z=  35 t=0.0006477 ok
+brp_W7_H7_N43_id3.txt        RS-4   Z=  35 t=0.0009906 ok
+brp_W7_H7_N43_id2.txt        PM-7   Z=  34 t=0.0467153 ok
+brp_W7_H7_N43_id3.txt        RS-5   Z=  35 t=0.0008931 ok
+brp_W7_H7_N43_id3.txt        RS-7   Z=  35 t=0.0006509 ok
+brp_W7_H7_N43_id3.txt        RS-10  Z=  33 t=0.0056476 ok
+brp_W7_H7_N43_id3.txt        PM-1   Z=  34 t= 0.01219 ok
+brp_W7_H7_N43_id2.txt        PM-10  Z=  34 t=0.0655189 ok
+brp_W7_H7_N43_id3.txt        PM-2   Z=  34 t=0.0303341 ok
+brp_W7_H7_N43_id3.txt        PM-3   Z=  34 t=0.0475542 ok
+brp_W7_H7_N43_id3.txt        PM-4   Z=  34 t=0.0506567 ok
+brp_W7_H7_N43_id4.txt        RS-1   Z=  42 t=0.0001259 ok
+brp_W7_H7_N43_id3.txt        PM-5   Z=  34 t=0.0645971 ok
+brp_W7_H7_N43_id4.txt        RS-2   Z=  39 t=0.0011711 ok
+brp_W7_H7_N43_id4.txt        RS-3   Z=  39 t=0.0011582 ok
+brp_W7_H7_N43_id4.txt        RS-4   Z=  39 t=0.0008421 ok
+brp_W7_H7_N43_id4.txt        RS-5   Z=  39 t=0.000742 ok
+brp_W7_H7_N43_id4.txt        RS-7   Z=  39 t=0.0010876 ok
+brp_W7_H7_N43_id3.txt        PM-7   Z=  34 t=0.0862764 ok
+brp_W7_H7_N43_id4.txt        RS-10  Z=  39 t=0.0108637 ok
+brp_W7_H7_N43_id4.txt        PM-1   Z=  39 t=0.0216688 ok
+brp_W7_H7_N43_id3.txt        PM-10  Z=  34 t=0.1106072 ok
+brp_W7_H7_N43_id4.txt        PM-2   Z=  37 t=0.0480005 ok
+brp_W7_H7_N43_id4.txt        PM-3   Z=  37 t=0.0694229 ok
+brp_W7_H7_N43_id4.txt        PM-4   Z=  37 t=0.0993659 ok
+brp_W7_H7_N43_id5.txt        RS-1   Z=  35 t=0.000132 ok
+brp_W7_H7_N43_id5.txt        RS-2   Z=  35 t=0.0008769 ok
+brp_W7_H7_N43_id5.txt        RS-3   Z=  35 t=0.0005243 ok
+brp_W7_H7_N43_id5.txt        RS-4   Z=  35 t=0.0005098 ok
+brp_W7_H7_N43_id5.txt        RS-5   Z=  35 t=0.0005472 ok
+brp_W7_H7_N43_id4.txt        PM-5   Z=  37 t=0.1344409 ok
+brp_W7_H7_N43_id5.txt        RS-7   Z=  35 t=0.0005674 ok
+brp_W7_H7_N43_id5.txt        RS-10  Z=  35 t=0.0050591 ok
+brp_W7_H7_N43_id4.txt        PM-7   Z=  37 t=0.1442694 ok
+brp_W7_H7_N43_id5.txt        PM-1   Z=  35 t=0.0070372 ok
+brp_W7_H7_N43_id5.txt        PM-2   Z=  35 t=0.0109544 ok
+brp_W7_H7_N43_id5.txt        PM-3   Z=  35 t=0.0228641 ok
+brp_W7_H7_N43_id5.txt        PM-4   Z=  34 t=  0.0356 ok
+brp_W7_H7_N43_id5.txt        PM-5   Z=  34 t=0.0458186 ok
+brp_W7_H7_N43_id6.txt        RS-1   Z=  38 t=0.0001331 ok
+brp_W7_H7_N43_id5.txt        PM-7   Z=  34 t=0.0468517 ok
+brp_W7_H7_N43_id4.txt        PM-10  Z=  37 t=0.2172897 ok
+brp_W7_H7_N43_id6.txt        RS-2   Z=  35 t=0.0011371 ok
+brp_W7_H7_N43_id6.txt        RS-3   Z=  35 t=0.0011152 ok
+brp_W7_H7_N43_id6.txt        RS-4   Z=  35 t=0.0008089 ok
+brp_W7_H7_N43_id6.txt        RS-5   Z=  35 t=0.000784 ok
+brp_W7_H7_N43_id6.txt        RS-7   Z=  35 t=0.0011165 ok
+brp_W7_H7_N43_id6.txt        RS-10  Z=  35 t=0.0009276 ok
+brp_W7_H7_N43_id5.txt        PM-10  Z=  34 t=0.0640608 ok
+brp_W7_H7_N43_id6.txt        PM-1   Z=  35 t=0.013062 ok
+brp_W7_H7_N43_id6.txt        PM-2   Z=  35 t=0.0196008 ok
+brp_W7_H7_N43_id6.txt        PM-3   Z=  35 t=0.0260493 ok
+brp_W7_H7_N43_id6.txt        PM-4   Z=  35 t=0.0411894 ok
+brp_W7_H7_N43_id6.txt        PM-5   Z=  35 t=0.0416891 ok
+brp_W7_H7_N43_id7.txt        RS-1   Z=  38 t=  0.0001 ok
+brp_W7_H7_N43_id7.txt        RS-2   Z=  35 t=0.0012716 ok
+brp_W7_H7_N43_id7.txt        RS-3   Z=  35 t=0.0011104 ok
+brp_W7_H7_N43_id7.txt        RS-5   Z=  35 t=0.0008593 ok
+brp_W7_H7_N43_id7.txt        RS-4   Z=  35 t=0.0008318 ok
+brp_W7_H7_N43_id6.txt        PM-7   Z=  35 t=0.0636573 ok
+brp_W7_H7_N43_id7.txt        RS-7   Z=  35 t=0.0009107 ok
+brp_W7_H7_N43_id7.txt        RS-10  Z=  35 t=0.0013494 ok
+brp_W7_H7_N43_id7.txt        PM-1   Z=  34 t=0.0081952 ok
+brp_W7_H7_N43_id7.txt        PM-3   Z=  34 t=0.0155565 ok
+brp_W7_H7_N43_id7.txt        PM-2   Z=  34 t=0.0171301 ok
+brp_W7_H7_N43_id6.txt        PM-10  Z=  35 t=0.0935346 ok
+brp_W7_H7_N43_id7.txt        PM-4   Z=  34 t=0.0261629 ok
+brp_W7_H7_N43_id7.txt        PM-5   Z=  34 t=0.0301712 ok
+brp_W7_H7_N43_id8.txt        RS-1   Z=  43 t=0.000151 ok
+brp_W7_H7_N43_id7.txt        PM-7   Z=  34 t=0.0341676 ok
+brp_W7_H7_N43_id8.txt        RS-2   Z=  41 t=0.0014919 ok
+brp_W7_H7_N43_id8.txt        RS-3   Z=  41 t=0.0023436 ok
+brp_W7_H7_N43_id8.txt        RS-4   Z=  41 t=0.0021987 ok
+brp_W7_H7_N43_id8.txt        RS-5   Z=  41 t=0.0021943 ok
+brp_W7_H7_N43_id8.txt        RS-7   Z=  41 t=0.0018419 ok
+brp_W7_H7_N43_id8.txt        RS-10  Z=  41 t=0.0015183 ok
+brp_W7_H7_N43_id7.txt        PM-10  Z=  34 t=0.0500705 ok
+brp_W7_H7_N43_id8.txt        PM-1   Z=  41 t=0.0165114 ok
+brp_W7_H7_N43_id8.txt        PM-2   Z=  41 t=0.0391305 ok
+brp_W7_H7_N43_id8.txt        PM-3   Z=  41 t=0.0566577 ok
+brp_W7_H7_N43_id8.txt        PM-4   Z=  41 t=0.0624851 ok
+brp_W7_H7_N43_id9.txt        RS-1   Z=  38 t=9.28e-05 ok
+brp_W7_H7_N43_id8.txt        PM-5   Z=  41 t=0.0657519 ok
+brp_W7_H7_N43_id9.txt        RS-2   Z=  38 t=0.0022233 ok
+brp_W7_H7_N43_id9.txt        RS-3   Z=  38 t=0.0017064 ok
+brp_W7_H7_N43_id9.txt        RS-4   Z=  38 t=0.0013359 ok
+brp_W7_H7_N43_id9.txt        RS-5   Z=  38 t=0.0013477 ok
+brp_W7_H7_N43_id8.txt        PM-7   Z=  41 t=0.0800668 ok
+brp_W7_H7_N43_id9.txt        RS-7   Z=  38 t=0.0015272 ok
+brp_W7_H7_N43_id9.txt        RS-10  Z=  38 t=0.0013875 ok
+brp_W7_H7_N43_id9.txt        PM-1   Z=  37 t=0.0143649 ok
+brp_W7_H7_N43_id9.txt        PM-2   Z=  37 t=0.0244442 ok
+brp_W7_H7_N43_id9.txt        PM-3   Z=  37 t=0.0262536 ok
+brp_W7_H7_N43_id9.txt        PM-4   Z=  37 t=0.0329112 ok
+brp_W7_H7_N43_id8.txt        PM-10  Z=  40 t=0.1427961 ok
+brp_W7_H8_N49_id1.txt        RS-1   Z=  58 t=0.000145 ok
+brp_W7_H7_N43_id9.txt        PM-5   Z=  37 t=0.0538889 ok
+brp_W7_H8_N49_id1.txt        RS-2   Z=  51 t=0.0008133 ok
+brp_W7_H7_N43_id9.txt        PM-7   Z=  37 t=0.0573284 ok
+brp_W7_H8_N49_id1.txt        RS-3   Z=  51 t=0.0008489 ok
+brp_W7_H8_N49_id1.txt        RS-7   Z=  51 t=0.0008691 ok
+brp_W7_H8_N49_id1.txt        RS-4   Z=  51 t=0.000787 ok
+brp_W7_H8_N49_id1.txt        RS-5   Z=  51 t=0.0012684 ok
+brp_W7_H8_N49_id1.txt        RS-10  Z=  51 t=0.0062682 ok
+brp_W7_H7_N43_id9.txt        PM-10  Z=  37 t=0.0680746 ok
+brp_W7_H8_N49_id1.txt        PM-1   Z=  51 t=0.0388192 ok
+brp_W7_H8_N49_id1.txt        PM-2   Z=  51 t=0.0568578 ok
+brp_W7_H8_N49_id1.txt        PM-3   Z=  51 t=0.0582235 ok
+brp_W7_H8_N49_id1.txt        PM-4   Z=  51 t=0.0729428 ok
+brp_W7_H8_N49_id10.txt       RS-1   Z=  47 t=0.0001307 ok
+brp_W7_H8_N49_id1.txt        PM-5   Z=  51 t=0.0842468 ok
+brp_W7_H8_N49_id10.txt       RS-2   Z=  47 t=0.0015441 ok
+brp_W7_H8_N49_id10.txt       RS-3   Z=  47 t=0.0010722 ok
+brp_W7_H8_N49_id10.txt       RS-4   Z=  47 t=0.0009693 ok
+brp_W7_H8_N49_id10.txt       RS-7   Z=  47 t=0.0015682 ok
+brp_W7_H8_N49_id10.txt       RS-5   Z=  47 t=0.0013302 ok
+brp_W7_H8_N49_id1.txt        PM-7   Z=  51 t=0.0920163 ok
+brp_W7_H8_N49_id10.txt       RS-10  Z=  42 t=0.0100622 ok
+brp_W7_H8_N49_id10.txt       PM-1   Z=  42 t=0.0253015 ok
+brp_W7_H8_N49_id1.txt        PM-10  Z=  51 t=0.1138527 ok
+brp_W7_H8_N49_id10.txt       PM-2   Z=  42 t=0.0405028 ok
+brp_W7_H8_N49_id10.txt       PM-3   Z=  42 t=0.058843 ok
+brp_W7_H8_N49_id10.txt       PM-4   Z=  42 t=0.0475936 ok
+brp_W7_H8_N49_id2.txt        RS-1   Z=  55 t=0.0002262 ok
+brp_W7_H8_N49_id10.txt       PM-5   Z=  42 t=0.064826 ok
+brp_W7_H8_N49_id2.txt        RS-2   Z=  53 t=0.0016982 ok
+brp_W7_H8_N49_id2.txt        RS-3   Z=  53 t=0.0020903 ok
+brp_W7_H8_N49_id2.txt        RS-4   Z=  53 t=0.001665 ok
+brp_W7_H8_N49_id2.txt        RS-5   Z=  53 t=0.0016638 ok
+brp_W7_H8_N49_id2.txt        RS-7   Z=  53 t=0.0021188 ok
+brp_W7_H8_N49_id10.txt       PM-7   Z=  42 t=0.0950719 ok
+brp_W7_H8_N49_id2.txt        RS-10  Z=  53 t=0.0024362 ok
+brp_W7_H8_N49_id2.txt        PM-1   Z=  53 t=0.0481285 ok
+brp_W7_H8_N49_id10.txt       PM-10  Z=  42 t=0.1121698 ok
+brp_W7_H8_N49_id2.txt        PM-2   Z=  52 t=0.0601727 ok
+brp_W7_H8_N49_id2.txt        PM-3   Z=  51 t=0.0600333 ok
+brp_W7_H8_N49_id2.txt        PM-4   Z=  50 t=0.0818272 ok
+brp_W7_H8_N49_id3.txt        RS-1   Z=  48 t=0.0001284 ok
+brp_W7_H8_N49_id2.txt        PM-5   Z=  50 t=0.1007022 ok
+brp_W7_H8_N49_id3.txt        RS-2   Z=  48 t=0.0013482 ok
+brp_W7_H8_N49_id3.txt        RS-3   Z=  48 t=0.0013235 ok
+brp_W7_H8_N49_id3.txt        RS-4   Z=  48 t=0.0019712 ok
+brp_W7_H8_N49_id3.txt        RS-5   Z=  48 t=0.0017643 ok
+brp_W7_H8_N49_id3.txt        RS-7   Z=  48 t=0.0018988 ok
+brp_W7_H8_N49_id3.txt        RS-10  Z=  48 t=0.0015708 ok
+brp_W7_H8_N49_id2.txt        PM-7   Z=  50 t=0.1351132 ok
+brp_W7_H8_N49_id3.txt        PM-1   Z=  48 t=0.0377646 ok
+brp_W7_H8_N49_id3.txt        PM-2   Z=  46 t=0.0514471 ok
+brp_W7_H8_N49_id2.txt        PM-10  Z=  50 t=0.1949182 ok
+brp_W7_H8_N49_id3.txt        PM-3   Z=  46 t=0.0749505 ok
+brp_W7_H8_N49_id3.txt        PM-4   Z=  45 t=0.0624629 ok
+brp_W7_H8_N49_id4.txt        RS-1   Z=  52 t=0.000119 ok
+brp_W7_H8_N49_id4.txt        RS-2   Z=  47 t=0.0018608 ok
+brp_W7_H8_N49_id3.txt        PM-5   Z=  45 t=0.0707762 ok
+brp_W7_H8_N49_id4.txt        RS-3   Z=  47 t=0.0014772 ok
+brp_W7_H8_N49_id4.txt        RS-4   Z=  47 t=0.001586 ok
+brp_W7_H8_N49_id3.txt        PM-7   Z=  45 t=0.0777573 ok
+brp_W7_H8_N49_id4.txt        RS-5   Z=  47 t=0.0021861 ok
+brp_W7_H8_N49_id4.txt        RS-7   Z=  47 t=0.0020797 ok
+brp_W7_H8_N49_id4.txt        RS-10  Z=  47 t=0.001421 ok
+brp_W7_H8_N49_id4.txt        PM-1   Z=  43 t=0.0215262 ok
+brp_W7_H8_N49_id4.txt        PM-2   Z=  43 t=0.0252595 ok
+brp_W7_H8_N49_id4.txt        PM-3   Z=  43 t=0.028365 ok
+brp_W7_H8_N49_id3.txt        PM-10  Z=  45 t=0.1168947 ok
+brp_W7_H8_N49_id4.txt        PM-4   Z=  43 t=0.0377763 ok
+brp_W7_H8_N49_id4.txt        PM-7   Z=  43 t=0.0410208 ok
+brp_W7_H8_N49_id5.txt        RS-1   Z=  49 t=0.0001381 ok
+brp_W7_H8_N49_id4.txt        PM-5   Z=  43 t=0.0474352 ok
+brp_W7_H8_N49_id5.txt        RS-3   Z=  46 t=0.0016188 ok
+brp_W7_H8_N49_id5.txt        RS-2   Z=  46 t=0.0017878 ok
+brp_W7_H8_N49_id4.txt        PM-10  Z=  43 t=0.0504042 ok
+brp_W7_H8_N49_id5.txt        RS-4   Z=  46 t=0.0016976 ok
+brp_W7_H8_N49_id5.txt        RS-5   Z=  46 t=0.0016687 ok
+brp_W7_H8_N49_id5.txt        RS-7   Z=  46 t=0.0019581 ok
+brp_W7_H8_N49_id5.txt        RS-10  Z=  46 t=0.0021114 ok
+brp_W7_H8_N49_id5.txt        PM-1   Z=  46 t=0.0397924 ok
+brp_W7_H8_N49_id5.txt        PM-2   Z=  46 t=0.0727037 ok
+brp_W7_H8_N49_id5.txt        PM-3   Z=  46 t=0.1058678 ok
+brp_W7_H8_N49_id5.txt        PM-4   Z=  46 t=0.1322951 ok
+brp_W7_H8_N49_id6.txt        RS-1   Z=  56 t=0.0001607 ok
+brp_W7_H8_N49_id6.txt        RS-2   Z=  54 t=0.003191 ok
+brp_W7_H8_N49_id6.txt        RS-3   Z=  54 t=0.0025638 ok
+brp_W7_H8_N49_id5.txt        PM-5   Z=  46 t=0.1414041 ok
+brp_W7_H8_N49_id6.txt        RS-4   Z=  54 t=0.0023906 ok
+brp_W7_H8_N49_id6.txt        RS-5   Z=  54 t=0.0017026 ok
+brp_W7_H8_N49_id6.txt        RS-7   Z=  54 t=0.0017812 ok
+brp_W7_H8_N49_id6.txt        RS-10  Z=  54 t=0.0017243 ok
+brp_W7_H8_N49_id6.txt        PM-1   Z=  52 t=0.0373059 ok
+brp_W7_H8_N49_id5.txt        PM-7   Z=  46 t=0.2101445 ok
+brp_W7_H8_N49_id6.txt        PM-2   Z=  52 t=0.0791113 ok
+brp_W7_H8_N49_id6.txt        PM-3   Z=  51 t=0.1111866 ok
+brp_W7_H8_N49_id5.txt        PM-10  Z=  46 t=0.2867192 ok
+brp_W7_H8_N49_id6.txt        PM-4   Z=  51 t=0.0998974 ok
+brp_W7_H8_N49_id7.txt        RS-1   Z=  37 t=0.0001279 ok
+brp_W7_H8_N49_id6.txt        PM-5   Z=  51 t=0.1155961 ok
+brp_W7_H8_N49_id7.txt        RS-2   Z=  36 t=0.0009784 ok
+brp_W7_H8_N49_id7.txt        RS-3   Z=  36 t=0.0014567 ok
+brp_W7_H8_N49_id7.txt        RS-4   Z=  36 t=0.001546 ok
+brp_W7_H8_N49_id7.txt        RS-7   Z=  36 t=0.0010555 ok
+brp_W7_H8_N49_id7.txt        RS-5   Z=  36 t=0.0014736 ok
+brp_W7_H8_N49_id7.txt        RS-10  Z=  36 t=0.0009668 ok
+brp_W7_H8_N49_id7.txt        PM-1   Z=  35 t=0.0241711 ok
+brp_W7_H8_N49_id7.txt        PM-2   Z=  35 t=0.0397578 ok
+brp_W7_H8_N49_id6.txt        PM-7   Z=  51 t=0.1530412 ok
+brp_W7_H8_N49_id6.txt        PM-10  Z=  51 t=0.1464786 ok
+brp_W7_H8_N49_id7.txt        PM-3   Z=  35 t=0.0524358 ok
+brp_W7_H8_N49_id7.txt        PM-4   Z=  35 t=0.0876648 ok
+brp_W7_H8_N49_id8.txt        RS-1   Z=  41 t=0.0001476 ok
+brp_W7_H8_N49_id8.txt        RS-2   Z=  38 t=0.0009481 ok
+brp_W7_H8_N49_id7.txt        PM-5   Z=  35 t=0.0989586 ok
+brp_W7_H8_N49_id8.txt        RS-3   Z=  38 t=0.0006429 ok
+brp_W7_H8_N49_id8.txt        RS-4   Z=  38 t=0.0010117 ok
+brp_W7_H8_N49_id8.txt        RS-5   Z=  38 t=0.0011044 ok
+brp_W7_H8_N49_id8.txt        RS-7   Z=  38 t=0.0012227 ok
+brp_W7_H8_N49_id8.txt        RS-10  Z=  38 t=0.0054572 ok
+brp_W7_H8_N49_id7.txt        PM-7   Z=  35 t=0.1259802 ok
+brp_W7_H8_N49_id8.txt        PM-1   Z=  38 t=0.0143411 ok
+brp_W7_H8_N49_id8.txt        PM-3   Z=  38 t=0.014274 ok
+brp_W7_H8_N49_id8.txt        PM-2   Z=  38 t=0.0143446 ok
+brp_W7_H8_N49_id7.txt        PM-10  Z=  35 t=0.1697919 ok
+brp_W7_H8_N49_id8.txt        PM-4   Z=  38 t=0.0182353 ok
+brp_W7_H8_N49_id8.txt        PM-5   Z=  38 t=0.0235369 ok
+brp_W7_H8_N49_id9.txt        RS-1   Z=  47 t=0.0001654 ok
+brp_W7_H8_N49_id8.txt        PM-7   Z=  38 t=0.0299555 ok
+brp_W7_H8_N49_id9.txt        RS-2   Z=  44 t=0.0013714 ok
+brp_W7_H8_N49_id9.txt        RS-3   Z=  44 t=0.0014851 ok
+brp_W7_H8_N49_id9.txt        RS-4   Z=  44 t=0.0013122 ok
+brp_W7_H8_N49_id9.txt        RS-5   Z=  44 t=0.0012986 ok
+brp_W7_H8_N49_id8.txt        PM-10  Z=  38 t=0.0352736 ok
+brp_W7_H8_N49_id9.txt        RS-7   Z=  44 t=0.0016875 ok
+brp_W7_H8_N49_id9.txt        RS-10  Z=  44 t=0.0012628 ok
+brp_W7_H8_N49_id9.txt        PM-1   Z=  44 t=0.015934 ok
+brp_W7_H8_N49_id9.txt        PM-2   Z=  41 t=0.0413999 ok
+brp_W7_H8_N49_id9.txt        PM-3   Z=  41 t=0.0561832 ok
+brp_W7_H8_N49_id9.txt        PM-4   Z=  41 t=0.0730694 ok
+brp_W7_H8_N49_id9.txt        PM-5   Z=  41 t=0.0945203 ok
+brp_W7_H8_N49_id9.txt        PM-7   Z=  41 t=0.1055332 ok
+brp_W7_H8_N49_id9.txt        PM-10  Z=  41 t=0.1435974 ok
+brp_W7_H6_N37_id10.txt       DFBB   Z=  24 t=1.0177576 ok
+brp_W7_H6_N37_id4.txt        DFBB   Z=  27 t=10.5337496 ok
+brp_W7_H6_N37_id1.txt        DFBB   Z=  27 t=60.0004917 timeout
+brp_W7_H6_N37_id2.txt        DFBB   Z=  43 t=60.0003506 timeout
+brp_W7_H6_N37_id7.txt        DFBB   Z=  19 t=0.0208413 ok
+brp_W7_H6_N37_id3.txt        DFBB   Z=  31 t=60.0005824 timeout
+brp_W7_H6_N37_id8.txt        DFBB   Z=  27 t=6.5984071 ok
+brp_W7_H6_N37_id5.txt        DFBB   Z=  34 t=60.0005437 timeout
+brp_W7_H6_N37_id6.txt        DFBB   Z=  26 t=46.6690039 ok
+brp_W7_H6_N37_id9.txt        DFBB   Z=  29 t=60.0009925 timeout
+brp_W7_H7_N43_id1.txt        DFBB   Z=  37 t=60.0009263 timeout
+brp_W7_H7_N43_id10.txt       DFBB   Z=  42 t=60.0009705 timeout
+brp_W7_H7_N43_id2.txt        DFBB   Z=  36 t=60.0003922 timeout
+brp_W7_H7_N43_id3.txt        DFBB   Z=  41 t=60.0003577 timeout
+brp_W7_H7_N43_id4.txt        DFBB   Z=  43 t=60.0001007 timeout
+brp_W7_H7_N43_id5.txt        DFBB   Z=  37 t=60.0002644 timeout
+brp_W7_H7_N43_id6.txt        DFBB   Z=  38 t=60.0006789 timeout
+brp_W7_H7_N43_id7.txt        DFBB   Z=  39 t=60.0000635 timeout
+brp_W7_H7_N43_id8.txt        DFBB   Z=  48 t=60.0004276 timeout
+brp_W7_H7_N43_id9.txt        DFBB   Z=  48 t=60.0005822 timeout
+brp_W7_H8_N49_id1.txt        DFBB   Z=  63 t=60.0000957 timeout
+brp_W7_H8_N49_id10.txt       DFBB   Z=  58 t=60.0001639 timeout
+brp_W7_H8_N49_id2.txt        DFBB   Z=  66 t=60.0010177 timeout
+brp_W7_H8_N49_id3.txt        DFBB   Z=  55 t=60.0005934 timeout
+brp_W7_H8_N49_id4.txt        DFBB   Z=  46 t=60.0000442 timeout
+brp_W7_H8_N49_id5.txt        DFBB   Z=  49 t=60.0002547 timeout
+brp_W7_H8_N49_id6.txt        DFBB   Z=  57 t=60.0004866 timeout
+brp_W7_H8_N49_id7.txt        DFBB   Z=  42 t=60.0008076 timeout
+brp_W7_H8_N49_id8.txt        DFBB   Z=  43 t=60.0006829 timeout
+brp_W7_H8_N49_id9.txt        DFBB   Z=  56 t=60.0006999 timeout
+ w RS-w reshuffles médio RS-w gap médio (%) RS-w gap máx (%) RS-w = ótimo RS-w tempo médio (ms) PM-w reshuffles médio PM-w gap médio (%) PM-w gap máx (%) PM-w = ótimo PM-w tempo médio (ms)
+ 1                 39.13               9.26            20.93         0/30                 0.124                 36.50               2.18             7.41        17/30                  17.6
+ 2                 37.27               4.28            11.90         8/30                  1.25                 36.23               1.54             7.41        19/30                  29.6
+ 3                 37.27               4.28            11.90         8/30                  1.23                 36.17               1.41             7.41        20/30                  39.4
+ 4                 37.27               4.28            11.90         8/30                  1.21                 36.07               1.17             7.41        23/30                  46.7
+ 5                 37.27               4.28            11.90         8/30                  1.24                 36.03               1.06             7.41        24/30                  56.4
+ 7                 37.27               4.28            11.90         8/30                  1.27                 36.03               1.06             7.41        24/30                  70.0
+10                 37.03               3.68            11.11        10/30                  3.12                 36.00               0.98             7.41        25/30                  92.3
+referencia: otimo em 5/30
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura_pesadas.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura_pesadas.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_largura_classe_pesadas.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\largura_bruto_pesadas.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_largura_pesadas.png
+=== fim scripts\variar_largura.py exit 0
+=== scripts\comparar_pesadas.py
+30 instancias x 5 metodos (limite 60 s)
+brp_W7_H6_N37_id1.txt        RS-5   Z=  30 t=0.0009192 ok
+brp_W7_H6_N37_id1.txt        MM     Z=  32 t= 8.5e-06 ok
+brp_W7_H6_N37_id1.txt        PM-3   Z=  29 t=0.0154724 ok
+brp_W7_H6_N37_id1.txt        ASTAR  Z=  30 t=4.7326951 ok
+brp_W7_H6_N37_id2.txt        MM     Z=  43 t=1.41e-05 ok
+brp_W7_H6_N37_id2.txt        RS-5   Z=  40 t=0.0018532 ok
+brp_W7_H6_N37_id2.txt        PM-3   Z=  38 t=0.0412551 ok
+brp_W7_H6_N37_id3.txt        ASTAR  Z=  29 t=3.2891053 ok
+brp_W7_H6_N37_id1.txt        DFBB   Z=  27 t=60.0008963 timeout
+brp_W7_H6_N37_id3.txt        MM     Z=  34 t=1.69e-05 ok
+brp_W7_H6_N37_id2.txt        DFBB   Z=  43 t=60.0004494 timeout
+brp_W7_H6_N37_id3.txt        RS-5   Z=  27 t=0.002114 ok
+brp_W7_H6_N37_id3.txt        PM-3   Z=  27 t=0.0273454 ok
+brp_W7_H6_N37_id4.txt        ASTAR  Z=  30 t=0.5276506 ok
+brp_W7_H6_N37_id4.txt        MM     Z=  30 t=1.66e-05 ok
+brp_W7_H6_N37_id4.txt        RS-5   Z=  30 t=0.0015654 ok
+brp_W7_H6_N37_id4.txt        PM-3   Z=  29 t=0.0420081 ok
+brp_W7_H6_N37_id3.txt        DFBB   Z=  31 t=60.0003113 timeout
+brp_W7_H6_N37_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H6_N37_id5.txt        MM     Z=  35 t=1.09e-05 ok
+brp_W7_H6_N37_id5.txt        RS-5   Z=  32 t=0.0021598 ok
+brp_W7_H6_N37_id5.txt        PM-3   Z=  32 t=0.045491 ok
+brp_W7_H6_N37_id6.txt        ASTAR  Z=  28 t=0.6479831 ok
+brp_W7_H6_N37_id4.txt        DFBB   Z=  27 t=23.7721177 ok
+brp_W7_H6_N37_id6.txt        MM     Z=  31 t=2.42e-05 ok
+brp_W7_H6_N37_id6.txt        RS-5   Z=  27 t=0.0017383 ok
+brp_W7_H6_N37_id6.txt        PM-3   Z=  26 t=0.0245827 ok
+brp_W7_H6_N37_id7.txt        ASTAR  Z=  20 t=0.0027342 ok
+brp_W7_H6_N37_id7.txt        DFBB   Z=  19 t=0.0328962 ok
+brp_W7_H6_N37_id7.txt        MM     Z=  21 t=2.51e-05 ok
+brp_W7_H6_N37_id7.txt        RS-5   Z=  19 t=0.0008853 ok
+brp_W7_H6_N37_id7.txt        PM-3   Z=  19 t=0.0017385 ok
+brp_W7_H6_N37_id8.txt        ASTAR  Z=  29 t=0.0221546 ok
+brp_W7_H6_N37_id5.txt        ASTAR  Z=  34 t=28.3231242 ok
+brp_W7_H6_N37_id8.txt        MM     Z=  31 t= 6.7e-06 ok
+brp_W7_H6_N37_id8.txt        RS-5   Z=  29 t=0.0004348 ok
+brp_W7_H6_N37_id8.txt        PM-3   Z=  29 t=0.0110246 ok
+brp_W7_H6_N37_id9.txt        ASTAR  Z=  31 t=0.9970997 ok
+brp_W7_H6_N37_id8.txt        DFBB   Z=  27 t=8.2496531 ok
+brp_W7_H6_N37_id9.txt        MM     Z=  32 t=1.65e-05 ok
+brp_W7_H6_N37_id9.txt        RS-5   Z=  30 t=0.0014478 ok
+brp_W7_H6_N37_id9.txt        PM-3   Z=  29 t=0.0571862 ok
+brp_W7_H6_N37_id10.txt       ASTAR  Z=  25 t=0.0035659 ok
+brp_W7_H6_N37_id10.txt       DFBB   Z=  24 t=2.1774092 ok
+brp_W7_H6_N37_id10.txt       MM     Z=  25 t=1.22e-05 ok
+brp_W7_H6_N37_id10.txt       RS-5   Z=  25 t=0.0012707 ok
+brp_W7_H6_N37_id10.txt       PM-3   Z=  25 t=0.0198792 ok
+brp_W7_H6_N37_id5.txt        DFBB   Z=  34 t=60.001028 timeout
+brp_W7_H6_N37_id6.txt        DFBB   Z=  27 t=60.001204 timeout
+brp_W7_H7_N43_id1.txt        MM     Z=  37 t=1.05e-05 ok
+brp_W7_H7_N43_id1.txt        RS-5   Z=  34 t=0.0012702 ok
+brp_W7_H7_N43_id1.txt        PM-3   Z=  32 t=0.0246365 ok
+brp_W7_H6_N37_id9.txt        DFBB   Z=  30 t=60.0007211 timeout
+brp_W7_H7_N43_id1.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id2.txt        MM     Z=  36 t=1.12e-05 ok
+brp_W7_H7_N43_id2.txt        RS-5   Z=  34 t=0.0027332 ok
+brp_W7_H7_N43_id2.txt        PM-3   Z=  34 t=0.0332413 ok
+brp_W7_H7_N43_id3.txt        ASTAR  Z=  36 t=1.712724 ok
+brp_W7_H7_N43_id1.txt        DFBB   Z=  37 t=60.0002606 timeout
+brp_W7_H7_N43_id3.txt        MM     Z=  41 t= 9.7e-06 ok
+brp_W7_H7_N43_id3.txt        RS-5   Z=  35 t=0.0020907 ok
+brp_W7_H7_N43_id3.txt        PM-3   Z=  34 t=0.0726747 ok
+brp_W7_H7_N43_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id2.txt        DFBB   Z=  36 t=60.0008889 timeout
+brp_W7_H7_N43_id4.txt        MM     Z=  43 t=3.16e-05 ok
+brp_W7_H7_N43_id4.txt        RS-5   Z=  39 t=0.0032376 ok
+brp_W7_H7_N43_id4.txt        PM-3   Z=  37 t=0.133235 ok
+brp_W7_H7_N43_id5.txt        ASTAR  Z=  35 t=0.9204118 ok
+brp_W7_H7_N43_id3.txt        DFBB   Z=  41 t=60.0007557 timeout
+brp_W7_H7_N43_id5.txt        MM     Z=  37 t=1.57e-05 ok
+brp_W7_H7_N43_id5.txt        RS-5   Z=  35 t=0.001365 ok
+brp_W7_H7_N43_id5.txt        PM-3   Z=  35 t=0.0366847 ok
+brp_W7_H7_N43_id4.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id4.txt        DFBB   Z=  43 t=60.0004969 timeout
+brp_W7_H7_N43_id6.txt        MM     Z=  38 t=1.52e-05 ok
+brp_W7_H7_N43_id6.txt        RS-5   Z=  35 t=0.0020247 ok
+brp_W7_H7_N43_id6.txt        PM-3   Z=  35 t=0.0487244 ok
+brp_W7_H7_N43_id5.txt        DFBB   Z=  37 t=60.0009494 timeout
+brp_W7_H7_N43_id6.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id7.txt        MM     Z=  39 t=1.19e-05 ok
+brp_W7_H7_N43_id7.txt        RS-5   Z=  35 t=0.0016184 ok
+brp_W7_H7_N43_id7.txt        PM-3   Z=  34 t=0.0249499 ok
+brp_W7_H7_N43_id6.txt        DFBB   Z=  38 t=60.0605805 timeout
+brp_W7_H7_N43_id7.txt        DFBB   Z=  39 t=60.0006901 timeout
+brp_W7_H7_N43_id8.txt        MM     Z=  48 t= 9.9e-06 ok
+brp_W7_H7_N43_id8.txt        RS-5   Z=  41 t=0.0023593 ok
+brp_W7_H7_N43_id8.txt        PM-3   Z=  41 t=0.049306 ok
+brp_W7_H7_N43_id7.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id8.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id9.txt        MM     Z=  48 t=1.13e-05 ok
+brp_W7_H7_N43_id9.txt        RS-5   Z=  38 t=0.0027018 ok
+brp_W7_H7_N43_id9.txt        PM-3   Z=  37 t=0.0336346 ok
+brp_W7_H7_N43_id8.txt        DFBB   Z=  48 t=60.0011895 timeout
+brp_W7_H7_N43_id9.txt        DFBB   Z=  48 t=60.0003231 timeout
+brp_W7_H7_N43_id10.txt       MM     Z=  43 t=1.16e-05 ok
+brp_W7_H7_N43_id10.txt       RS-5   Z=  39 t=0.0029454 ok
+brp_W7_H7_N43_id10.txt       PM-3   Z=  39 t=0.0535548 ok
+brp_W7_H7_N43_id9.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id1.txt        ASTAR  Z=  52 t=12.0980067 ok
+brp_W7_H8_N49_id1.txt        MM     Z=  63 t=1.28e-05 ok
+brp_W7_H8_N49_id1.txt        RS-5   Z=  51 t=0.0018007 ok
+brp_W7_H8_N49_id1.txt        PM-3   Z=  51 t=0.0943512 ok
+brp_W7_H7_N43_id10.txt       ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id10.txt       DFBB   Z=  42 t=60.0008838 timeout
+brp_W7_H8_N49_id2.txt        MM     Z=  66 t=1.41e-05 ok
+brp_W7_H8_N49_id2.txt        RS-5   Z=  53 t=0.003231 ok
+brp_W7_H8_N49_id2.txt        PM-3   Z=  51 t=0.0916487 ok
+brp_W7_H8_N49_id1.txt        DFBB   Z=  63 t=60.00248 timeout
+brp_W7_H8_N49_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id3.txt        MM     Z=  55 t=1.12e-05 ok
+brp_W7_H8_N49_id3.txt        RS-5   Z=  48 t=0.0022466 ok
+brp_W7_H8_N49_id3.txt        PM-3   Z=  46 t=0.0814285 ok
+brp_W7_H8_N49_id2.txt        DFBB   Z=  66 t=60.0010334 timeout
+brp_W7_H8_N49_id3.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id4.txt        MM     Z=  51 t=1.08e-05 ok
+brp_W7_H8_N49_id4.txt        RS-5   Z=  47 t=0.0022827 ok
+brp_W7_H8_N49_id4.txt        PM-3   Z=  43 t=0.051191 ok
+brp_W7_H8_N49_id4.txt        ASTAR  Z=  47 t=44.051267 ok
+brp_W7_H8_N49_id3.txt        DFBB   Z=  55 t=60.0002814 timeout
+brp_W7_H8_N49_id5.txt        MM     Z=  49 t=1.53e-05 ok
+brp_W7_H8_N49_id5.txt        RS-5   Z=  46 t=0.0020795 ok
+brp_W7_H8_N49_id5.txt        PM-3   Z=  46 t=0.1206989 ok
+brp_W7_H8_N49_id4.txt        DFBB   Z=  46 t=60.0006223 timeout
+brp_W7_H8_N49_id5.txt        DFBB   Z=  49 t=60.0005285 timeout
+brp_W7_H8_N49_id6.txt        MM     Z=  57 t=1.15e-05 ok
+brp_W7_H8_N49_id6.txt        RS-5   Z=  54 t=0.0028487 ok
+brp_W7_H8_N49_id6.txt        PM-3   Z=  51 t=0.1109144 ok
+brp_W7_H8_N49_id5.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id6.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id7.txt        MM     Z=  42 t=1.07e-05 ok
+brp_W7_H8_N49_id7.txt        RS-5   Z=  36 t=0.0013867 ok
+brp_W7_H8_N49_id7.txt        PM-3   Z=  35 t=0.0581296 ok
+brp_W7_H8_N49_id6.txt        DFBB   Z=  57 t=60.0238193 timeout
+brp_W7_H8_N49_id7.txt        DFBB   Z=  42 t=60.0008777 timeout
+brp_W7_H8_N49_id8.txt        MM     Z=  43 t=1.06e-05 ok
+brp_W7_H8_N49_id8.txt        RS-5   Z=  38 t=0.0749166 ok
+brp_W7_H8_N49_id8.txt        PM-3   Z=  38 t=0.0178857 ok
+brp_W7_H8_N49_id7.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id8.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id9.txt        MM     Z=  56 t=1.24e-05 ok
+brp_W7_H8_N49_id9.txt        RS-5   Z=  44 t=0.0032631 ok
+brp_W7_H8_N49_id9.txt        PM-3   Z=  41 t=0.1094327 ok
+brp_W7_H8_N49_id8.txt        DFBB   Z=  43 t=60.0013405 timeout
+brp_W7_H8_N49_id9.txt        DFBB   Z=  56 t=60.0024549 timeout
+brp_W7_H8_N49_id10.txt       MM     Z=  58 t=1.46e-05 ok
+brp_W7_H8_N49_id10.txt       RS-5   Z=  47 t=0.0017978 ok
+brp_W7_H8_N49_id10.txt       PM-3   Z=  42 t=0.069151 ok
+brp_W7_H8_N49_id9.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id10.txt       ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id10.txt       DFBB   Z=  58 t=60.0015652 timeout
+   Classe A* timeouts A* reshuffles A* tempo (ms) B&B timeouts B&B reshuffles B&B tempo (ms) Min-Max timeouts Min-Max reshuffles Min-Max tempo (ms) RS-5 timeouts RS-5 reshuffles RS-5 tempo (ms) PM-3 timeouts PM-3 reshuffles PM-3 tempo (ms)
+W7 H6 N37        1/10         28.44          4283         6/10          24.25           8558             0/10              31.40             0.0152          0/10           28.90            1.44          0/10           28.30            28.6
+W7 H7 N43        8/10         35.50          1317        10/10              —              —             0/10              41.00             0.0139          0/10           36.50            2.23          0/10           35.80            51.1
+W7 H8 N49        8/10         49.50         28075        10/10              —              —             0/10              54.00             0.0124          0/10           46.40            9.59          0/10           44.40            80.5
+    Total       17/30         32.77          7487        26/30          24.25           8558             0/30              42.13             0.0138          0/30           37.27            4.42          0/30           36.17            53.4
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\pesadas_bruto.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_pesadas_instancias.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_pesadas_classes.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_pesadas_instancias.png
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_pesadas_classes.png
+=== fim scripts\comparar_pesadas.py exit 0

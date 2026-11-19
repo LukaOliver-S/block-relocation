@@ -2,21 +2,26 @@
 metodo em cada instancia (HTML unico, autocontido, abre direto no navegador).
 
 Uso: python scripts/gerar_visualizador.py [--conjunto A|B|AB] [--timeout S] [--jobs J]
+                                          [--pesadas]   # + classes W7 H6-H8 (100% ocupacao)
 
 Para cada instancia x metodo roda o brp.exe com -trace (mesmos parametros de
 scripts/rodar_comparacao.py) e le o passos.csv gerado. Se existir
 resultados/metricas_comparacao.csv, o Z_ref e o gap de cada metodo entram no HTML.
+Instancias fora dele (ex.: --pesadas) usam como Z_ref o exato da variante quando
+termina no tempo; senao o melhor valor conhecido entre os metodos da variante
+(marcado refMelhor no JSON).
 """
 import argparse, csv, json, subprocess, tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from rodar_comparacao import (EXE, PASTA, RES, METODOS, VARIANTE, RE_NOME, RE_Z,
-                              conjunto_de)
+from rodar_comparacao import (EXE, PASTA, RES, METODOS, VARIANTE, EXATO, RE_NOME, RE_Z,
+                              conjunto_de, calcular_gap)
 
 RAIZ = Path(__file__).resolve().parent.parent
 TEMPLATE = Path(__file__).with_name("visualizador_template.html")
 SAIDA = RES / "visualizador_solucoes.html"
+PESADAS = ["brp_W7_H6_N37", "brp_W7_H7_N43", "brp_W7_H8_N49"]
 NOMES = {"ASTAR": "A*", "DFBB": "B&B", "MM": "Min-Max", "RS-5": "RS-5", "PM-3": "PM-3"}
 
 
@@ -70,11 +75,29 @@ def metricas_existentes():
         return {(l["arquivo"], int(l["id"]), l["metodo"]): l for l in csv.DictReader(fh)}
 
 
+def referencia_local(sol):
+    """Z_ref por variante: exato se terminou no tempo; senao o melhor conhecido."""
+    for var, ex in EXATO.items():
+        ms = [m for m in METODOS if VARIANTE[m] == var]
+        if sol[ex]["status"] == "ok":
+            zref, melhor = sol[ex]["Z"], False
+        else:
+            zs = [sol[m]["Z"] for m in ms if sol[m]["Z"] is not None]
+            if not zs:
+                continue
+            zref, melhor = min(zs), True
+        for m in ms:
+            sol[m]["Zref"], sol[m]["refMelhor"] = zref, melhor
+            if sol[m]["Z"] is not None:
+                sol[m]["gap"] = calcular_gap(sol[m]["Z"], zref)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--conjunto", default="A", choices=["A", "B", "AB"])
     ap.add_argument("--timeout", type=int, default=60)
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--pesadas", action="store_true")
     a = ap.parse_args()
 
     arqs = sorted((f for f in PASTA.glob("*.txt") if RE_NOME.search(f.name)
@@ -82,6 +105,11 @@ def main():
                   key=lambda f: (int(RE_NOME.search(f.name).group(4)),
                                  int(RE_NOME.search(f.name).group(2)),
                                  int(RE_NOME.search(f.name).group(5))))
+    if a.pesadas:
+        arqs += sorted((f for f in PASTA.glob("*.txt") if RE_NOME.search(f.name)
+                        and RE_NOME.search(f.name).group(1) in PESADAS and f not in arqs),
+                       key=lambda f: (PESADAS.index(RE_NOME.search(f.name).group(1)),
+                                      int(RE_NOME.search(f.name).group(5))))
     met = metricas_existentes()
     tarefas = [(f, m) for f in arqs for m in METODOS]
     print(f"{len(arqs)} instancias x {len(METODOS)} metodos")
@@ -100,7 +128,10 @@ def main():
                 r["Zref"] = int(l["Z_ref"]) if l["Z_ref"] != "" else None
                 r["gap"] = float(l["gap"]) if l["gap"] != "" else None
             sol[m] = r
+        if not any(met.get((arquivo, int(ident), m)) for m in METODOS):
+            referencia_local(sol)
         instancias.append({"arquivo": arquivo, "id": int(ident), "conjunto": conjunto_de(f.name),
+                           "pesada": arquivo in PESADAS,
                            "W": W, "H": H, "N": N, "pilhas": pilhas, "sol": sol})
 
     dados = {"metodos": [{"cod": m, "nome": NOMES.get(m, m), "variante": VARIANTE[m]}

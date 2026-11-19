@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from rodar_comparacao import fmt3
+
 RAIZ = Path(__file__).resolve().parent.parent
 RES = RAIZ / "resultados"
 OUT = RAIZ / "graficos"
@@ -147,7 +149,7 @@ def tabela_reshuffles_tempo():
         for met in METODOS:
             s = r[(r.classe == c) & (r.metodo == met)].iloc[0]
             lin[f"{NOMES[met]} reshuffles"] = s.reshuffles_medio
-            lin[f"{NOMES[met]} tempo (s)"] = s.tempo_medio_s
+            lin[f"{NOMES[met]} tempo (ms)"] = s.tempo_medio_s * 1000
             if met in EXATOS:
                 lin[f"{NOMES[met]} resolvidas"] = f"{int(s.n_ok)}/{int(s.n_instancias)}"
         linhas.append(lin)
@@ -157,8 +159,8 @@ def tabela_reshuffles_tempo():
     for col in fmt.columns:
         if col.endswith("reshuffles"):
             fmt[col] = fmt[col].map(lambda v: f"{v:.1f}")
-        elif col.endswith("(s)"):
-            fmt[col] = fmt[col].map(lambda v: f"{v:.4f}")
+        elif col.endswith("(ms)"):
+            fmt[col] = fmt[col].map(fmt3)
     salvar_tabela(fmt, "tabela_reshuffles_tempo", "Reshuffles e tempo médios por classe",
                   "Médias das execuções concluídas; para os exatos, só das instâncias "
                   "resolvidas no tempo (ver colunas 'resolvidas'). " + NOTA_IRR, 19)

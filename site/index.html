@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRP: resultados</title>
+<style>
+  :root { --bg:#fcfcfb; --fg:#0b0b0b; --fg2:#52514e; --line:#e4e3df; --card:#ffffff; --acc:#2a78d6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141413; --fg:#f0efea; --fg2:#a8a69f; --line:#33322f; --card:#1d1d1b; --acc:#6aa5ec; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:1200px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { font-size:1.8rem; margin:0 0 4px; }
+  .sub { color:var(--fg2); margin:0 0 24px; }
+  .cta { display:inline-block; background:var(--acc); color:#fff; text-decoration:none; padding:12px 20px; border-radius:8px; font-weight:600; margin-bottom:32px; }
+  nav { display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:24px; }
+  nav a { color:var(--acc); text-decoration:none; }
+  section { margin:0 0 40px; }
+  h2 { font-size:1.2rem; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  p.nota { color:var(--fg2); margin:4px 0 12px; }
+  figure { margin:0; background:#fcfcfb; border:1px solid var(--line); border-radius:8px; padding:8px; overflow-x:auto; }
+  figure img { display:block; max-width:100%; height:auto; margin:0 auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Block Relocation Problem: heurísticas x métodos exatos</h1>
+  <p class="sub">A*, B&amp;B (DFBB), Min-Max, RS-w (rake search) e PM-w (pilot method) nas instâncias da disciplina.</p>
+  <a class="cta" href="visualizador.html">Abrir o visualizador passo a passo das soluções (conjunto A + instâncias pesadas) →</a>
+
+  <nav>
+    <a href="#gap">Gap</a><a href="#tempo">Reshuffles e tempo</a><a href="#graf">Gráfico</a>
+    <a href="#largura">Variação de w</a><a href="#pesadas">Instâncias pesadas</a>
+  </nav>
+
+  <section id="gap">
+    <h2>Gap em relação ao ótimo (conjunto A)</h2>
+    <p class="nota">Gap = (Z − Z*)/Z*. Min-Max vs A* (restrito); RS-5 e PM-3 vs B&amp;B (irrestrito).</p>
+    <figure><img src="graficos/tabela_gap.png" alt="Tabela de gap por classe"></figure>
+  </section>
+
+  <section id="tempo">
+    <h2>Reshuffles e tempo médios (conjunto A)</h2>
+    <figure><img src="graficos/tabela_reshuffles_tempo.png" alt="Tabela de reshuffles e tempo por classe"></figure>
+  </section>
+
+  <section id="graf">
+    <h2>Reshuffles médios por classe</h2>
+    <figure><img src="graficos/reshuffles_por_classe.png" alt="Gráfico de reshuffles médios por classe"></figure>
+  </section>
+
+  <section id="largura">
+    <h2>Variação da largura w (RS-w e PM-w)</h2>
+    <p class="nota">Conjunto A</p>
+    <figure><img src="graficos/tabela_largura.png" alt="Tabela variando w no conjunto A"></figure>
+    <p class="nota" style="margin-top:20px">Instâncias pesadas (W7 H6–H8, 100% de ocupação)</p>
+    <figure><img src="graficos/tabela_largura_pesadas.png" alt="Tabela variando w nas instâncias pesadas"></figure>
+  </section>
+
+  <section id="pesadas">
+    <h2>Instâncias pesadas: exatos x heurísticas</h2>
+    <p class="nota">Limite de 60 s. TL = A* sem solução; * = melhor solução do B&amp;B sem prova de ótimo.</p>
+    <figure><img src="graficos/tabela_pesadas_classes.png" alt="Médias por classe nas instâncias pesadas"></figure>
+    <p class="nota" style="margin-top:20px">Por instância</p>
+    <figure><img src="graficos/tabela_pesadas_instancias.png" alt="Resultados por instância nas instâncias pesadas"></figure>
+  </section>
+</main>
+</body>
+</html>

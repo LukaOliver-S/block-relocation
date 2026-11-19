@@ -92,6 +92,15 @@ def executar(filtro, timeout, jobs, conjuntos):
         w.writerows(linhas)
 
 
+def fmt3(v):
+    """Numero com 3 algarismos significativos, sem notacao cientifica (ex.: 0.0107)."""
+    from math import floor, log10
+    if v == 0:
+        return "0"
+    d = max(0, 2 - floor(log10(abs(v))))
+    return f"{v:.{d}f}"
+
+
 def calcular_gap(z, zref):
     if zref == 0:
         return 0.0 if z == 0 else float(z)
@@ -156,7 +165,7 @@ def metricas(conjuntos):
             "n_instancias": len(ls), "n_ok": len(oks),
             "n_timeout": sum(l["status"] == "timeout" for l in ls),
             "reshuffles_medio": round(mean(int(l["reshuffles"]) for l in oks), 3) if oks else "",
-            "tempo_medio_s": round(mean(float(l["tempo_s"]) for l in oks), 4) if oks else "",
+            "tempo_medio_s": round(mean(float(l["tempo_s"]) for l in oks), 9) if oks else "",
             "gap_medio": round(mean(gaps), 6) if gaps else "",
             "gap_max": round(max(gaps), 6) if gaps else "",
             "n_iguala_ref": sum(int(l["reshuffles"]) == l["Z_ref"] for l in oks

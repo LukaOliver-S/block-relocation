@@ -1,0 +1,3 @@
+80 instancias x 5 metodos
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\visualizador_solucoes.html
+exit 0

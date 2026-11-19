@@ -104,7 +104,7 @@ ol.steps .ret { color: var(--text-2); }
       <button id="theme" aria-label="Alternar tema">◐ Tema</button>
     </div>
     <table>
-      <thead><tr><th>Método</th><th>Variante</th><th>Reshuffles</th><th>Ótimo da variante</th><th>Gap</th><th>Tempo (s)</th><th>Status</th></tr></thead>
+      <thead><tr><th>Método</th><th>Variante</th><th>Reshuffles</th><th>Ótimo da variante</th><th>Gap</th><th>Tempo (ms)</th><th>Status</th></tr></thead>
       <tbody id="resumo"></tbody>
     </table>
   </div>
@@ -145,7 +145,7 @@ ol.steps .ret { color: var(--text-2); }
 
   <p class="note">Teclado: ← → passo a passo · espaço reproduz/pausa · ↑ ↓ troca de instância. Pilhas numeradas a partir de 1, de baixo para cima.
     Restritos (A*, Min-Max) só relocam contêineres acima do alvo; irrestritos (B&amp;B, RS-5, PM-3) podem fazer relocações voluntárias, marcadas como <span class="vol">voluntária</span>.
-    O gap é calculado contra o ótimo da mesma variante. Cada passo é reexecutado no navegador e conferido (topo, altura máxima, ordem de retirada).</p>
+    O gap é calculado contra o ótimo da mesma variante; nas instâncias pesadas, quando o exato estoura o tempo, Z<sub>ref</sub> marcado com * é o melhor valor conhecido entre os métodos da variante (sem prova de ótimo). No B&amp;B com tempo esgotado, o passo a passo mostrado é a melhor solução que ele encontrou. Cada passo é reexecutado no navegador e conferido (topo, altura máxima, ordem de retirada).</p>
 </div>
 
 <script>
@@ -189,7 +189,7 @@ function montarSelect() {
     if (inst.arquivo !== grupo) {
       grupo = inst.arquivo;
       og = document.createElement("optgroup");
-      og.label = `${inst.arquivo.replace("brp_", "").replaceAll("_", " ")}  (W=${inst.W}, H=${inst.H}, N=${inst.N})`;
+      og.label = `${inst.arquivo.replace("brp_", "").replaceAll("_", " ")}  (W=${inst.W}, H=${inst.H}, N=${inst.N})${inst.pesada ? " · pesada" : ""}`;
       sel.appendChild(og);
     }
     const o = document.createElement("option");
@@ -221,8 +221,8 @@ function renderResumo(inst) {
     const stTxt = s.status === "ok" ? "ok" : s.status === "timeout" ? "tempo esgotado" : s.status;
     const gap = s.gap == null ? "–" : fmtNum(s.gap * 100, 1) + "%";
     tr.innerHTML = `<td><b>${m.nome}</b></td><td><span class="tag">${m.variante}</span></td>
-      <td>${s.Z ?? "–"}</td><td>${s.Zref ?? "–"}</td><td>${gap}</td>
-      <td>${fmtNum(s.tempo, 4)}</td><td class="${stCls}">${stTxt}</td>`;
+      <td>${s.Z ?? "–"}</td><td>${s.Zref == null ? "–" : s.Zref + (s.refMelhor ? "*" : "")}</td><td>${gap}</td>
+      <td>${s.tempo == null ? "–" : (s.tempo * 1000).toLocaleString("pt-BR", { maximumSignificantDigits: 3 })}</td><td class="${stCls}">${stTxt}</td>`;
     const ir = () => { st.met = m.cod; st.passo = 0; parar(); render(); };
     tr.addEventListener("click", ir);
     tr.addEventListener("keydown", e => { if (e.key === "Enter") ir(); });
