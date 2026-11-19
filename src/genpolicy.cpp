@@ -37,8 +37,11 @@ unique_ptr<BRPPolicy> genPolicy(string name,
     } else if (name == "DFBB" && ! mustBeHeuristic) {
         return make_unique<DFBB>(1e9, timeLimit);
     } else if (name == "DFBB-L" && ! mustBeHeuristic) {
-        return make_unique<DFBBLoop>(1e9, timeLimit);
-    } else {
+        return make_unique<DFBBLoop>(1e9, timeLimit);  
+    } else if(name == "MM"){
+        return make_unique<BRPPolicy>();
+    }
+    else {
         cerr << "Invalid policy: " << name << endl;
         cerr << "mustBeHeuristic = " << mustBeHeuristic << endl;
         exit(22);
