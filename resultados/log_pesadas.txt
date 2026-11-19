@@ -1,0 +1,161 @@
+﻿30 instancias x 5 metodos (limite 60 s)
+brp_W7_H6_N37_id1.txt        MM     Z=  32 t=     0.0 ok
+brp_W7_H6_N37_id1.txt        RS-5   Z=  30 t=   0.002 ok
+brp_W7_H6_N37_id1.txt        PM-3   Z=  29 t=    0.02 ok
+brp_W7_H6_N37_id1.txt        ASTAR  Z=  30 t=   4.916 ok
+brp_W7_H6_N37_id2.txt        MM     Z=  43 t=     0.0 ok
+brp_W7_H6_N37_id2.txt        RS-5   Z=  40 t=   0.001 ok
+brp_W7_H6_N37_id2.txt        PM-3   Z=  38 t=   0.025 ok
+brp_W7_H6_N37_id3.txt        ASTAR  Z=  29 t=   3.531 ok
+brp_W7_H6_N37_id1.txt        DFBB   Z=  27 t=  60.001 timeout
+brp_W7_H6_N37_id2.txt        DFBB   Z=  43 t=  60.094 timeout
+brp_W7_H6_N37_id3.txt        MM     Z=  34 t=     0.0 ok
+brp_W7_H6_N37_id3.txt        RS-5   Z=  27 t=   0.003 ok
+brp_W7_H6_N37_id3.txt        PM-3   Z=  27 t=   0.015 ok
+brp_W7_H6_N37_id4.txt        ASTAR  Z=  30 t=   0.196 ok
+brp_W7_H6_N37_id4.txt        MM     Z=  30 t=     0.0 ok
+brp_W7_H6_N37_id4.txt        RS-5   Z=  30 t=   0.001 ok
+brp_W7_H6_N37_id4.txt        PM-3   Z=  29 t=   0.028 ok
+brp_W7_H6_N37_id3.txt        DFBB   Z=  31 t=  60.001 timeout
+brp_W7_H6_N37_id4.txt        DFBB   Z=  27 t=  10.113 ok
+brp_W7_H6_N37_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H6_N37_id5.txt        MM     Z=  35 t=     0.0 ok
+brp_W7_H6_N37_id5.txt        RS-5   Z=  32 t=   0.001 ok
+brp_W7_H6_N37_id5.txt        PM-3   Z=  32 t=   0.021 ok
+brp_W7_H6_N37_id6.txt        ASTAR  Z=  28 t=   0.414 ok
+brp_W7_H6_N37_id6.txt        MM     Z=  31 t=     0.0 ok
+brp_W7_H6_N37_id6.txt        RS-5   Z=  27 t=   0.001 ok
+brp_W7_H6_N37_id6.txt        PM-3   Z=  26 t=   0.016 ok
+brp_W7_H6_N37_id7.txt        ASTAR  Z=  20 t=   0.002 ok
+brp_W7_H6_N37_id7.txt        DFBB   Z=  19 t=   0.018 ok
+brp_W7_H6_N37_id7.txt        MM     Z=  21 t=     0.0 ok
+brp_W7_H6_N37_id7.txt        RS-5   Z=  19 t=   0.001 ok
+brp_W7_H6_N37_id7.txt        PM-3   Z=  19 t=   0.002 ok
+brp_W7_H6_N37_id8.txt        ASTAR  Z=  29 t=   0.012 ok
+brp_W7_H6_N37_id5.txt        ASTAR  Z=  34 t=  13.897 ok
+brp_W7_H6_N37_id8.txt        MM     Z=  31 t=     0.0 ok
+brp_W7_H6_N37_id8.txt        RS-5   Z=  29 t=     0.0 ok
+brp_W7_H6_N37_id8.txt        PM-3   Z=  29 t=    0.01 ok
+brp_W7_H6_N37_id9.txt        ASTAR  Z=  31 t=   0.541 ok
+brp_W7_H6_N37_id8.txt        DFBB   Z=  27 t=   4.822 ok
+brp_W7_H6_N37_id9.txt        MM     Z=  32 t=     0.0 ok
+brp_W7_H6_N37_id9.txt        RS-5   Z=  30 t=   0.001 ok
+brp_W7_H6_N37_id9.txt        PM-3   Z=  29 t=   0.019 ok
+brp_W7_H6_N37_id10.txt       ASTAR  Z=  25 t=   0.001 ok
+brp_W7_H6_N37_id10.txt       DFBB   Z=  24 t=   1.034 ok
+brp_W7_H6_N37_id10.txt       MM     Z=  25 t=     0.0 ok
+brp_W7_H6_N37_id10.txt       RS-5   Z=  25 t=     0.0 ok
+brp_W7_H6_N37_id10.txt       PM-3   Z=  25 t=    0.01 ok
+brp_W7_H6_N37_id6.txt        DFBB   Z=  26 t=  42.739 ok
+brp_W7_H6_N37_id5.txt        DFBB   Z=  34 t=  60.002 timeout
+brp_W7_H7_N43_id1.txt        MM     Z=  37 t=     0.0 ok
+brp_W7_H7_N43_id1.txt        RS-5   Z=  34 t=   0.002 ok
+brp_W7_H7_N43_id1.txt        PM-3   Z=  32 t=   0.047 ok
+brp_W7_H6_N37_id9.txt        DFBB   Z=  29 t=   60.06 timeout
+brp_W7_H7_N43_id1.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id2.txt        MM     Z=  36 t=     0.0 ok
+brp_W7_H7_N43_id2.txt        RS-5   Z=  34 t=   0.002 ok
+brp_W7_H7_N43_id2.txt        PM-3   Z=  34 t=    0.02 ok
+brp_W7_H7_N43_id3.txt        ASTAR  Z=  36 t=   1.461 ok
+brp_W7_H7_N43_id1.txt        DFBB   Z=  37 t=  60.001 timeout
+brp_W7_H7_N43_id3.txt        MM     Z=  41 t=     0.0 ok
+brp_W7_H7_N43_id3.txt        RS-5   Z=  35 t=   0.001 ok
+brp_W7_H7_N43_id3.txt        PM-3   Z=  34 t=   0.063 ok
+brp_W7_H7_N43_id2.txt        DFBB   Z=  36 t=  60.001 timeout
+brp_W7_H7_N43_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id4.txt        MM     Z=  43 t=     0.0 ok
+brp_W7_H7_N43_id4.txt        RS-5   Z=  39 t=   0.001 ok
+brp_W7_H7_N43_id4.txt        PM-3   Z=  37 t=   0.072 ok
+brp_W7_H7_N43_id5.txt        ASTAR  Z=  35 t=   0.938 ok
+brp_W7_H7_N43_id3.txt        DFBB   Z=  41 t=  60.001 timeout
+brp_W7_H7_N43_id5.txt        MM     Z=  37 t=     0.0 ok
+brp_W7_H7_N43_id5.txt        RS-5   Z=  35 t=   0.001 ok
+brp_W7_H7_N43_id5.txt        PM-3   Z=  35 t=   0.026 ok
+brp_W7_H7_N43_id4.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id4.txt        DFBB   Z=  43 t=  60.001 timeout
+brp_W7_H7_N43_id6.txt        MM     Z=  38 t=     0.0 ok
+brp_W7_H7_N43_id6.txt        RS-5   Z=  35 t=   0.001 ok
+brp_W7_H7_N43_id6.txt        PM-3   Z=  35 t=    0.06 ok
+brp_W7_H7_N43_id5.txt        DFBB   Z=  37 t=  60.001 timeout
+brp_W7_H7_N43_id6.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id7.txt        MM     Z=  39 t=     0.0 ok
+brp_W7_H7_N43_id7.txt        RS-5   Z=  35 t=   0.002 ok
+brp_W7_H7_N43_id7.txt        PM-3   Z=  34 t=   0.024 ok
+brp_W7_H7_N43_id6.txt        DFBB   Z=  38 t=  60.001 timeout
+brp_W7_H7_N43_id7.txt        DFBB   Z=  39 t=  60.002 timeout
+brp_W7_H7_N43_id8.txt        MM     Z=  48 t=     0.0 ok
+brp_W7_H7_N43_id8.txt        RS-5   Z=  41 t=   0.003 ok
+brp_W7_H7_N43_id8.txt        PM-3   Z=  41 t=   0.079 ok
+brp_W7_H7_N43_id7.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id8.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id9.txt        MM     Z=  48 t=     0.0 ok
+brp_W7_H7_N43_id9.txt        RS-5   Z=  38 t=   0.005 ok
+brp_W7_H7_N43_id9.txt        PM-3   Z=  37 t=   0.042 ok
+brp_W7_H7_N43_id8.txt        DFBB   Z=  48 t=  60.001 timeout
+brp_W7_H7_N43_id9.txt        DFBB   Z=  48 t=  60.001 timeout
+brp_W7_H7_N43_id10.txt       MM     Z=  43 t=     0.0 ok
+brp_W7_H7_N43_id10.txt       RS-5   Z=  39 t=   0.004 ok
+brp_W7_H7_N43_id10.txt       PM-3   Z=  39 t=   0.089 ok
+brp_W7_H7_N43_id9.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H7_N43_id10.txt       ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id1.txt        MM     Z=  63 t=     0.0 ok
+brp_W7_H8_N49_id1.txt        RS-5   Z=  51 t=   0.001 ok
+brp_W7_H8_N49_id1.txt        PM-3   Z=  51 t=   0.116 ok
+brp_W7_H7_N43_id10.txt       DFBB   Z=  43 t=  60.001 timeout
+brp_W7_H8_N49_id1.txt        ASTAR  Z=  52 t=  40.183 ok
+brp_W7_H8_N49_id2.txt        MM     Z=  66 t=     0.0 ok
+brp_W7_H8_N49_id2.txt        RS-5   Z=  53 t=   0.002 ok
+brp_W7_H8_N49_id2.txt        PM-3   Z=  51 t=   0.121 ok
+brp_W7_H8_N49_id1.txt        DFBB   Z=  63 t=  60.001 timeout
+brp_W7_H8_N49_id2.txt        DFBB   Z=  66 t=  60.002 timeout
+brp_W7_H8_N49_id3.txt        MM     Z=  55 t=     0.0 ok
+brp_W7_H8_N49_id3.txt        RS-5   Z=  48 t=   0.003 ok
+brp_W7_H8_N49_id3.txt        PM-3   Z=  46 t=   0.086 ok
+brp_W7_H8_N49_id2.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id3.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id4.txt        MM     Z=  51 t=     0.0 ok
+brp_W7_H8_N49_id4.txt        RS-5   Z=  47 t=   0.004 ok
+brp_W7_H8_N49_id4.txt        PM-3   Z=  43 t=   0.047 ok
+brp_W7_H8_N49_id3.txt        DFBB   Z=  55 t=  60.001 timeout
+brp_W7_H8_N49_id4.txt        DFBB   Z=  50 t=  60.002 timeout
+brp_W7_H8_N49_id5.txt        MM     Z=  49 t=     0.0 ok
+brp_W7_H8_N49_id5.txt        RS-5   Z=  46 t=   0.005 ok
+brp_W7_H8_N49_id5.txt        PM-3   Z=  46 t=   0.299 ok
+brp_W7_H8_N49_id4.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id5.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id6.txt        MM     Z=  57 t=     0.0 ok
+brp_W7_H8_N49_id6.txt        RS-5   Z=  54 t=   0.003 ok
+brp_W7_H8_N49_id6.txt        PM-3   Z=  51 t=   0.216 ok
+brp_W7_H8_N49_id5.txt        DFBB   Z=  49 t=  60.001 timeout
+brp_W7_H8_N49_id6.txt        ASTAR  Z=  50 t=  53.745 ok
+brp_W7_H8_N49_id7.txt        MM     Z=  42 t=     0.0 ok
+brp_W7_H8_N49_id7.txt        RS-5   Z=  36 t=   0.002 ok
+brp_W7_H8_N49_id7.txt        PM-3   Z=  35 t=   0.077 ok
+brp_W7_H8_N49_id6.txt        DFBB   Z=  57 t=  60.001 timeout
+brp_W7_H8_N49_id7.txt        DFBB   Z=  42 t=  60.002 timeout
+brp_W7_H8_N49_id8.txt        MM     Z=  43 t=     0.0 ok
+brp_W7_H8_N49_id8.txt        RS-5   Z=  38 t=   0.002 ok
+brp_W7_H8_N49_id8.txt        PM-3   Z=  38 t=   0.042 ok
+brp_W7_H8_N49_id7.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id8.txt        DFBB   Z=  43 t=  60.003 timeout
+brp_W7_H8_N49_id9.txt        MM     Z=  56 t=     0.0 ok
+brp_W7_H8_N49_id9.txt        RS-5   Z=  44 t=   0.002 ok
+brp_W7_H8_N49_id9.txt        PM-3   Z=  41 t=   0.078 ok
+brp_W7_H8_N49_id8.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id9.txt        DFBB   Z=  56 t=  60.002 timeout
+brp_W7_H8_N49_id10.txt       MM     Z=  58 t=     0.0 ok
+brp_W7_H8_N49_id10.txt       RS-5   Z=  47 t=   0.002 ok
+brp_W7_H8_N49_id10.txt       PM-3   Z=  42 t=   0.104 ok
+brp_W7_H8_N49_id9.txt        ASTAR  Z=     t=      60 timeout
+brp_W7_H8_N49_id10.txt       DFBB   Z=  58 t=  60.025 timeout
+brp_W7_H8_N49_id10.txt       ASTAR  Z=     t=      60 timeout
+   Classe A* timeouts A* reshuffles médio A* tempo médio (s) B&B timeouts B&B reshuffles médio B&B tempo médio (s) Min-Max timeouts Min-Max reshuffles médio Min-Max tempo médio (s) RS-5 timeouts RS-5 reshuffles médio RS-5 tempo médio (s) PM-3 timeouts PM-3 reshuffles médio PM-3 tempo médio (s)
+W7 H6 N37        1/10               28.44              2.612         5/10                24.60              11.745             0/10                    31.40                   0.000          0/10                 28.90                0.001          0/10                 28.30                0.017
+W7 H7 N43        8/10               35.50              1.200        10/10                    —                   —             0/10                    41.00                   0.000          0/10                 36.50                0.002          0/10                 35.80                0.052
+W7 H8 N49        8/10               51.00             46.964        10/10                    —                   —             0/10                    54.00                   0.000          0/10                 46.40                0.003          0/10                 44.40                0.119
+    Total       17/30               33.00              9.218        25/30                24.60              11.745             0/30                    42.13                   0.000          0/30                 37.27                0.002          0/30                 36.17                0.062
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\pesadas_bruto.csv
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_pesadas_instancias.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\resultados\tabela_pesadas_classes.md
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_pesadas_instancias.png
+-> C:\Users\Lucas Júlio\UFBA\George\block-relocation\graficos\tabela_pesadas_classes.png
