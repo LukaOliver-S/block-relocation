@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "genpolicy.h"
+#include "astar.h"
 
 using namespace std;
 
@@ -32,6 +33,8 @@ unique_ptr<BRPPolicy> genPolicy(string name,
     } else if (name == "FM") {
         return make_unique<FastMetaPolicy>(FastMetaPolicy());
         // exact methods follow
+    } else if (name == "ASTAR" && ! mustBeHeuristic) {
+        return make_unique<AStar>(timeLimit);
     } else if (name == "BB" && ! mustBeHeuristic) {
         return make_unique<BranchAndBound>(1e9, bbStrategy, timeLimit);
     } else if (name == "DFBB" && ! mustBeHeuristic) {
