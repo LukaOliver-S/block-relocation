@@ -64,6 +64,7 @@ int main(int argc, char **argv) {
   string scriptFile = "";
   string traceFile = "";
   string movesFile = "";
+  string csvFile = "";
   string outDir = "";
   int LB = 1;
   // string condensationProcedure = "none";
@@ -138,8 +139,10 @@ int main(int argc, char **argv) {
     }
   }
 
-  // -out <folder>: save moves and trace in <folder>/<method>/ with names
-  // derived from the instance file name
+  // -out <folder>: save the outputs in <folder>/<method>/, one subfolder per
+  // kind of file, named after the instance:
+  //   passos_csv/<inst>_passos.csv  passos_txt/<inst>_passos.txt
+  //   moves/<inst>_moves.txt
   if ( outDir != "" ) {
     string base = instanceFname;
     size_t sl = base.find_last_of(string("/") + (char) 92);
@@ -147,9 +150,12 @@ int main(int argc, char **argv) {
     size_t dot = base.rfind('.');
     if ( dot != string::npos ) base = base.substr(0, dot);
     string dir = outDir + "/" + method;
-    makeDirs(dir);
-    movesFile = dir + "/" + base + "_moves.txt";
-    traceFile = dir + "/" + base + "_passos.txt";
+    makeDirs(dir + "/passos_csv");
+    makeDirs(dir + "/passos_txt");
+    makeDirs(dir + "/moves");
+    csvFile = dir + "/passos_csv/" + base + "_passos.csv";
+    traceFile = dir + "/passos_txt/" + base + "_passos.txt";
+    movesFile = dir + "/moves/" + base + "_moves.txt";
   }
 
   // dump parameter settings
@@ -213,7 +219,7 @@ int main(int argc, char **argv) {
       result->appendSolutionToFile(scriptFile);
   }
   if ( traceFile != "" ) {
-      s.writeTrace(result->operations(), traceFile);
+      s.writeTrace(result->operations(), traceFile, csvFile);
   }
   if ( movesFile != "" ) {
       result->writeMoves(movesFile);

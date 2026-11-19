@@ -23,6 +23,62 @@ REQUISITOS
 - g++ com suporte a C++14 (no Windows: MSYS2/MinGW)
 - Python 3
 
+RESUMO: COMO RODAR O EXPERIMENTO
+--------------------------------
+Na raiz do projeto (onde esta este README), no PowerShell ou no Git Bash:
+
+  # 1) so na primeira vez: converter as instancias da disciplina (JSON -> TXT)
+  python scripts/json2dat.py instancias/brp_instances/instances instancias/brp_txt
+
+  # 2) rodar os metodos nas instancias (o brp.exe e compilado sozinho)
+  python scripts/rodar_experimentos.py --conjuntos brp_txt --metodos MM,RS-5,PM-3,ASTAR,BB
+  (sem --metodos ele ja roda esses cinco: MM, RS-5, PM-3, ASTAR e BB)
+
+  # 3) olhar os resultados (o CSV vai sendo gravado durante a execucao)
+  resultados/resultados_irrestrito.csv      uma linha por instancia x metodo
+  resultados/passos/<metodo>/passos_csv/    passo a passo de cada solucao
+  resultados/passos/<metodo>/passos_txt/    o mesmo, legivel
+  resultados/passos/<metodo>/moves/         so as relocacoes
+  resultados/solucoes/<metodo>/             solucao no formato -sf
+
+O passo 2 pode levar varios minutos: cada instancia grande que o ASTAR nao
+resolve gasta ate 20 s (--tl-astar) e cada uma que o BB nao resolve gasta ate
+50 s (--tl-bb). Para um teste rapido, rode so um
+metodo ou o conjunto A:
+  python scripts/rodar_experimentos.py --conjuntos A --metodos MM,RS-5
+
+RESULTADOS EM GERAL (o CSV)
+O runner gera um unico CSV com os resultados de TODAS as execucoes, uma linha
+por instancia x metodo: resultados/resultados_irrestrito.csv. Colunas:
+  conjunto, instancia, W, H, N, metodo, relocacoes, tempo_s, status,
+  valida_irrestrita, valida_restrita, z_confere, passos_csv
+(status = ok | timeout | erro(<codigo>); passos_csv aponta para o passo a
+passo daquela execucao). Cada execucao do runner SOBRESCREVE esse arquivo;
+para guardar mais de um, escolha o nome com --csv:
+  python scripts/rodar_experimentos.py --conjuntos A --metodos MM,RS-5 --csv resultados/teste_A.csv
+Abra no Excel ou leia com pandas, por exemplo (media por conjunto e metodo, e
+uma tabela instancia x metodo para comparar):
+  import pandas as pd
+  d = pd.read_csv("resultados/resultados_irrestrito.csv")
+  print(d[d.status == "ok"].groupby(["conjunto", "metodo"])["relocacoes"].mean())
+  print(d.pivot_table(index="instancia", columns="metodo", values="relocacoes"))
+
+Uma instancia so, com a saida nas mesmas pastas (PowerShell):
+  powershell -ExecutionPolicy Bypass -File .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m MM -maxHeight file -out resultados/passos
+  (rodar.ps1 compila se precisar; no Git Bash use ./rodar.sh com os mesmos
+   argumentos.)
+
+Problemas comuns:
+  - "Invalid policy: ASTAR" / erro(22): o brp.exe e antigo. Rode o runner
+    sem --sem-compilar (ele recompila) ou use o rodar.ps1.
+  - Erro de compilacao: confira se o g++ esta no PATH (no Windows, o
+    MSYS2: C:\msys64\ucrt64\bin). Se o brp.exe ja estiver atualizado, use
+    --sem-compilar.
+  - ASTAR "timeout": nao provou o otimo dentro do limite. Ele guarda todos
+    os estados em memoria (~0,5 GB por segundo nas instancias grandes);
+    nao suba muito o --tl-astar.
+  - Quais metodos respeitam o BRP restrito: ver a secao 6.
+
 1) COMPILAR  (rodar na raiz do projeto, onde esta este README)
 ---------------------------------------------------------------
 PowerShell (nao precisa de make):
@@ -56,8 +112,9 @@ cabecalho "W H N" vem do metadata do JSON, entao rode sempre com
   .\brp.exe -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file
 
 Atencao: essas instancias sao do BRP RESTRITO (so se relocam os
-containers acima do alvo). Hoje so o LA-1 respeita essa regra; os demais
-metodos (DFBB, RS, PM, SM, SmSEQ, GLAH) ainda podem fazer movimentos
+containers acima do alvo). Hoje respeitam essa regra o LA-1 e o MM
+(verificado nas 170 instancias) e o ASTAR (restrito por construcao); os
+demais metodos (DFBB, RS, PM, SM, SmSEQ, GLAH) ainda podem fazer movimentos
 voluntarios e nao sao comparaveis com as referencias.
 
 3) RODAR UMA INSTANCIA
@@ -74,17 +131,54 @@ Outros exemplos:
   -v               mostra a solucao passo a passo
   -sf saida.txt    grava a solucao em arquivo
 
-4) RODAR TODAS AS INSTANCIAS (A e B) E GERAR O CSV
---------------------------------------------------
+4) RODAR TODAS AS INSTANCIAS E GERAR O CSV
+-------------------------------------------
   python scripts/rodar_experimentos.py
+  python scripts/rodar_experimentos.py --conjuntos brp_txt --metodos RS-5,PM-3,ASTAR
 
-Pode ser executado de qualquer pasta. Configuracao no topo do script:
-METODOS (ex.: ["RS-5", "PM-3"]), TIMEOUT (s por instancia) e MAX_N
-(ignora instancias com mais de MAX_N containers).
-Saida: resultados/resultados_irrestrito.csv
-(colunas: conjunto, instancia, W, H, N, metodo, relocacoes, tempo_s, status;
- status = ok | timeout | erro(<codigo>)).
-As sequencias de movimentos ficam em resultados/solucoes/.
+Pode ser executado de qualquer pasta. O brp.exe e recompilado sozinho se
+algum .cpp/.h for mais novo (precisa do g++ no PATH). Se a compilacao
+falhar mas o brp.exe ja estiver atualizado, use --sem-compilar.
+
+Conjuntos (--conjuntos, separados por virgula; padrao = todos):
+  A         instancias/A        (geradas; ignora N > 40)
+  B         instancias/caserta  (literatura; ignora N > 40)
+  brp_txt   instancias/brp_txt  (as da disciplina, todas, ate N = 49)
+Metodos: --metodos (padrao no topo do script:
+  METODOS = ["MM", "RS-5", "PM-3", "ASTAR", "BB"]).
+  MM e ASTAR sao restritos; RS-5 e PM-3 sao irrestritos; BB e EXATO no
+  irrestrito (serve de comparacao: o valor dele e um limite inferior do otimo
+  restrito do ASTAR, ou seja, BB <= ASTAR).
+Outras opcoes: --timeout (s por execucao, padrao 60), --tl-astar (limite
+interno do ASTAR, padrao 20 s; ele guarda os estados em memoria, ~0,5 GB por
+segundo nas instancias grandes, entao nao suba demais), --tl-bb (limite
+interno de BB, DFBB e DFBB-L, padrao 50 s) e --csv (arquivo de resultados;
+padrao resultados/resultados_irrestrito.csv).
+Quando o BB/DFBB estoura o limite, status = timeout, mas a coluna relocacoes
+traz a melhor solucao que ele achou (sem prova de otimo). No ASTAR, que nao
+devolve solucao parcial, relocacoes fica vazia.
+O CSV e gravado linha a linha: da para abri-lo durante a execucao, e nada se
+perde se ela for interrompida (Ctrl+C).
+
+Saidas:
+  resultados/resultados_irrestrito.csv
+    colunas: conjunto, instancia, W, H, N, metodo, relocacoes, tempo_s, status,
+             valida_irrestrita, valida_restrita, z_confere, passos_csv
+    status = ok | timeout | erro(<codigo>)   (o ASTAR sem prova de otimo
+    dentro do limite aparece como timeout)
+    passos_csv = caminho do passos.csv daquela execucao (vazio se falhou)
+  resultados/solucoes/<metodo>/   (nao esta no .gitignore)
+    <conjunto>_<instancia>.txt   solucao no formato -sf
+  resultados/passos/<metodo>/     (so os arquivos de passos; esta no .gitignore)
+    passos_csv/<instancia>_passos.csv   passo a passo (secao 7)
+    passos_txt/<instancia>_passos.txt   o mesmo, legivel, com o estado das pilhas
+    moves/<instancia>_moves.txt         so as relocacoes [[origem, destino], ...]
+  Exemplo: resultados/passos/MM/passos_csv/brp_W3_H4_N8_id1_passos.csv
+  Cada metodo tem a sua pasta, e dentro dela uma subpasta por tipo de arquivo.
+  Metodos diferentes na mesma instancia nao se sobrescrevem.
+Obs.: valida_irrestrita, valida_restrita e z_confere ainda saem vazias (o
+runner nao confere as solucoes). Lembre que so LA-1, MM e ASTAR sao
+restritos hoje; RS e PM resolvem o problema irrestrito (ver secao 6).
 
 5) OBTER O PASSO A PASSO QUE O ALGORITMO FEZ
 --------------------------------------------
@@ -115,15 +209,14 @@ Saidas em arquivo (pilhas numeradas a partir de 1):
                      destino e o estado das pilhas. Grava tambem passos.csv
                      (passo, tipo, container, origem, destino, classe,
                      relocacoes)
-  -out <pasta>       grava os dois acima em <pasta>/<metodo>/, criando as
-                     pastas e nomeando pela instancia:
-                       <pasta>/LA-1/brp_W3_H4_N8_id1_moves.txt
-                       <pasta>/LA-1/brp_W3_H4_N8_id1_passos.txt
-                       <pasta>/LA-1/brp_W3_H4_N8_id1_passos.csv
+  -out <pasta>       grava os tres arquivos em <pasta>/<metodo>/, com uma
+                     subpasta por tipo, criando tudo e nomeando pela instancia:
+                       <pasta>/LA-1/passos_csv/brp_W3_H4_N8_id1_passos.csv
+                       <pasta>/LA-1/passos_txt/brp_W3_H4_N8_id1_passos.txt
+                       <pasta>/LA-1/moves/brp_W3_H4_N8_id1_moves.txt
 Exemplo:
-  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/solucoes
-(resultados/solucoes/ esta no .gitignore; use outra pasta, ex.: resultados/saidas,
- se quiser versionar.)
+  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/passos
+(resultados/passos/ esta no .gitignore; resultados/solucoes/ nao esta.)
 O motivo da escolha de cada destino nao e registrado pelas heuristicas; o
 -trace mostra apenas o efeito (se criou conflito) e o estado das pilhas.
 
@@ -167,6 +260,13 @@ EXATOS (acham o otimo; precisam de uma cota superior inicial -ub)
   -m DFBB       branch-and-bound em profundidade
   -m DFBB-L     DFBB com cota crescente (iterative deepening)
   -m BB         branch-and-bound com fila; -bbs depth | breadth
+  BB, DFBB e DFBB-L sao exatos para o problema IRRESTRITO (testados em 70
+  instancias pequenas de brp_txt: os tres deram o mesmo valor e nunca ficaram
+  acima do ASTAR; em 16 deram valor menor, porque podem mover qualquer topo).
+  Para as instancias restritas servem como limite inferior, nao como otimo.
+  CUIDADO: o BB com -lb 3 errou em 6 das 70 (devolveu valor acima do otimo);
+  use BB com -lb 1 (padrao) ou o DFBB, que nao tem esse problema. O -lb 2 nao
+  foi testado.
   Exemplo:
     .\rodar.ps1 -i INST -m DFBB -ub LA-1 -lb 3 -tl 60 -maxHeight file
   -ub <heuristica>  cota superior inicial (padrao LA-1; so heuristicas)
@@ -175,10 +275,12 @@ EXATOS (acham o otimo; precisam de uma cota superior inicial -ub)
                     devolve a melhor solucao achada ate la
 
 IMPORTANTE - RESTRITO x IRRESTRITO
-As instancias de brp_txt sao do BRP RESTRITO. Hoje so o LA-1 e restrito
-(verificado). Os demais modelos podem fazer movimentos voluntarios, ou
-seja, resolvem o problema irrestrito e nao sao comparaveis com as
-referencias (Min-Max, A*). Para saber se uma solucao especifica respeitou a
+As instancias de brp_txt sao do BRP RESTRITO. Hoje sao restritos o LA-1 e o
+MM (verificado: 170 de 170 solucoes legais) e o ASTAR (restrito por
+construcao). RS-5 e PM-3 NAO sao: so 17 e 16 das 170 solucoes, respectivamente,
+foram legais no restrito. Os demais modelos tambem podem fazer movimentos
+voluntarios, ou seja, resolvem o problema irrestrito e nao sao comparaveis
+com as referencias (Min-Max, A*). Para saber se uma solucao especifica respeitou a
 regra, abra o passos.csv (secao 7): se a coluna "classe" tiver alguma linha
 "voluntaria", a solucao nao e restrita.
 
@@ -189,14 +291,16 @@ o -trace e o -moves. Duas formas:
 
 (a) Pasta e nomes automaticos (recomendado):
 
-  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/solucoes
+  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/passos
 
-  Cria resultados/solucoes/LA-1/ com:
-    brp_W3_H4_N8_id1_passos.csv   (a tabela abaixo)
-    brp_W3_H4_N8_id1_passos.txt   (o mesmo passo a passo, legivel, com o
-                                   estado das pilhas depois de cada passo)
-    brp_W3_H4_N8_id1_moves.txt    (so as relocacoes: [[3, 2], [3, 2], ...])
-  Cada modelo ganha sua propria subpasta (LA-1, RS-5, DFBB, ...), entao
+  Cria resultados/passos/LA-1/ com tres subpastas:
+    passos_csv/brp_W3_H4_N8_id1_passos.csv   (a tabela abaixo)
+    passos_txt/brp_W3_H4_N8_id1_passos.txt   (o mesmo passo a passo, legivel,
+                                              com o estado das pilhas depois
+                                              de cada passo)
+    moves/brp_W3_H4_N8_id1_moves.txt         (so as relocacoes:
+                                              [[3, 2], [3, 2], ...])
+  Cada modelo ganha sua propria pasta (LA-1, RS-5, DFBB, ...), entao
   rodar modelos diferentes na mesma instancia nao sobrescreve nada. Rodar o
   mesmo modelo na mesma instancia duas vezes sobrescreve.
 
@@ -229,15 +333,15 @@ Gerar para varias instancias ou varios modelos (PowerShell):
 
   # as 10 instancias de um arquivo, com o LA-1
   Get-ChildItem instancias\brp_txt\brp_W3_H4_N8_id*.txt | ForEach-Object {
-      .\rodar.ps1 -i $_.FullName -m LA-1 -maxHeight file -out resultados/solucoes }
+      .\rodar.ps1 -i $_.FullName -m LA-1 -maxHeight file -out resultados/passos }
 
   # varios modelos na mesma instancia
   foreach ($m in "LA-1","SM-2","RS-5","PM-3") {
-      .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m $m -maxHeight file -out resultados/solucoes }
+      .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m $m -maxHeight file -out resultados/passos }
 
 Observacoes:
-- resultados/solucoes/ esta no .gitignore; use outra pasta (ex.:
-  -out resultados/saidas) se quiser versionar os arquivos.
+- resultados/passos/ esta no .gitignore (os arquivos nao aparecem no git);
+  resultados/solucoes/ nao esta. O runner (secao 4) ja usa resultados/passos/.
 - O -trace nao exige que o modelo seja exato: serve para qualquer -m. Nos
   exatos com -tl, descreve a melhor solucao achada ate o limite de tempo.
 - As heuristicas nao registram o MOTIVO de cada escolha; o arquivo mostra o

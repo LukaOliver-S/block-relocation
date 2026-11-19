@@ -82,8 +82,9 @@ public:
         return operations_;
     }
     // replays ops starting from this state; writes a step-by-step trace to
-    // fName and a CSV version to fName + ".csv"
-    void writeTrace(const vector<pair<int, int> > &ops, string fName) const;
+    // fName and a CSV version to csvFile (default: fName with .txt -> .csv)
+    void writeTrace(const vector<pair<int, int> > &ops, string fName,
+                    string csvFile = "") const;
     void writeMoves(string fName) const;
     unsigned int nRemaining() const { return nRemaining_; }
 

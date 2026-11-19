@@ -522,13 +522,16 @@ void BRPState::writeMoves(string fName) const {
     ofs << "]" << endl;
 }
 void BRPState::writeTrace(const vector<pair<int, int> > &ops,
-                          string fName) const {
+                          string fName, string csvFile) const {
     ofstream ofs(fName);
-    string csvName = fName;
-    if (csvName.size() > 4 && csvName.substr(csvName.size() - 4) == ".txt") {
-        csvName = csvName.substr(0, csvName.size() - 4) + ".csv";
-    } else {
-        csvName += ".csv";
+    string csvName = csvFile;
+    if (csvName.empty()) {                  // derive it from the .txt name
+        csvName = fName;
+        if (csvName.size() > 4 && csvName.substr(csvName.size() - 4) == ".txt") {
+            csvName = csvName.substr(0, csvName.size() - 4) + ".csv";
+        } else {
+            csvName += ".csv";
+        }
     }
     ofstream csv(csvName);
     if (!ofs || !csv) {

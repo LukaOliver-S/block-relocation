@@ -3,5 +3,6 @@ build/
 brp
 brp.exe
 __pycache__/
+resultados/passos/
 resultados/solucoes/
 instancias/_obsoleto/
