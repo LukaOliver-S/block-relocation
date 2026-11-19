@@ -27,7 +27,8 @@ BRPState::BRPState(string fName, string maxHeightType) {
     lastRelocatedTo_ = -1;
     // W_, stacks_ and n_ are all initialised when reading the file
     readFromFile(fName);
-        unsigned int h = *max_element(height_.begin(), height_.end());
+    initialHeights_ = height_;
+    unsigned int h = *max_element(height_.begin(), height_.end());
     if (maxHeightType == "unlimited") {
         H_ = n_;
     } else if (maxHeightType == "file") {                 
@@ -504,6 +505,89 @@ void BRPState::undoLastMove() {
     }
 }
 
+void BRPState::writeMoves(string fName) const {
+    ofstream ofs(fName);
+    if (!ofs) {
+        cerr << "Error: cannot write moves file " << fName << endl;
+        return;
+    }
+    ofs << "[";
+    bool first = true;
+    for (auto op : operations_) {
+        if (op.first == op.second) continue;        // retrievals are implicit
+        if (!first) ofs << ", ";
+        ofs << "[" << op.first + 1 << ", " << op.second + 1 << "]";
+        first = false;
+    }
+    ofs << "]" << endl;
+}
+void BRPState::writeTrace(const vector<pair<int, int> > &ops,
+                          string fName) const {
+    ofstream ofs(fName);
+    string csvName = fName;
+    if (csvName.size() > 4 && csvName.substr(csvName.size() - 4) == ".txt") {
+        csvName = csvName.substr(0, csvName.size() - 4) + ".csv";
+    } else {
+        csvName += ".csv";
+    }
+    ofstream csv(csvName);
+    if (!ofs || !csv) {
+        cerr << "Error: cannot write trace file " << fName << endl;
+        return;
+    }
+    csv << "passo,tipo,container,origem,destino,classe,relocacoes\n";
+    BRPState cur(*this);            // replay on a copy of the initial state
+    int step = 1;
+    for (auto op : ops) {
+        if (op.first == op.second) {                       // retrieval
+            int item = cur.next();
+            ofs << "Passo " << step << " | RETIRADA   | container " << item
+                << " da pilha " << op.first + 1 << "\n";
+            csv << step << ",retirada," << item << "," << op.first + 1
+                << ",,," << cur.nRelocations() << "\n";
+            cur.pop(op.first);
+        } else {                                           // relocation
+            int item = cur.top(op.first);
+            int target = cur.next();
+            int tStack = cur.stackForItem(target);
+            bool forced = (op.first == tStack);
+            int lowTo = cur.low(op.second);
+            const vector<int> &ts = cur.stacks()[tStack];
+            int above = 0;
+            for (int k = (int) ts.size() - 1; ts[k] != target; k--) above++;
+            cur.relocate(op.first, op.second);
+            ofs << "Passo " << step << " | RELOCACAO  | container " << item
+                << ": pilha " << op.first + 1 << " -> pilha " << op.second + 1
+                << " | " << (forced ? "FORCADA" : "VOLUNTARIA") << "\n";
+            ofs << "    alvo atual: " << target << " (pilha " << tStack + 1
+                << "), " << above << " container(es) acima\n";
+            if (lowTo > n_) {
+                ofs << "    destino: pilha vazia\n";
+            } else {
+                ofs << "    destino: menor container da pilha " << op.second + 1
+                    << " e " << lowTo
+                    << (item > lowTo ? " -> CRIA conflito (o " : " -> nao cria conflito (o ")
+                    << item << (item > lowTo ? " fica sobre o " : " fica abaixo do ")
+                    << lowTo << ")\n";
+            }
+            csv << step << ",relocacao," << item << "," << op.first + 1 << ","
+                << op.second + 1 << "," << (forced ? "forcada" : "voluntaria")
+                << "," << cur.nRelocations() << "\n";
+        }
+        // state after the step (bottom -> top)
+        ofs << "    pilhas apos o passo:\n";
+        for (unsigned int s = 0; s < cur.W(); s++) {
+            ofs << "      P" << s + 1 << ":";
+            if (cur.stacks()[s].empty()) ofs << " (vazia)";
+            for (int c : cur.stacks()[s]) ofs << " " << c;
+            ofs << "\n";
+        }
+        step++;
+    }
+    ofs << "Total de relocacoes: " << cur.nRelocations() << "\n";
+}
+
+
 void BRPState::displaySolution() const {
     int i = 0;
     for (auto op: operations_) {
@@ -744,7 +828,8 @@ void BRPState::condenseTricoireSub() {
     int firstReloc = 0;
     // compute height of each stack at each op
     vector<vector<int> > heightBeforeOp(operations_.size() + 1,
-                                        vector<int>(W_, n_ / W_) );
+                                        vector<int>(W_, 0) );
+    heightBeforeOp[0] = initialHeights_;
     for (int op = 0; op < operations_.size(); op++) {
         int from = operations_[op].first;
         int to = operations_[op].second;

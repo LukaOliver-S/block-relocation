@@ -76,7 +76,15 @@ public:
     int low(unsigned int s) const { return low_[s]; }
 
     unsigned int nRelocations() const { return nRelocations_; }
-
+    
+    // all operations so far: (from, to) for a relocation, (s, s) for a retrieval
+    const vector<pair<int,int>> &operations() const{
+        return operations_;
+    }
+    // replays ops starting from this state; writes a step-by-step trace to
+    // fName and a CSV version to fName + ".csv"
+    void writeTrace(const vector<pair<int, int> > &ops, string fName) const;
+    void writeMoves(string fName) const;
     unsigned int nRemaining() const { return nRemaining_; }
 
     bool mustBeMoved(unsigned int item) const { return mustBeMoved_[item]; }
@@ -141,6 +149,8 @@ protected:
     vector<int> low_;
     vector<int> height_;
     vector<bool> mustBeMoved_;
+    // height of each stack before any operation
+    vector<int> initialHeights_;
     int LB_;
     // (from, to) pairs for relocations. (from, from) if it's a retrieval
     vector<pair<int, int>> operations_;

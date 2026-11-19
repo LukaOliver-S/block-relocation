@@ -6,10 +6,14 @@ ESTRUTURA
 ---------
 include/        headers (.h)
 src/            fontes (.cpp)
-scripts/        gerar_instancias.py, rodar_experimentos.py
+scripts/        gerar_instancias.py, rodar_experimentos.py, json2dat.py
 instancias/
   A/            conjunto pequeno (W=3..5, H=4..5, N<=20), gerado por script
   caserta/      instancias da literatura (Caserta, Voss & Sniedovich, 2011)
+  brp_instances/instances/   instancias da disciplina (17 arquivos .json,
+                10 instancias cada, ver LEIAME.md)
+  brp_txt/      as mesmas instancias em .txt (170 arquivos), geradas por
+                scripts/json2dat.py
   _obsoleto/    arquivos antigos, pode ser apagado
 resultados/     CSVs gerados pelo runner
 graficos/       figuras
@@ -36,6 +40,25 @@ Ou, se o make estiver instalado:  make   (gera ./brp)
   python scripts/gerar_instancias.py
 
 Cria instancias/A/*.txt (e instancias/A_pequenas.json).
+
+2.1) CONVERTER AS INSTANCIAS DA DISCIPLINA (JSON -> TXT)
+--------------------------------------------------------
+O programa le .txt, nao .json. Para usar as instancias de
+instancias/brp_instances/instances/ (brp_W{W}_H{H}_N{N}.json):
+
+  python scripts/json2dat.py instancias/brp_instances/instances instancias/brp_txt
+
+Gera 1 arquivo por instancia: instancias/brp_txt/brp_W3_H4_N8_id1.txt
+(o sufixo _idK e o id da instancia dentro do JSON, de 1 a 10). O
+cabecalho "W H N" vem do metadata do JSON, entao rode sempre com
+-maxHeight file:
+
+  .\brp.exe -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file
+
+Atencao: essas instancias sao do BRP RESTRITO (so se relocam os
+containers acima do alvo). Hoje so o LA-1 respeita essa regra; os demais
+metodos (DFBB, RS, PM, SM, SmSEQ, GLAH) ainda podem fazer movimentos
+voluntarios e nao sao comparaveis com as referencias.
 
 3) RODAR UMA INSTANCIA
 ----------------------
@@ -83,6 +106,142 @@ Pilhas sao numeradas a partir de 0. "Relocate" e uma realocacao (conta no Z);
 posicao da operacao na sequencia.
 O runner (scripts/rodar_experimentos.py) ja passa -sf a cada execucao e grava
 os passos em resultados/solucoes/<metodo>/<conjunto>_<instancia>.txt.
+
+Saidas em arquivo (pilhas numeradas a partir de 1):
+  -moves movs.txt    so as relocacoes, como [[origem, destino], ...] (as
+                     retiradas ficam implicitas)
+  -trace passos.txt  um bloco por passo: container movido, origem -> destino,
+                     se foi FORCADA ou VOLUNTARIA, alvo atual, efeito no
+                     destino e o estado das pilhas. Grava tambem passos.csv
+                     (passo, tipo, container, origem, destino, classe,
+                     relocacoes)
+  -out <pasta>       grava os dois acima em <pasta>/<metodo>/, criando as
+                     pastas e nomeando pela instancia:
+                       <pasta>/LA-1/brp_W3_H4_N8_id1_moves.txt
+                       <pasta>/LA-1/brp_W3_H4_N8_id1_passos.txt
+                       <pasta>/LA-1/brp_W3_H4_N8_id1_passos.csv
+Exemplo:
+  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/solucoes
+(resultados/solucoes/ esta no .gitignore; use outra pasta, ex.: resultados/saidas,
+ se quiser versionar.)
+O motivo da escolha de cada destino nao e registrado pelas heuristicas; o
+-trace mostra apenas o efeito (se criou conflito) e o estado das pilhas.
+
+rodar.ps1 / rodar.sh compilam (so se algum .cpp/.h mudou) e rodam o brp:
+  powershell -ExecutionPolicy Bypass -File .\rodar.ps1 <argumentos do brp>
+  ./rodar.sh <argumentos do brp>
+
+6) COMO RODAR CADA MODELO  (-m <modelo>)
+----------------------------------------
+Comando base (troque so o modelo; INST = arquivo da instancia):
+
+  .\rodar.ps1 -i INST -m <modelo> -maxHeight file
+
+Todos os comandos abaixo foram testados na instancia
+instancias/brp_txt/brp_W3_H4_N8_id1.txt. A linha de interesse na saida e
+"<modelo>  used <Z> relocations in <t> s".
+
+HEURISTICAS (resposta em milissegundos)
+  -m LA-1       Petering, so movimentos forcados.  RESTRITO (verificado nas
+                170 instancias de brp_txt: nenhuma relocacao voluntaria)
+  -m LA-2       Petering com lookahead N=2 (LA-<N>: use N = 2, 3, ...)
+  -m LA-S-1     LA com N = W-1 (todas as pilhas menos uma)
+  -m SM-1       safe moves (1-relocates)
+  -m SM-2       safe moves (1- e 2-relocates)
+  -m SSEQ       subsequencias
+  -m SmSEQ-1    subsequencias inteligentes, nivel 1
+  -m SmSEQ-2    subsequencias inteligentes, nivel 2
+                (SmSEQ-N usa condensacao: -cp none | jin | tricoire;
+                 padrao tricoire)
+  -m FM         melhor entre SM-1, SM-2, SmSEQ-1 e SmSEQ-2
+  -m JZW        Jin et al. (gap utilize)
+  -m ZHU        Zhu (PU2)
+
+METAHEURISTICAS (parametro N = largura/nivel; maior N = melhor e mais lento)
+  -m RS-5       rake search, largura 5      (RS-<N>)
+  -m PM-3       pilot method, largura 3     (PM-<N>)
+                (-hub <heuristica> escolhe a avaliacao do pilot; padrao FM)
+  -m GLAH-3     Jin et al., nivel 3         (GLAH-<N>)
+
+EXATOS (acham o otimo; precisam de uma cota superior inicial -ub)
+  -m DFBB       branch-and-bound em profundidade
+  -m DFBB-L     DFBB com cota crescente (iterative deepening)
+  -m BB         branch-and-bound com fila; -bbs depth | breadth
+  Exemplo:
+    .\rodar.ps1 -i INST -m DFBB -ub LA-1 -lb 3 -tl 60 -maxHeight file
+  -ub <heuristica>  cota superior inicial (padrao LA-1; so heuristicas)
+  -lb 1|2|3         cota inferior usada na poda (padrao 1; 3 e a mais forte)
+  -tl <segundos>    limite de tempo (padrao 0 = sem limite); ao estourar,
+                    devolve a melhor solucao achada ate la
+
+IMPORTANTE - RESTRITO x IRRESTRITO
+As instancias de brp_txt sao do BRP RESTRITO. Hoje so o LA-1 e restrito
+(verificado). Os demais modelos podem fazer movimentos voluntarios, ou
+seja, resolvem o problema irrestrito e nao sao comparaveis com as
+referencias (Min-Max, A*). Para saber se uma solucao especifica respeitou a
+regra, abra o passos.csv (secao 7): se a coluna "classe" tiver alguma linha
+"voluntaria", a solucao nao e restrita.
+
+7) COMO OBTER O passos.csv
+--------------------------
+O passos.csv traz uma linha por operacao da solucao. Ele e gerado junto com
+o -trace e o -moves. Duas formas:
+
+(a) Pasta e nomes automaticos (recomendado):
+
+  .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m LA-1 -maxHeight file -out resultados/solucoes
+
+  Cria resultados/solucoes/LA-1/ com:
+    brp_W3_H4_N8_id1_passos.csv   (a tabela abaixo)
+    brp_W3_H4_N8_id1_passos.txt   (o mesmo passo a passo, legivel, com o
+                                   estado das pilhas depois de cada passo)
+    brp_W3_H4_N8_id1_moves.txt    (so as relocacoes: [[3, 2], [3, 2], ...])
+  Cada modelo ganha sua propria subpasta (LA-1, RS-5, DFBB, ...), entao
+  rodar modelos diferentes na mesma instancia nao sobrescreve nada. Rodar o
+  mesmo modelo na mesma instancia duas vezes sobrescreve.
+
+(b) Nome escolhido por voce:
+
+  .\rodar.ps1 -i INST -m LA-1 -maxHeight file -trace passos.txt
+  -> grava passos.txt e passos.csv (a extensao .txt vira .csv)
+
+  .\rodar.ps1 -i INST -m LA-1 -maxHeight file -moves movs.txt
+  -> grava so as relocacoes, no formato [[origem, destino], ...]
+
+Colunas do passos.csv (pilhas numeradas a partir de 1):
+  passo        numero do passo (retiradas contam como passos)
+  tipo         relocacao | retirada
+  container    container movido ou retirado
+  origem       pilha de origem
+  destino      pilha de destino (vazio nas retiradas)
+  classe       forcada | voluntaria (vazio nas retiradas)
+  relocacoes   total de relocacoes acumulado apos o passo (nas retiradas,
+               o total ate ali, pois retirada nao conta)
+
+Exemplo (LA-1, brp_W3_H4_N8_id1):
+  passo,tipo,container,origem,destino,classe,relocacoes
+  1,relocacao,7,3,2,forcada,1
+  2,relocacao,3,3,2,forcada,2
+  3,relocacao,8,3,1,forcada,3
+  4,retirada,1,3,,,3
+
+Gerar para varias instancias ou varios modelos (PowerShell):
+
+  # as 10 instancias de um arquivo, com o LA-1
+  Get-ChildItem instancias\brp_txt\brp_W3_H4_N8_id*.txt | ForEach-Object {
+      .\rodar.ps1 -i $_.FullName -m LA-1 -maxHeight file -out resultados/solucoes }
+
+  # varios modelos na mesma instancia
+  foreach ($m in "LA-1","SM-2","RS-5","PM-3") {
+      .\rodar.ps1 -i instancias\brp_txt\brp_W3_H4_N8_id1.txt -m $m -maxHeight file -out resultados/solucoes }
+
+Observacoes:
+- resultados/solucoes/ esta no .gitignore; use outra pasta (ex.:
+  -out resultados/saidas) se quiser versionar os arquivos.
+- O -trace nao exige que o modelo seja exato: serve para qualquer -m. Nos
+  exatos com -tl, descreve a melhor solucao achada ate o limite de tempo.
+- As heuristicas nao registram o MOTIVO de cada escolha; o arquivo mostra o
+  efeito (criou conflito ou nao) e o estado das pilhas.
 
 =====================================================================
  O QUE O CODIGO JA OFERECE (inventario para quem vai implementar)

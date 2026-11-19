@@ -7,6 +7,7 @@
 #include "brpstate.h"
 #include "branchandbound.h"
 #include "genpolicy.h"
+#include "astar.h"
 
 using namespace std;
 
@@ -30,6 +31,24 @@ extern clock_t ticksInLB3;
 extern map<int, long long> countForGap;
 extern long long timeInLB1, timeInLB2, timeInLB3;
 
+#ifdef _WIN32
+#include <direct.h>
+#define MKDIR(p) _mkdir(p)
+#else
+#include <sys/stat.h>
+#define MKDIR(p) mkdir(p, 0755)
+#endif
+
+// creates a folder and all its parents (errors such as "already exists"
+// are ignored)
+static void makeDirs(const string &path) {
+  for (size_t k = 1; k <= path.size(); k++) {
+    if (k == path.size() || path[k] == '/' || path[k] == (char) 92) {
+      MKDIR(path.substr(0, k).c_str());
+    }
+  }
+}
+
 int main(int argc, char **argv) {
 
   string instanceFname = "instances/caserta/data3-3-1.dat";
@@ -43,6 +62,9 @@ int main(int argc, char **argv) {
   string ubMethod = "LA-1";
   string hubMethod = "FM";
   string scriptFile = "";
+  string traceFile = "";
+  string movesFile = "";
+  string outDir = "";
   int LB = 1;
   // string condensationProcedure = "none";
   verbose = false;
@@ -92,6 +114,18 @@ int main(int argc, char **argv) {
       i++;
       bbStrategy = argv[i];
       i++;
+    } else if (tmp == "-trace") {
+      i++;
+      traceFile = argv[i];
+      i++; 
+    } else if (tmp == "-moves") {
+      i++;
+      movesFile = argv[i];
+      i++;
+    } else if (tmp == "-out") {
+      i++;
+      outDir = argv[i];
+      i++;
     } else if (tmp == "-v") {
       i++;
       verbose = true;
@@ -102,6 +136,20 @@ int main(int argc, char **argv) {
       cerr << "unrecognized option: " << tmp << endl;
       exit(5);
     }
+  }
+
+  // -out <folder>: save moves and trace in <folder>/<method>/ with names
+  // derived from the instance file name
+  if ( outDir != "" ) {
+    string base = instanceFname;
+    size_t sl = base.find_last_of(string("/") + (char) 92);
+    if ( sl != string::npos ) base = base.substr(sl + 1);
+    size_t dot = base.rfind('.');
+    if ( dot != string::npos ) base = base.substr(0, dot);
+    string dir = outDir + "/" + method;
+    makeDirs(dir);
+    movesFile = dir + "/" + base + "_moves.txt";
+    traceFile = dir + "/" + base + "_passos.txt";
   }
 
   // dump parameter settings
@@ -121,6 +169,7 @@ int main(int argc, char **argv) {
   cout << "-----------------------------------------------------------" << endl;
   
   const BRPState s(instanceFname, maxHeightType);
+  
   if ( verbose ) {
       cout << s << endl;
   }
@@ -144,7 +193,17 @@ int main(int argc, char **argv) {
   // main solver we use
   auto solver = genPolicy(method, s, timeLimit, bbStrategy);
   clock_t ticksBefore = clock();
-  shared_ptr<BRPState> result = solver->solve(s);
+  shared_ptr<BRPState> result;
+  try {
+      result = solver->solve(s);
+  } catch (const AStarTimeout &error) {
+      cerr << error.what() << endl;
+      return 4;
+  }
+  if (!result) {
+      cerr << method << ": no feasible solution" << endl;
+      return 2;
+  }
   clock_t ticksAfter = clock();
   cout << method << "\t used " << result->nRelocations() << " relocations in "
        << ( (double) (ticksAfter - ticksBefore) / CLOCKS_PER_SEC)
@@ -153,7 +212,12 @@ int main(int argc, char **argv) {
   if ( scriptFile != "" ) { 
       result->appendSolutionToFile(scriptFile);
   }
-  
+  if ( traceFile != "" ) {
+      s.writeTrace(result->operations(), traceFile);
+  }
+  if ( movesFile != "" ) {
+      result->writeMoves(movesFile);
+  }
   if ( verbose ) {
       result->displaySolution();
   }
