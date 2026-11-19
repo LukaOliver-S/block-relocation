@@ -1,4 +1,4 @@
-"""Compara heuristicas (MM, RS-5, PM-3) com o A* nas instancias da disciplina.
+"""Compara heuristicas (MM, RS-5, PM-3) com metodos exatos (A* e B&B).
 
 Uso (de qualquer pasta):
     python scripts/rodar_comparacao.py                 # roda tudo e calcula metricas
@@ -12,10 +12,13 @@ Saidas em resultados/:
     metricas_comparacao.csv    + Z_ref, ref_tipo, gap
     resumo_por_classe.csv      medias por classe (arquivo) e metodo
 
-Gap = (Z - Z_ref) / Z_ref, com Z_ref = Z* do A* quando ele termina no tempo
-(ref_tipo = otimo); senao, o menor Z entre os metodos (melhor_conhecido).
-Se Z_ref = 0: gap = 0 quando Z = 0, senao gap = Z (valor absoluto).
-MM (Min-Max) e restrito, como o A*. Atencao: RS-5 e PM-3 resolvem o BRP IRRESTRITO, entao Z < Z* (gap < 0) e possivel.
+Cada metodo e comparado com o otimo da SUA variante do problema:
+    restrito   (A*, MM)          -> Z_ref = Z* do A*
+    irrestrito (DFBB, RS-5, PM-3) -> Z_ref = Z* do branch-and-bound (DFBB)
+Se o exato da variante estourar o tempo, Z_ref = menor Z entre os metodos da
+mesma variante (ref_tipo = melhor_conhecido). Gap = (Z - Z_ref) / Z_ref;
+se Z_ref = 0: gap = 0 quando Z = 0, senao gap = Z (valor absoluto).
+Z_restrito e Z_irrestrito trazem os dois otimos (quando conhecidos).
 """
 import argparse, csv, re, subprocess
 from concurrent.futures import ThreadPoolExecutor
@@ -26,7 +29,10 @@ RAIZ = Path(__file__).resolve().parent.parent
 EXE = RAIZ / "brp.exe"
 PASTA = RAIZ / "instancias" / "brp_txt"
 RES = RAIZ / "resultados"
-METODOS = ["ASTAR", "MM", "RS-5", "PM-3"]
+METODOS = ["ASTAR", "DFBB", "MM", "RS-5", "PM-3"]
+VARIANTE = {"ASTAR": "restrito", "MM": "restrito",
+            "DFBB": "irrestrito", "RS-5": "irrestrito", "PM-3": "irrestrito"}
+EXATO = {"restrito": "ASTAR", "irrestrito": "DFBB"}
 RE_Z = re.compile(r"used (\d+) relocations in ([0-9.eE+-]+) s")
 RE_NOME = re.compile(r"(brp_W(\d+)_H(\d+)_N(\d+))_id(\d+)\.txt$")
 
@@ -40,12 +46,17 @@ def rodar(f, m, timeout):
     cmd = [str(EXE), "-i", str(f), "-m", m, "-maxHeight", "file"]
     if m == "ASTAR":
         cmd += ["-tl", str(timeout)]
+    elif m == "DFBB":
+        cmd += ["-ub", "LA-1", "-lb", "3", "-tl", str(timeout)]
     z = t = ""
     try:
         r = subprocess.run(cmd, capture_output=True, text=True,
                            timeout=timeout + 10)
         mt = RE_Z.search(r.stdout)
-        if r.returncode == 0 and mt:
+        if r.returncode == 0 and mt and "Time limit reached" in r.stdout:
+            # DFBB devolve a melhor solucao achada, sem prova de otimalidade
+            z, t, st = int(mt.group(1)), float(mt.group(2)), "timeout"
+        elif r.returncode == 0 and mt:
             z, t, st = int(mt.group(1)), float(mt.group(2)), "ok"
         elif r.returncode == 4:          # AStarTimeout (ver main.cpp)
             t, st = timeout, "timeout"
@@ -98,15 +109,22 @@ def metricas(conjuntos):
     saida = []
     for (arq, ident), ls in por_inst.items():
         ok = {l["metodo"]: int(l["reshuffles"]) for l in ls if l["status"] == "ok"}
-        if "ASTAR" in ok:
-            zref, tipo = ok["ASTAR"], "otimo"
-        elif ok:
-            zref, tipo = min(ok.values()), "melhor_conhecido"
-        else:
-            zref, tipo = "", "sem_referencia"
+        ref = {}
+        for var, ex in EXATO.items():
+            mesma = [z for mt, z in ok.items() if VARIANTE[mt] == var]
+            if ex in ok:
+                ref[var] = (ok[ex], "otimo")
+            elif mesma:
+                ref[var] = (min(mesma), "melhor_conhecido")
+            else:
+                ref[var] = ("", "sem_referencia")
         for l in ls:
             l = dict(l)
+            l["variante"] = VARIANTE[l["metodo"]]
+            zref, tipo = ref[l["variante"]]
             l["Z_ref"], l["ref_tipo"] = zref, tipo
+            l["Z_restrito"] = ok.get("ASTAR", "")
+            l["Z_irrestrito"] = ok.get("DFBB", "")
             if l["status"] == "ok" and zref != "":
                 z = int(l["reshuffles"])
                 l["gap"] = round(calcular_gap(z, zref), 6)
@@ -116,7 +134,8 @@ def metricas(conjuntos):
             saida.append(l)
 
     with open(RES / "metricas_comparacao.csv", "w", newline="") as fh:
-        w = csv.DictWriter(fh, CAMPOS_BRUTO + ["Z_ref", "ref_tipo", "gap", "gap_obs"])
+        w = csv.DictWriter(fh, CAMPOS_BRUTO + ["variante", "Z_ref", "ref_tipo", "gap",
+                                              "gap_obs", "Z_restrito", "Z_irrestrito"])
         w.writeheader()
         w.writerows(saida)
 
@@ -133,6 +152,7 @@ def metricas(conjuntos):
         gaps = [float(l["gap"]) for l in oks if l["gap"] != ""]
         resumo.append({
             "conjunto": conj, "arquivo": arq, "W": W, "H": H, "N": N, "metodo": m,
+            "variante": VARIANTE[m],
             "n_instancias": len(ls), "n_ok": len(oks),
             "n_timeout": sum(l["status"] == "timeout" for l in ls),
             "reshuffles_medio": round(mean(int(l["reshuffles"]) for l in oks), 3) if oks else "",

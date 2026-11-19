@@ -1,0 +1,420 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soluções BRP passo a passo</title>
+<style>
+:root {
+  --bg: #f4f3f0; --surface: #fcfcfb; --surface-2: #efeeea; --border: #e4e3df;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #7a7974;
+  --accent: #2a78d6; --accent-soft: #dceafb;
+  --moved: #eb6834; --moved-soft: #fde4d9;
+  --ok: #0a7d0a; --warn: #a15c00; --err: #c22e2d;
+  --block: #ffffff; --block-border: #c9c8c2; --slot: #f1f0ec;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121211; --surface: #1a1a19; --surface-2: #242423; --border: #33332f;
+    --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e86;
+    --accent: #3987e5; --accent-soft: #1d3554;
+    --moved: #e8743f; --moved-soft: #4a2a1a;
+    --ok: #3cbf3c; --warn: #e0a030; --err: #e66767;
+    --block: #2c2c2a; --block-border: #4a4a45; --slot: #1f1f1e;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121211; --surface: #1a1a19; --surface-2: #242423; --border: #33332f;
+  --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e86;
+  --accent: #3987e5; --accent-soft: #1d3554;
+  --moved: #e8743f; --moved-soft: #4a2a1a;
+  --ok: #3cbf3c; --warn: #e0a030; --err: #e66767;
+  --block: #2c2c2a; --block-border: #4a4a45; --slot: #1f1f1e;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 20px 16px 40px; }
+h1 { font-size: 20px; margin: 0 0 2px; }
+.sub { color: var(--text-2); margin: 0 0 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+label.lbl { color: var(--text-2); font-size: 12px; margin-right: 2px; }
+select, button { font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 7px; padding: 6px 10px; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { background: var(--surface-2); }
+button:disabled { opacity: .45; cursor: default; }
+button:focus-visible, select:focus-visible, tr:focus-visible, li:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.spacer { flex: 1; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; border-right: 1px solid var(--border); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+th { color: var(--text-2); font-weight: 600; font-size: 12px; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: var(--surface-2); }
+tbody tr.sel { background: var(--accent-soft); }
+.tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 99px;
+  border: 1px solid var(--border); color: var(--text-2); }
+.st-ok { color: var(--ok); } .st-warn { color: var(--warn); } .st-err { color: var(--err); }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 12px; margin-top: 12px; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.yard-wrap { overflow-x: auto; display: flex; justify-content: center; padding: 6px 0; }
+svg text { font-variant-numeric: tabular-nums; }
+.caption { min-height: 44px; margin: 4px 0 10px; }
+.caption b { font-weight: 650; }
+.controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+input[type=range] { flex: 1; min-width: 140px; accent-color: var(--accent); }
+.counter { color: var(--text-2); font-variant-numeric: tabular-nums; min-width: 90px; text-align: right; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--text-2); font-size: 12px; margin-top: 10px; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; border: 1px solid var(--block-border); }
+.out { margin-top: 10px; color: var(--text-2); font-size: 12px; }
+.out span { display: inline-block; min-width: 22px; text-align: center; padding: 1px 4px; margin: 2px;
+  border-radius: 4px; background: var(--surface-2); color: var(--text-2); font-variant-numeric: tabular-nums; }
+ol.steps { list-style: none; margin: 0; padding: 0; max-height: 560px; overflow-y: auto; }
+ol.steps li { display: flex; gap: 8px; align-items: baseline; padding: 5px 8px; border-radius: 6px; cursor: pointer; }
+ol.steps li:hover { background: var(--surface-2); }
+ol.steps li.cur { background: var(--accent-soft); }
+ol.steps li.future { color: var(--muted); }
+ol.steps .n { color: var(--muted); min-width: 26px; text-align: right; font-variant-numeric: tabular-nums; font-size: 12px; }
+ol.steps .ret { color: var(--text-2); }
+.vol { font-size: 10px; padding: 0 5px; border-radius: 99px; background: var(--moved-soft); color: var(--moved); }
+.steps-h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.alert { margin-top: 8px; padding: 8px 10px; border-radius: 7px; border: 1px solid var(--err); color: var(--err); font-size: 13px; }
+.note { color: var(--muted); font-size: 12px; margin-top: 14px; }
+.empty { color: var(--text-2); padding: 30px 0; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Soluções passo a passo</h1>
+  <p class="sub">Block Relocation Problem: para cada instância e cada método, a sequência de relocações e retiradas.</p>
+
+  <div class="card">
+    <div class="bar">
+      <label class="lbl" for="inst">Instância</label>
+      <button id="prevInst" aria-label="Instância anterior">‹</button>
+      <select id="inst"></select>
+      <button id="nextInst" aria-label="Próxima instância">›</button>
+      <span class="spacer"></span>
+      <button id="theme" aria-label="Alternar tema">◐ Tema</button>
+    </div>
+    <table>
+      <thead><tr><th>Método</th><th>Variante</th><th>Reshuffles</th><th>Ótimo da variante</th><th>Gap</th><th>Tempo (s)</th><th>Status</th></tr></thead>
+      <tbody id="resumo"></tbody>
+    </table>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="bar" style="margin-bottom:6px">
+        <div class="seg" id="metodos" role="group" aria-label="Método"></div>
+      </div>
+      <div class="caption" id="caption" aria-live="polite"></div>
+      <div class="yard-wrap"><svg id="yard" role="img" aria-label="Pátio de contêineres"></svg></div>
+      <div class="out" id="out"></div>
+      <div class="controls" style="margin-top:12px">
+        <button id="first" aria-label="Início">⏮</button>
+        <button id="prev" aria-label="Passo anterior">◀</button>
+        <button id="play" aria-label="Reproduzir">▶ Reproduzir</button>
+        <button id="next" aria-label="Próximo passo">▶</button>
+        <button id="last" aria-label="Fim">⏭</button>
+        <input type="range" id="slider" min="0" value="0" aria-label="Passo">
+        <select id="speed" aria-label="Velocidade">
+          <option value="1400">lento</option><option value="800" selected>normal</option><option value="350">rápido</option>
+        </select>
+        <span class="counter" id="counter"></span>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--accent)"></i>alvo atual (menor número no pátio)</span>
+        <span><i class="sw" style="background:var(--moved)"></i>contêiner movido no passo</span>
+        <span><i class="sw" style="background:var(--block)"></i>demais (número = ordem de retirada)</span>
+      </div>
+      <div id="alert"></div>
+    </div>
+
+    <div class="card">
+      <div class="steps-h"><b>Passos</b><span class="counter" id="relocs"></span></div>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </div>
+
+  <p class="note">Teclado: ← → passo a passo · espaço reproduz/pausa · ↑ ↓ troca de instância. Pilhas numeradas a partir de 1, de baixo para cima.
+    Restritos (A*, Min-Max) só relocam contêineres acima do alvo; irrestritos (B&amp;B, RS-5, PM-3) podem fazer relocações voluntárias, marcadas como <span class="vol">voluntária</span>.
+    O gap é calculado contra o ótimo da mesma variante. Cada passo é reexecutado no navegador e conferido (topo, altura máxima, ordem de retirada).</p>
+</div>
+
+<script>
+const DADOS = /*__DADOS__*/null;
+const $ = id => document.getElementById(id);
+const fmtNum = (v, d) => v == null ? "–" : v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const st = { inst: 0, met: DADOS.metodos[0].cod, passo: 0, timer: null };
+
+// ---------- simulação ----------
+function simular(inst, passos) {
+  // estados[k] = pátio após k passos; valida cada operação
+  let pilhas = inst.pilhas.map(p => p.slice());
+  const estados = [{ pilhas: pilhas.map(p => p.slice()), saidos: [] }];
+  let saidos = [], erro = null;
+  passos.forEach((p, k) => {
+    if (erro) { estados.push(estados[estados.length - 1]); return; }
+    const [tipo, c, o, d] = p;
+    const po = pilhas[o - 1];
+    const alvo = Math.min(...pilhas.flat());
+    if (!po || po[po.length - 1] !== c) erro = `passo ${k + 1}: o contêiner ${c} não está no topo da pilha ${o}`;
+    else if (tipo === "S") {
+      if (c !== alvo) erro = `passo ${k + 1}: retirada do ${c}, mas o alvo é o ${alvo}`;
+      else { po.pop(); saidos = saidos.concat(c); }
+    } else {
+      const pd = pilhas[d - 1];
+      if (!pd || d === o) erro = `passo ${k + 1}: destino inválido`;
+      else if (pd.length >= inst.H) erro = `passo ${k + 1}: a pilha ${d} excederia a altura H = ${inst.H}`;
+      else { po.pop(); pd.push(c); }
+    }
+    estados.push({ pilhas: pilhas.map(p => p.slice()), saidos });
+  });
+  if (!erro && pilhas.flat().length) erro = "a sequência termina com contêineres no pátio";
+  return { estados, erro };
+}
+
+// ---------- seleção de instância ----------
+function montarSelect() {
+  const sel = $("inst");
+  let grupo = null, og = null;
+  DADOS.instancias.forEach((inst, i) => {
+    if (inst.arquivo !== grupo) {
+      grupo = inst.arquivo;
+      og = document.createElement("optgroup");
+      og.label = `${inst.arquivo.replace("brp_", "").replaceAll("_", " ")}  (W=${inst.W}, H=${inst.H}, N=${inst.N})`;
+      sel.appendChild(og);
+    }
+    const o = document.createElement("option");
+    o.value = i;
+    o.textContent = `${inst.arquivo} · id ${inst.id}`;
+    og.appendChild(o);
+  });
+  sel.addEventListener("change", () => irInstancia(+sel.value));
+}
+
+function irInstancia(i) {
+  st.inst = Math.max(0, Math.min(DADOS.instancias.length - 1, i));
+  $("inst").value = st.inst;
+  st.passo = 0;
+  parar();
+  render();
+}
+
+// ---------- tabela resumo e botões de método ----------
+function renderResumo(inst) {
+  const tb = $("resumo");
+  tb.innerHTML = "";
+  DADOS.metodos.forEach(m => {
+    const s = inst.sol[m.cod];
+    const tr = document.createElement("tr");
+    tr.tabIndex = 0;
+    if (m.cod === st.met) tr.className = "sel";
+    const stCls = s.status === "ok" ? "st-ok" : s.status === "timeout" ? "st-warn" : "st-err";
+    const stTxt = s.status === "ok" ? "ok" : s.status === "timeout" ? "tempo esgotado" : s.status;
+    const gap = s.gap == null ? "–" : fmtNum(s.gap * 100, 1) + "%";
+    tr.innerHTML = `<td><b>${m.nome}</b></td><td><span class="tag">${m.variante}</span></td>
+      <td>${s.Z ?? "–"}</td><td>${s.Zref ?? "–"}</td><td>${gap}</td>
+      <td>${fmtNum(s.tempo, 4)}</td><td class="${stCls}">${stTxt}</td>`;
+    const ir = () => { st.met = m.cod; st.passo = 0; parar(); render(); };
+    tr.addEventListener("click", ir);
+    tr.addEventListener("keydown", e => { if (e.key === "Enter") ir(); });
+    tb.appendChild(tr);
+  });
+  const seg = $("metodos");
+  seg.innerHTML = "";
+  DADOS.metodos.forEach(m => {
+    const b = document.createElement("button");
+    b.textContent = m.nome;
+    b.setAttribute("aria-pressed", m.cod === st.met);
+    b.addEventListener("click", () => { st.met = m.cod; st.passo = 0; parar(); render(); });
+    seg.appendChild(b);
+  });
+}
+
+// ---------- pátio (SVG) ----------
+function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+function desenharPatio(inst, estado, passo) {
+  const svg = $("yard");
+  const B = 56, G = 16, padX = 10, topo = 44, rodape = 30;
+  const larg = padX * 2 + inst.W * B + (inst.W - 1) * G;
+  const alt = topo + inst.H * B + rodape;
+  svg.setAttribute("viewBox", `0 0 ${larg} ${alt}`);
+  svg.setAttribute("width", larg);
+  svg.setAttribute("height", alt);
+  const resto = estado.pilhas.flat();
+  const alvo = resto.length ? Math.min(...resto) : null;
+  const movido = passo ? passo[1] : null;
+  const tipo = passo ? passo[0] : null;
+  const cor = { block: css("--block"), bb: css("--block-border"), slot: css("--slot"),
+    border: css("--border"), text: css("--text"), t2: css("--text-2"),
+    accent: css("--accent"), moved: css("--moved") };
+  let h = "";
+  estado.pilhas.forEach((p, s) => {
+    const x = padX + s * (B + G);
+    h += `<rect x="${x - 3}" y="${topo - 3}" width="${B + 6}" height="${inst.H * B + 6}" rx="6" fill="${cor.slot}" />`;
+    for (let k = 0; k < inst.H; k++) {
+      const y = topo + (inst.H - 1 - k) * B;
+      const c = p[k];
+      if (c === undefined) {
+        h += `<rect x="${x + 2}" y="${y + 2}" width="${B - 4}" height="${B - 4}" rx="4" fill="none" stroke="${cor.border}" stroke-dasharray="3 3"/>`;
+        continue;
+      }
+      let fill = cor.block, stroke = cor.bb, tc = cor.text, sw = 1;
+      if (c === movido && tipo === "R") { fill = cor.moved; stroke = cor.moved; tc = "#fff"; }
+      else if (c === alvo) { fill = cor.accent; stroke = cor.accent; tc = "#fff"; }
+      h += `<rect x="${x + 2}" y="${y + 2}" width="${B - 4}" height="${B - 4}" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"/>`;
+      h += `<text x="${x + B / 2}" y="${y + B / 2 + 5}" text-anchor="middle" font-size="19" font-weight="600" fill="${tc}">${c}</text>`;
+    }
+    h += `<text x="${x + B / 2}" y="${topo + inst.H * B + 20}" text-anchor="middle" font-size="14" fill="${cor.t2}">P${s + 1}</text>`;
+  });
+  // seta da relocação
+  if (passo && tipo === "R") {
+    const xo = padX + (passo[2] - 1) * (B + G) + B / 2, xd = padX + (passo[3] - 1) * (B + G) + B / 2;
+    const ya = topo - 6;                       // base do arco, logo acima das pilhas
+    const pico = 6;                            // altura maxima do arco
+    const dir = xd > xo ? 1 : -1;
+    h += `<path d="M ${xo} ${ya} Q ${(xo + xd) / 2} ${pico - 8} ${xd} ${ya}" fill="none" stroke="${cor.moved}" stroke-width="2.5" stroke-linecap="round"/>`;
+    h += `<path d="M ${xd} ${ya + 1} l ${-dir * 3 - 4} -9 l ${dir * 3 + 8} 0 z" fill="${cor.moved}"/>`;
+    h += `<text x="${(xo + xd) / 2}" y="${pico + 4}" text-anchor="middle" font-size="12" fill="${cor.moved}">P${passo[2]} → P${passo[3]}</text>`;
+  }
+  svg.innerHTML = h;
+}
+
+// ---------- lista de passos ----------
+function textoPasso(p) {
+  const [tipo, c, o, d, cls] = p;
+  if (tipo === "S") return `Retirada do <b>${c}</b> da P${o}`;
+  return `Relocação do <b>${c}</b>: P${o} → P${d}` + (cls === "V" ? ` <span class="vol">voluntária</span>` : "");
+}
+
+function renderPassos(passos) {
+  const ol = $("steps");
+  ol.innerHTML = "";
+  const li0 = document.createElement("li");
+  li0.innerHTML = `<span class="n">0</span><span>Configuração inicial</span>`;
+  li0.addEventListener("click", () => irPasso(0));
+  ol.appendChild(li0);
+  passos.forEach((p, k) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="n">${k + 1}</span><span class="${p[0] === "S" ? "ret" : ""}">${textoPasso(p)}</span>`;
+    li.addEventListener("click", () => irPasso(k + 1));
+    ol.appendChild(li);
+  });
+}
+
+function marcarPasso() {
+  const lis = $("steps").children;
+  for (let i = 0; i < lis.length; i++) {
+    lis[i].classList.toggle("cur", i === st.passo);
+    lis[i].classList.toggle("future", i > st.passo);
+  }
+  const cur = lis[st.passo];
+  if (cur) cur.scrollIntoView({ block: "nearest" });
+}
+
+// ---------- render principal ----------
+let cache = null;
+function render() {
+  const inst = DADOS.instancias[st.inst];
+  const sol = inst.sol[st.met];
+  renderResumo(inst);
+  const passos = sol.passos || [];
+  cache = { inst, sol, passos, ...simular(inst, passos) };
+  renderPassos(passos);
+  $("slider").max = passos.length;
+  $("alert").innerHTML = cache.erro ? `<div class="alert">Solução inválida: ${cache.erro}</div>` : "";
+  if (!passos.length) {
+    $("caption").innerHTML = sol.status === "ok"
+      ? "Nenhum passo necessário." : `<span class="st-warn">Sem solução registrada (${sol.status === "timeout" ? "tempo esgotado" : sol.status}).</span>`;
+  }
+  atualizarPasso();
+}
+
+function atualizarPasso() {
+  const { inst, passos, estados } = cache;
+  st.passo = Math.max(0, Math.min(passos.length, st.passo));
+  const estado = estados[st.passo];
+  const passo = st.passo ? passos[st.passo - 1] : null;
+  desenharPatio(inst, estado, passo);
+  const relocAte = passos.slice(0, st.passo).filter(p => p[0] === "R").length;
+  const relocTot = passos.filter(p => p[0] === "R").length;
+  const nome = DADOS.metodos.find(m => m.cod === st.met).nome;
+  if (passos.length) {
+    $("caption").innerHTML = passo
+      ? `<b>${nome} · passo ${st.passo}/${passos.length}.</b> ${textoPasso(passo)}.`
+      : `<b>${nome} · configuração inicial.</b> ${inst.N} contêineres em ${inst.W} pilhas de altura máxima ${inst.H}.`;
+  }
+  $("counter").textContent = `${st.passo}/${passos.length}`;
+  $("relocs").textContent = `reshuffles: ${relocAte}/${relocTot}`;
+  $("slider").value = st.passo;
+  $("out").innerHTML = "Retirados: " + (estado.saidos.length ? estado.saidos.map(c => `<span>${c}</span>`).join("") : "—");
+  $("first").disabled = $("prev").disabled = st.passo === 0;
+  $("last").disabled = $("next").disabled = st.passo === passos.length;
+  $("play").disabled = !passos.length;
+  marcarPasso();
+}
+
+function irPasso(k) { st.passo = k; atualizarPasso(); salvarHash(); }
+function salvarHash() {
+  history.replaceState(null, "", `#i=${st.inst}&m=${encodeURIComponent(st.met)}&p=${st.passo}`);
+}
+function lerHash() {
+  const h = new URLSearchParams(location.hash.slice(1));
+  const m = h.get("m");
+  if (m && DADOS.metodos.some(x => x.cod === m)) st.met = m;
+  return { i: +(h.get("i") || 0), p: +(h.get("p") || 0) };
+}
+function parar() { clearInterval(st.timer); st.timer = null; $("play").textContent = "▶ Reproduzir"; }
+function tocar() {
+  if (st.timer) return parar();
+  if (st.passo >= cache.passos.length) st.passo = 0;
+  $("play").textContent = "⏸ Pausar";
+  st.timer = setInterval(() => {
+    if (st.passo >= cache.passos.length) return parar();
+    irPasso(st.passo + 1);
+  }, +$("speed").value);
+}
+
+// ---------- eventos ----------
+$("first").onclick = () => { parar(); irPasso(0); };
+$("prev").onclick = () => { parar(); irPasso(st.passo - 1); };
+$("next").onclick = () => { parar(); irPasso(st.passo + 1); };
+$("last").onclick = () => { parar(); irPasso(cache.passos.length); };
+$("play").onclick = tocar;
+$("slider").oninput = e => { parar(); irPasso(+e.target.value); };
+$("speed").onchange = () => { if (st.timer) { parar(); tocar(); } };
+$("prevInst").onclick = () => irInstancia(st.inst - 1);
+$("nextInst").onclick = () => irInstancia(st.inst + 1);
+$("theme").onclick = () => {
+  const r = document.documentElement;
+  const escuro = r.dataset.theme ? r.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme = escuro ? "light" : "dark";
+  atualizarPasso();
+};
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => atualizarPasso());
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT") return;
+  if (e.key === "ArrowRight") { parar(); irPasso(st.passo + 1); e.preventDefault(); }
+  else if (e.key === "ArrowLeft") { parar(); irPasso(st.passo - 1); e.preventDefault(); }
+  else if (e.key === "ArrowDown") { irInstancia(st.inst + 1); e.preventDefault(); }
+  else if (e.key === "ArrowUp") { irInstancia(st.inst - 1); e.preventDefault(); }
+  else if (e.key === " " && e.target.tagName !== "BUTTON") { tocar(); e.preventDefault(); }
+});
+
+montarSelect();
+const ini = lerHash();
+irInstancia(ini.i);
+irPasso(ini.p);
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-"""Gera os graficos de comparacao heuristicas x A* a partir dos CSVs de
+"""Gera os graficos de comparacao heuristicas x exatos (A*, B&B) a partir dos CSVs de
 scripts/rodar_comparacao.py. Saida: graficos/*.png
 
 Uso: python scripts/gerar_graficos.py               # so conjunto A (padrao)
@@ -18,13 +18,20 @@ RES = RAIZ / "resultados"
 OUT = RAIZ / "graficos"
 OUT.mkdir(exist_ok=True)
 
-METODOS = ["ASTAR", "MM", "RS-5", "PM-3"]
+METODOS = ["ASTAR", "DFBB", "MM", "RS-5", "PM-3"]
+EXATOS = ["ASTAR", "DFBB"]
 HEUR = ["MM", "RS-5", "PM-3"]
-NOMES = {"ASTAR": "A*", "MM": "Min-Max", "RS-5": "RS-5", "PM-3": "PM-3"}
-COR = {"ASTAR": "#2a78d6", "MM": "#eda100", "RS-5": "#eb6834", "PM-3": "#1baf7a"}  # fixa por metodo
+# metodos ocultos nos GRAFICOS (continuam nos CSVs e na tabela)
+OCULTAR_GRAF = {"MM"}
+METODOS_G = [m for m in METODOS if m not in OCULTAR_GRAF]
+HEUR_G = [m for m in HEUR if m not in OCULTAR_GRAF]
+NOMES = {"ASTAR": "A*", "DFBB": "B&B", "MM": "Min-Max", "RS-5": "RS-5", "PM-3": "PM-3"}
+COR = {"ASTAR": "#2a78d6", "DFBB": "#e87ba4", "MM": "#eda100", "RS-5": "#eb6834", "PM-3": "#1baf7a"}  # fixa por metodo
 TXT, TXT2, GRID, FUNDO = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
-NOTA_IRR = ("Min-Max e A* são restritos (gap do Min-Max ≥ 0); RS-5 e PM-3 resolvem o BRP "
-            "irrestrito: gap < 0 é possível.")
+NOTA_IRR = ("Gap contra o ótimo da variante de cada método: Min-Max vs A* (BRP restrito); "
+            "RS-5 e PM-3 vs B&B (BRP irrestrito).")
+NOTA_G = ("Gap contra o ótimo da variante de cada método: RS-5 e PM-3 vs B&B "
+          "(BRP irrestrito). Min-Max oculto nos gráficos (ver tabela).")
 
 plt.rcParams.update({
     "figure.facecolor": FUNDO, "axes.facecolor": FUNDO, "savefig.facecolor": FUNDO,
@@ -75,8 +82,9 @@ def separar_conjuntos(ax):
                 transform=ax.get_xaxis_transform(), ha="center", color=TXT2, fontsize=9)
 
 
-def barras(col, titulo, ylabel, nome, metodos=METODOS, log=False, fator=1.0,
+def barras(col, titulo, ylabel, nome, metodos=None, log=False, fator=1.0,
            linha_zero=False, nota=None):
+    metodos = metodos or METODOS_G
     fig, ax = plt.subplots(figsize=(LARG, 5))
     w = 0.8 / len(metodos)
     for i, met in enumerate(metodos):
@@ -98,39 +106,19 @@ def barras(col, titulo, ylabel, nome, metodos=METODOS, log=False, fator=1.0,
 # 1) reshuffles medios
 barras("reshuffles_medio", "Reshuffles médios por classe", "reshuffles (média)",
        "reshuffles_por_classe.png",
-       nota="Médias só das execuções concluídas (A* exclui timeouts). " + NOTA_IRR)
+       nota="Médias só das execuções concluídas (exatos excluem timeouts). " + NOTA_G)
 
-# 2) tabela: reshuffles e tempo medios por classe e metodo
-def tabela_reshuffles_tempo():
-    linhas = []
-    for c in classes:
-        lin = {"Classe": c}
-        for met in METODOS:
-            s = r[(r.classe == c) & (r.metodo == met)].iloc[0]
-            lin[f"{NOMES[met]} reshuffles"] = s.reshuffles_medio
-            lin[f"{NOMES[met]} tempo (s)"] = s.tempo_medio_s
-            if met == "ASTAR":
-                lin["A* resolvidas"] = f"{int(s.n_ok)}/{int(s.n_instancias)}"
-        linhas.append(lin)
-    t = pd.DataFrame(linhas)
-    t.to_csv(RES / "tabela_reshuffles_tempo.csv", index=False)
-
-    fmt = t.copy()
-    for col in fmt.columns:
-        if col.endswith("reshuffles"):
-            fmt[col] = fmt[col].map(lambda v: f"{v:.1f}")
-        elif col.endswith("(s)"):
-            fmt[col] = fmt[col].map(lambda v: f"{v:.4f}")
-    with open(RES / "tabela_reshuffles_tempo.md", "w", encoding="utf-8") as fh:
+# 2) tabelas numericas (PNG + CSV + Markdown)
+def salvar_tabela(fmt, nome, titulo, nota, largura):
+    """fmt: DataFrame ja formatado como texto. Salva .md em resultados/ e .png em graficos/."""
+    with open(RES / f"{nome}.md", "w", encoding="utf-8") as fh:
         fh.write("| " + " | ".join(fmt.columns) + " |\n")
         fh.write("|" + "|".join(["---"] + ["---:"] * (len(fmt.columns) - 1)) + "|\n")
         for _, row in fmt.iterrows():
             fh.write("| " + " | ".join(map(str, row.values)) + " |\n")
-
-    fig, ax = plt.subplots(figsize=(16, 0.32 * (len(fmt) + 2) + 1.0))
+    fig, ax = plt.subplots(figsize=(largura, 0.32 * (len(fmt) + 2) + 1.0))
     ax.axis("off")
-    cab = [c.replace(" reshuffles", "\nreshuffles").replace(" tempo", "\ntempo")
-           .replace(" resolvidas", "\nresolvidas") for c in fmt.columns]
+    cab = [c.replace(" ", "\n", 1) if c != "Classe" else c for c in fmt.columns]
     tb = ax.table(cellText=fmt.values, colLabels=cab, cellLoc="right",
                   colLoc="center", bbox=[0, 0, 1, 1])
     tb.auto_set_font_size(False)
@@ -142,74 +130,74 @@ def tabela_reshuffles_tempo():
             cel.set_facecolor("#efeeea")
         else:
             cel.set_facecolor(FUNDO if i % 2 else "#f5f4f1")
+            if fmt.iloc[i - 1, 0] == "Total":
+                cel.set_text_props(weight="bold")
             if j == 0:
                 cel.get_text().set_horizontalalignment("left")
                 cel.PAD = 0.05
-    ax.set_title("Reshuffles e tempo médios por classe" + SUF, fontweight="bold", pad=10)
-    salvar(fig, "tabela_reshuffles_tempo.png",
-           "Médias das execuções concluídas; para o A*, só das instâncias resolvidas "
-           "no tempo (ver 'A* resolvidas'). " + NOTA_IRR)
-    print("->", RES / "tabela_reshuffles_tempo.csv")
-    print("->", RES / "tabela_reshuffles_tempo.md")
+    ax.set_title(titulo + SUF, fontweight="bold", pad=10)
+    salvar(fig, f"{nome}.png", nota)
+    print("->", RES / f"{nome}.md")
+
+
+def tabela_reshuffles_tempo():
+    linhas = []
+    for c in classes:
+        lin = {"Classe": c}
+        for met in METODOS:
+            s = r[(r.classe == c) & (r.metodo == met)].iloc[0]
+            lin[f"{NOMES[met]} reshuffles"] = s.reshuffles_medio
+            lin[f"{NOMES[met]} tempo (s)"] = s.tempo_medio_s
+            if met in EXATOS:
+                lin[f"{NOMES[met]} resolvidas"] = f"{int(s.n_ok)}/{int(s.n_instancias)}"
+        linhas.append(lin)
+    t = pd.DataFrame(linhas)
+    t.to_csv(RES / "tabela_reshuffles_tempo.csv", index=False)
+    fmt = t.copy()
+    for col in fmt.columns:
+        if col.endswith("reshuffles"):
+            fmt[col] = fmt[col].map(lambda v: f"{v:.1f}")
+        elif col.endswith("(s)"):
+            fmt[col] = fmt[col].map(lambda v: f"{v:.4f}")
+    salvar_tabela(fmt, "tabela_reshuffles_tempo", "Reshuffles e tempo médios por classe",
+                  "Médias das execuções concluídas; para os exatos, só das instâncias "
+                  "resolvidas no tempo (ver colunas 'resolvidas'). " + NOTA_IRR, 19)
+
+
+def tabela_gap():
+    """Gap de cada heuristica contra o otimo da sua variante, por classe + total."""
+    REF = {"MM": "A*", "RS-5": "B&B", "PM-3": "B&B"}
+    linhas = []
+    for c in classes + ["Total"]:
+        lin = {"Classe": c}
+        for met in HEUR:
+            d = ok[(ok.metodo == met) & ((ok.classe == c) | (c == "Total"))]
+            g = d.gap.dropna() * 100
+            nome = f"{NOMES[met]} (vs {REF[met]})"
+            lin[f"{nome} gap médio (%)"] = g.mean()
+            lin[f"{nome} gap máx (%)"] = g.max()
+            lin[f"{nome} = ótimo"] = f"{int((d.reshuffles == d.Z_ref).sum())}/{len(d)}"
+        linhas.append(lin)
+    t = pd.DataFrame(linhas)
+    t.to_csv(RES / "tabela_gap.csv", index=False)
+    fmt = t.copy()
+    for col in fmt.columns:
+        if "(%)" in col:
+            fmt[col] = fmt[col].map(lambda v: f"{v:.2f}")
+    salvar_tabela(fmt, "tabela_gap", "Gap das heurísticas em relação ao ótimo",
+                  "Gap = (Z − Z*)/Z*, com Z* do exato da mesma variante: Min-Max vs A* "
+                  "(BRP restrito); RS-5 e PM-3 vs B&B (BRP irrestrito). "
+                  "'= ótimo' = instâncias em que a heurística atingiu Z*.", 19)
 
 
 tabela_reshuffles_tempo()
+tabela_gap()
 
-# 3) gap medio das heuristicas
-barras("gap_medio", "Gap médio das heurísticas em relação a Z_ref", "gap médio (%)",
-       "gap_por_classe.png", metodos=HEUR, fator=100, linha_zero=True,
-       nota="Z_ref = ótimo do A* quando terminou; senão melhor conhecido. " + NOTA_IRR)
-
-# 4) boxplot do gap por metodo e conjunto
-fig, axs = plt.subplots(1, len(CONJ), figsize=(5.5 * len(CONJ), 4.5), sharey=True,
-                        squeeze=False)
-axs = axs[0]
-for ax, conj in zip(axs, CONJ):
-    dados = [ok[(ok.conjunto == conj) & (ok.metodo == met)].gap.dropna() * 100
-             for met in HEUR]
-    bp = ax.boxplot(dados, patch_artist=True, widths=0.5,
-                    medianprops=dict(color=TXT, lw=1.5))
-    for patch, met in zip(bp["boxes"], HEUR):
-        patch.set(facecolor=COR[met], alpha=0.85, edgecolor=TXT2)
-    ax.set_xticks(range(1, len(HEUR) + 1), [NOMES[h] for h in HEUR])
-    ax.axhline(0, color=TXT2, lw=1)
-    if len(CONJ) > 1:
-        ax.set_title(f"Conjunto {conj}")
-axs[0].set_ylabel("gap (%)")
-fig.suptitle("Distribuição do gap por heurística" + SUF, fontweight="bold")
-salvar(fig, "gap_boxplot.png", NOTA_IRR)
-
-# 5) tempo x gap
-fig, ax = plt.subplots(figsize=(8, 5))
-for met in HEUR:
-    d = ok[ok.metodo == met]
-    ax.scatter(d.tempo_s.clip(lower=1e-4), d.gap * 100, s=36, color=COR[met],
-               edgecolor=FUNDO, linewidth=1, label=NOMES[met], alpha=0.85)
-d = ok[ok.metodo == "ASTAR"]
-ax.scatter(d.tempo_s.clip(lower=1e-4), d.gap * 100, s=36, color=COR["ASTAR"],
-           edgecolor=FUNDO, linewidth=1, label="A*", alpha=0.85, marker="s")
-ax.set_xscale("log")
-ax.axhline(0, color=TXT2, lw=1)
-ax.set_xlabel("tempo (s, log; 0 mostrado como 1e-4)")
-ax.set_ylabel("gap (%)")
-ax.set_title("Tempo × gap por instância" + SUF)
-ax.legend()
-salvar(fig, "tempo_vs_gap.png", NOTA_IRR)
-
-# 6) taxa de resolucao do A* (so se houve timeout)
-a = r[r.metodo == "ASTAR"].set_index("classe").reindex(classes)
-if (a.n_ok < a.n_instancias).any():
-    fig, ax = plt.subplots(figsize=(LARG, 4.5))
-    frac = a.n_ok / a.n_instancias * 100
-    ax.bar(x, frac.values, 0.6, color=COR["ASTAR"], label="resolvidas")
-    for xi, (v, n, t) in enumerate(zip(frac.values, a.n_ok, a.n_instancias)):
-        ax.text(xi, v + 2, f"{int(n)}/{int(t)}", ha="center", fontsize=8, color=TXT2)
-    ax.set_xticks(x, classes, rotation=45, ha="right")
-    ax.set_ylim(0, 112)
-    ax.set_ylabel("% resolvidas no tempo")
-    ax.set_title("Instâncias resolvidas pelo A* dentro do limite de tempo", pad=18)
-    separar_conjuntos(ax)
-    salvar(fig, "astar_resolvidas.png")
+# 6) taxa de resolucao dos exatos (so se houve timeout)
+r["pct_ok"] = r.n_ok / r.n_instancias * 100
+if (r[r.metodo.isin(EXATOS)].n_ok < r[r.metodo.isin(EXATOS)].n_instancias).any():
+    barras("pct_ok", "Instâncias resolvidas no limite de tempo", "% resolvidas",
+           "exatos_resolvidos.png", metodos=EXATOS)
 
 # tabela resumida no terminal
 tab = r.pivot_table(index="classe", columns="metodo",
