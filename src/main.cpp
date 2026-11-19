@@ -7,6 +7,7 @@
 #include "brpstate.h"
 #include "branchandbound.h"
 #include "genpolicy.h"
+#include "astar.h"
 
 using namespace std;
 
@@ -144,7 +145,17 @@ int main(int argc, char **argv) {
   // main solver we use
   auto solver = genPolicy(method, s, timeLimit, bbStrategy);
   clock_t ticksBefore = clock();
-  shared_ptr<BRPState> result = solver->solve(s);
+  shared_ptr<BRPState> result;
+  try {
+      result = solver->solve(s);
+  } catch (const AStarTimeout &error) {
+      cerr << error.what() << endl;
+      return 4;
+  }
+  if (!result) {
+      cerr << method << ": no feasible solution" << endl;
+      return 2;
+  }
   clock_t ticksAfter = clock();
   cout << method << "\t used " << result->nRelocations() << " relocations in "
        << ( (double) (ticksAfter - ticksBefore) / CLOCKS_PER_SEC)
