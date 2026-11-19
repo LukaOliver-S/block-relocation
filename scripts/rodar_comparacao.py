@@ -1,10 +1,11 @@
-"""Compara heuristicas (RS-5, PM-3) com o A* nas instancias da disciplina.
+"""Compara heuristicas (MM, RS-5, PM-3) com o A* nas instancias da disciplina.
 
 Uso (de qualquer pasta):
     python scripts/rodar_comparacao.py                 # roda tudo e calcula metricas
     python scripts/rodar_comparacao.py --filtro W3_H4  # so instancias cujo nome contem W3_H4
     python scripts/rodar_comparacao.py --so-metricas   # recalcula metricas do CSV existente
-Opcoes: --timeout S (padrao 60), --jobs J (execucoes em paralelo, padrao 4).
+Opcoes: --conjunto A|B|AB (padrao A), --timeout S (padrao 60),
+        --jobs J (execucoes em paralelo, padrao 4).
 
 Saidas em resultados/:
     resultados_comparacao.csv  uma linha por instancia x metodo (bruto)
@@ -14,7 +15,7 @@ Saidas em resultados/:
 Gap = (Z - Z_ref) / Z_ref, com Z_ref = Z* do A* quando ele termina no tempo
 (ref_tipo = otimo); senao, o menor Z entre os metodos (melhor_conhecido).
 Se Z_ref = 0: gap = 0 quando Z = 0, senao gap = Z (valor absoluto).
-Atencao: RS-5 e PM-3 resolvem o BRP IRRESTRITO, entao Z < Z* (gap < 0) e possivel.
+MM (Min-Max) e restrito, como o A*. Atencao: RS-5 e PM-3 resolvem o BRP IRRESTRITO, entao Z < Z* (gap < 0) e possivel.
 """
 import argparse, csv, re, subprocess
 from concurrent.futures import ThreadPoolExecutor
@@ -25,7 +26,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 EXE = RAIZ / "brp.exe"
 PASTA = RAIZ / "instancias" / "brp_txt"
 RES = RAIZ / "resultados"
-METODOS = ["ASTAR", "RS-5", "PM-3"]
+METODOS = ["ASTAR", "MM", "RS-5", "PM-3"]
 RE_Z = re.compile(r"used (\d+) relocations in ([0-9.eE+-]+) s")
 RE_NOME = re.compile(r"(brp_W(\d+)_H(\d+)_N(\d+))_id(\d+)\.txt$")
 
@@ -59,9 +60,13 @@ def rodar(f, m, timeout):
     return linha
 
 
-def executar(filtro, timeout, jobs):
+def conjunto_de(nome):
+    return "A" if int(RE_NOME.search(nome).group(2)) < 7 else "B"
+
+
+def executar(filtro, timeout, jobs, conjuntos):
     arqs = sorted((f for f in PASTA.glob("*.txt") if RE_NOME.search(f.name)
-                   and filtro in f.name),
+                   and filtro in f.name and conjunto_de(f.name) in conjuntos),
                   key=lambda f: (int(RE_NOME.search(f.name).group(4)), f.name))
     tarefas = [(f, m) for f in arqs for m in METODOS]
     print(f"{len(arqs)} instancias x {len(METODOS)} metodos = {len(tarefas)} execucoes")
@@ -82,9 +87,9 @@ def calcular_gap(z, zref):
     return (z - zref) / zref
 
 
-def metricas():
+def metricas(conjuntos):
     with open(RES / "resultados_comparacao.csv", newline="") as fh:
-        linhas = list(csv.DictReader(fh))
+        linhas = [l for l in csv.DictReader(fh) if l["conjunto"] in conjuntos]
 
     por_inst = {}
     for l in linhas:
@@ -149,10 +154,11 @@ def metricas():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--filtro", default="")
+    ap.add_argument("--conjunto", default="A", choices=["A", "B", "AB"])
     ap.add_argument("--timeout", type=int, default=60)
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--so-metricas", action="store_true")
     a = ap.parse_args()
     if not a.so_metricas:
-        executar(a.filtro, a.timeout, a.jobs)
-    metricas()
+        executar(a.filtro, a.timeout, a.jobs, list(a.conjunto))
+    metricas(list(a.conjunto))
